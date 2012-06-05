@@ -1,0 +1,8 @@
+begin|Upload_20120524|1|new|sg||
+trannew|sg12000901|JNJAJO|
+transaction|11/05/2012|$_acct1|noprint||||
+master|01|01|$_acct1|$_acct1
+policy|new|10|M|376213970151002|01/15||||||||||||
+product|new|AMPA13|MO|||||||||||00|||||||||||
+insured|new|AMPA13|$_acct1|MI|1|1|
+end
