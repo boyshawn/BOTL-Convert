@@ -1,0 +1,5 @@
+  [2] - Account ID
+  Field is Required
+  Data type is string[9]
+  Primary Account ID.  May use macro representing account id.
+  -----
