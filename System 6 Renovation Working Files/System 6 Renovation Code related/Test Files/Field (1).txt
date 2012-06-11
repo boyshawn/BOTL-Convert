@@ -2,3 +2,4 @@
   Field is Required
   Must be "NEW"
   Data type is string[3]
+  -----
