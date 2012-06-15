@@ -1,4 +1,4 @@
-BEGIN|[2]|[3]|NEW|SG|[6]|[7]
+BEGIN|[2]
 SegmentKey: BEGIN
 Segment is required
 --------------------
