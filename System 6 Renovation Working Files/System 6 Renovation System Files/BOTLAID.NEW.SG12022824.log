@@ -1,0 +1,23 @@
+
+Starting BOTLAID processing at 12:17:24 PM on 18/6/2012.
+Release: 4.0.70.0    Machine: SGSINS6R801    User: LWHANX
+Current Directory: D:\S6Batch
+S6 Configuration: IC2SGU - SG S6R UAT   Database: IC2SGU
+
+Run Options...
+  Ini        : d:\s6work\BOTLAID.ini      Transaction : NEW
+  SplitKey   : SG12022824                 BaseSplitKey : 
+  ProdList   :                            Country    : SG
+  Log        : d:\s6work\BOTLAID.NEW.SG12022824.log
+  LanguageKey : 229                       API        : N
+  Config     : IC2SGU                   
+
+
+****** Error (1) ******
+Message       : Campaign split SG12022824 was not found.. (BOT10046)
+ThreadID      : 6
+Data          : System.Collections.ListDictionaryInternal
+Location      : Void .ctor(System.String, System.String, Int32, System.String, System.String, System.Collections.Specialized.StringCollection) (S6.BOTL)
+
+Finished processing at 12:17:24 PM on 18/6/2012.
+Total duration from start of program was 0 hours, 0 minutes, 0.218 seconds.

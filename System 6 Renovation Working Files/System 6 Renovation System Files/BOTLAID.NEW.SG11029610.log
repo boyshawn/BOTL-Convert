@@ -1,0 +1,3909 @@
+
+Starting BOTLAID processing at 5:39:24 PM on 1/2/2012.
+Release: 4.0.55.0    Machine: SGSINS6R801    User: LWHANX
+Current Directory: D:\S6Batch
+S6 Configuration: IC2SGU - SG S6R UAT   Database: IC2SGU
+
+Run Options...
+  Ini        : d:\s6work\BOTLAID.ini      Log        : d:\s6work\BOTLAID.NEW.SG11029610.log
+  SplitKey   : SG11029610                 LanguageKey : 229
+  API        : N                          Config     : IC2SGU
+
+
+--------------------
+Input Values
+--------------------
+Country is SG
+Language is English(229)
+Split: SG11029610 - MB Ex: EverDental BLD Q3M2 S5
+
+--------------------
+Product Summary
+--------------------
+Product: MBDT01 - EverDental (Dental)
+  - Group rated
+  - 1 Benefit Levels
+  - Main Insured/Holder is eligible to be insured
+  - Spouse is eligible to be insured
+  - Dependents is NOT eligible to be insured
+  - Not unit rated
+  - No free cover
+  - Beneficiaries allowed
+  - Main Insured/Holder age range is 18 to 60
+  - Spouse age range is 18 to 60
+  - Dependent age range is 0 to 0
+  - No rating factors
+Product: MBDT02 - EverDental (PA)
+  - Group rated
+  - 1 Benefit Levels
+  - Main Insured/Holder is eligible to be insured
+  - Spouse is eligible to be insured
+  - Dependents is NOT eligible to be insured
+  - Not unit rated
+  - No free cover
+  - Beneficiaries allowed
+  - Main Insured/Holder age range is 18 to 60
+  - Spouse age range is 18 to 60
+  - Dependent age range is 0 to 0
+  - No rating factors
+
+--------------------
+BEGIN|[2]|[3]|NEW|SG|[6]|[7]
+SegmentKey: BEGIN
+Segment is required
+--------------------
+  [2] - RunID
+  Field is Required
+  Data type is string[20]
+  Identifies the BOTL run
+  -----
+  [3] - Sequence Number
+  Field is Required
+  Data type is int
+  All transactions require a unique sequence within a run.
+  -----
+  [4] - Transaction Code
+  Field is Required
+  Must be "NEW"
+  Data type is string[3]
+  -----
+  [5] - Country Code
+  Field is Required
+  Must be "SG"
+  Data type is string[2]
+  Value in Message Category 27 (Country)
+  -----
+  [6] - Policy Number
+  Data type is string[15]
+  Leave blank to have BOTL supply the policy number or else supply a unique value.
+  -----
+  [7] - Provider ID
+  Data type is string[30]
+  This value may, optionally, be assigned by an external provider as a cross reference from the external provider to the policy or transaction.
+
+--------------------
+BASDEMO|[2]|[3]|[4]|[5]|[6]|[7]|[8]|[9]|[10]|[11]|[12]|[13]|[14]|[15]|[16]||[18]|[19]|[20]|[21]
+SegmentKey: BASDEMO
+If customer is new to database, this segment must be provided.
+--------------------
+  [2] - Account ID
+  Field is Required
+  Data type is string[9]
+  For new customers value is system generated value so create a macro name to represent the customer, e.g. $_acct1.
+  -----
+  [3] - Last Name (Surname)
+  Field is Required
+  Data type is string[50]
+  -----
+  [4] - First Name
+  Field is Required
+  Data type is string[50]
+  -----
+  [5] - Middle Name
+  Data type is string[55]
+  -----
+  [6] - Nickname
+  Data type is string[15]
+  -----
+  [7] - Formal Name
+  Data type is string[150]
+  Will be built if not provided.
+  -----
+  [8] - Title
+  Data type is int
+  Value in Message Category 3 (Caller Title)
+     100986 - Dr
+     100720 - Mdm
+     100513 - Miss
+     100846 - Mr
+     100849 - Mrs
+     100510 - Ms
+     100561 - Prof
+  -----
+  [9] - Language Code
+  Data type is int
+  Value in Message Category 5  (Language)
+     248 - Afrikaans
+     256 - Austrian
+     255 - Cantonese
+     2068 - Catalan
+     2069 - Czech
+     231 - Danish
+     232 - Dutch
+     229 - English
+     2065 - Euskera
+     233 - Finnish
+     234 - French
+     2067 - Gallego
+     235 - German
+     236 - Greek
+     237 - Hebrew
+     238 - Hindi
+     239 - Hungarian
+     240 - Indonesian
+     241 - Italian
+     242 - Japanese
+     243 - Klingon
+     2147 - Malay
+     254 - Mandarin
+     244 - Norwegian
+     245 - Philippine
+     246 - Polish
+     247 - Portuguese
+     230 - Spanish
+     249 - Swedish
+     250 - Thai
+     251 - Turkish
+     2066 - Valenciano
+     252 - Vietnamese
+     253 - Welsh
+  -----
+  [10] - Personal ID
+  Data type is string[30]
+  -----
+  [11] - Name Sequence Code
+  Field is Required
+  Data type is int
+  Value in Message Category ZA (Name sequence combination)
+     1578 - First , Middle
+     1575 - First , Middle , Surname
+     1573 - First , Surname
+     1580 - First , Surname, Middle
+     1583 - First, Middle, Surname-Nickname
+     1579 - Middle , First
+     1576 - Middle , First , Surname
+     1574 - Middle , Surname
+     1572 - Middle , Surname, First
+     1582 - Surname
+     1570 - Surname, First
+     1571 - Surname, First , Middle
+     1577 - Surname, Middle
+     1581 - Surname, Middle , First
+  -----
+  [12] - Birth Date
+  Data type is datetime
+  -----
+  [13] - Sex Code
+  Data type is int
+  Value in Message Category 90000 (Sex)
+     600000 - Female
+     600001 - Male
+  -----
+  [14] - EMail Address
+  Data type is string[80]
+  -----
+  [15] - EMail Fulfillment
+  Data type is string[1]
+  Value is 'Y' if email fulfillment is desired, 'N' otherwise. 'N' is default.
+  -----
+  [16] - ProspectReference
+  Data type is string[30]
+  -----
+  [17] - Category Code
+  Must be left empty
+  -----
+  [18] - Personality Code
+  Data type is string[2]
+  -----
+  [19] - Profit Code
+  Data type is string[2]
+  -----
+  [20] - AlternateFirstName
+  Data type is string[50]
+  -----
+  [21] - AlternateLastName
+  Data type is string[50]
+
+--------------------
+ADDRESS|[2]|[3]|[4]|[5]|[6]|[7]|[8]||[10]|[11]|[12]|[13]|[14]
+SegmentKey: ADDRESS
+If address is new to database, this segment must be provided.
+--------------------
+  [2] - Address Id
+  Field is Required
+  Data type is int
+  For new address value is system generated value so provide macro name, e.g. $_addr1.
+  -----
+  [3] - Address Line 1
+  Field is Required
+  Data type is string[80]
+  -----
+  [4] - Address Line 2
+  Data type is string[80]
+  -----
+  [5] - Address Line 3
+  Data type is string[80]
+  -----
+  [6] - Address Line 4
+  Data type is string[80]
+  -----
+  [7] - Postal Code
+  Field is Required
+  Data type is string[15]
+  -----
+  [8] - City
+  Data type is string[40]
+  -----
+  [9] - Province or State Code
+  Must be left empty
+  -----
+  [10] - Country Code
+  Data type is int
+  Value in Message Category 27 (Country)
+     2122
+     88 - Afghanistan
+     2459 - ALAND ISLANDS
+     90 - Albania
+     2460 - ALGERIA
+     2461 - AMERICAN SAMOA
+     2462 - ANDORRA
+     91 - Angola
+     2463 - ANGUILLA
+     2464 - ANTARCTICA
+     89 - Antigua
+     92 - Argentina
+     2465 - ARMENIA
+     2466 - ARUBA
+     100698 - Asean
+     101102 - Asia
+     94 - Australia
+     93 - Austria
+     2467 - AZERBAIJAN
+     2468 - BAHAMAS
+     2469 - BAHRAIN
+     101024 - Bahrain
+     95 - Bangladesh
+     2470 - BARBADOS
+     2471 - BELARUS
+     96 - Belgium
+     2472 - BELIZE
+     2473 - BENIN
+     2474 - BERMUDA
+     2475 - BHUTAN
+     100580 - Bhutan
+     98 - Bolivia
+     2476 - BONAIRE, SINT EUSTATIUS AND SABA
+     2477 - BOSNIA AND HERZEGOVINA
+     2478 - BOTSWANA
+     2479 - BOUVET ISLAND
+     101 - Brazil
+     2480 - BRITISH INDIAN OCEAN TERRITORY
+     99 - Brunei
+     100 - Bulgaria
+     2481 - BURKINA FASO
+     97 - Burma
+     2482 - BURUNDI
+     104 - Cambodia
+     2483 - CAMEROON
+     102 - Canada
+     2484 - CAPE VERDE
+     100703 - Caribbean
+     2485 - CAYMAN ISLANDS
+     2486 - CENTRAL AFRICAN REPUBLIC
+     2487 - CHAD
+     103 - Chile
+     105 - China
+     2488 - CHRISTMAS ISLAND
+     2489 - COCOS (KEELING) ISLANDS
+     106 - Colombia
+     2490 - COMOROS
+     2491 - CONGO
+     2492 - CONGO, THE DEMOCRATIC REPUBLIC OF THE
+     2493 - COOK ISLANDS
+     107 - Costa Rica
+     2494 - COTE D'IVOIRE
+     2495 - CROATIA
+     108 - Cuba
+     2496 - CURACAO
+     109 - Cyprus
+     110 - Czech Republic
+     100702 - Czech Republic
+     111 - Denmark
+     2497 - DJIBOUTI
+     2498 - DOMINICA
+     112 - Dominican Rp
+     113 - Ecuador
+     114 - Egypt
+     115 - El Salvador
+     2499 - EQUATORIAL GUINEA
+     2500 - ERITREA
+     2501 - ESTONIA
+     116 - Ethiopia
+     100601 - Europe
+     2502 - FALKLAND ISLANDS (MALVINAS)
+     2503 - FAROE ISLANDS
+     2504 - FIJI
+     100697 - Fiji
+     117 - Finland
+     118 - France
+     2505 - FRENCH GUIANA
+     2506 - FRENCH POLYNESIA
+     2507 - FRENCH SOUTHERN TERRITORIES
+     2508 - GABON
+     119 - Gambia
+     2509 - GEORGIA
+     120 - Germany
+     121 - Ghana
+     2510 - GIBRALTAR
+     122 - Greece
+     2511 - GREENLAND
+     2512 - GRENADA
+     2513 - GUADELOUPE
+     2514 - GUAM
+     100823 - Guam
+     123 - Guatemala
+     2515 - GUERNSEY
+     124 - Guinea
+     2516 - GUINEA-BISSAU
+     125 - Guyana
+     126 - Haiti
+     2517 - HEARD ISLAND AND MCDONALD ISLANDS
+     2518 - HOLY SEE (VATICAN CITY STATE)
+     87 - Home Office
+     128 - Honduras
+     127 - Hong Kong
+     129 - Hungary
+     131 - Iceland
+     132 - India
+     133 - Indonesia
+     130 - Iran
+     134 - Iraq
+     135 - Ireland
+     2519 - ISLE OF MAN
+     136 - Israel
+     137 - Italy
+     138 - Jamaica
+     140 - Japan
+     2520 - JERSEY
+     139 - Jordan
+     2521 - KAZAKHSTAN
+     141 - Kenya
+     2522 - KIRIBATI
+     142 - Korea
+     143 - Kuwait
+     2523 - KYRGYZSTAN
+     2524 - LAO PEOPLE'S DEMOCRATIC REPUBLIC
+     100480 - Laos
+     144 - LARO
+     148 - LARO Fac-Re
+     2525 - LATVIA
+     146 - Lebanon
+     2526 - LESOTHO
+     147 - Liberia
+     145 - Libya
+     2527 - LIECHTENSTEIN
+     2528 - LITHUANIA
+     149 - Luxembourg
+     151 - Macau
+     152 - Madagasca
+     154 - Malawi
+     150 - Malaysia
+     2529 - MALDIVES
+     100483 - Maldives
+     2530 - MALI
+     100977 - Mali
+     157 - Malta
+     2531 - MARSHALL ISLANDS
+     2532 - MARTINIQUE
+     2533 - MAURITANIA
+     158 - Mauritius
+     2534 - MAYOTTE
+     159 - Mexico
+     2535 - MICRONESIA, FEDERATED STATES OF
+     153 - Middle East
+     2536 - MOLDOVA, REPUBLIC OF
+     2537 - MONACO
+     155 - Mongolia
+     2538 - MONTENEGRO
+     2539 - MONTSERRAT
+     156 - Morocco
+     160 - Mozambique
+     2540 - MYANMAR
+     100750 - Myanmar
+     2541 - NAMIBIA
+     2542 - NAURU
+     164 - Nepal
+     161 - Netherlands
+     2543 - NEW CALEDONIA
+     166 - New Zealand
+     163 - Nicaragua
+     2544 - NIGER
+     162 - Nigeria
+     2545 - NIUE
+     2546 - NORFOLK ISLAND
+     2547 - NORTHERN MARIANA ISLANDS
+     165 - Norway
+     2548 - OMAN
+     171 - Pakistan
+     2549 - PALAU
+     2550 - PALESTINIAN TERRITORY, OCCUPIED
+     167 - Panama
+     172 - Papua New Gn
+     169 - Paraguay
+     168 - Peru
+     170 - Philippines
+     2551 - PITCAIRN
+     173 - Poland
+     175 - Portugal
+     174 - Puerto Rico
+     2552 - QATAR
+     100533 - Regional
+     2553 - REUNION
+     176 - Romania
+     197 - Russia
+     2554 - RWANDA
+     2555 - SAINT BARTHELEMY
+     2556 - SAINT HELENA, ASCENSION AND TRISTAN DA CUNHA
+     2557 - SAINT KITTS AND NEVIS
+     2558 - SAINT LUCIA
+     2559 - SAINT MARTIN (FRENCH PART)
+     2560 - SAINT PIERRE AND MIQUELON
+     2561 - SAINT VINCENT AND THE GRENADINES
+     2562 - SAMOA
+     2563 - SAN MARINO
+     2564 - SAO TOME AND PRINCIPE
+     178 - Saudi Arabia
+     2565 - SENEGAL
+     2566 - SERBIA
+     179 - Seychelles
+     181 - Sierra Leone
+     180 - Singapore
+     2567 - SINT MAARTEN (DUTCH PART)
+     2568 - SLOVAKIA
+     2569 - SLOVENIA
+     2570 - SOLOMON ISLANDS
+     2571 - SOMALIA
+     177 - South Africa
+     101106 - South East Asia
+     2572 - SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS
+     183 - Spain
+     184 - Sri Lanka
+     185 - Sudan
+     182 - Surinam
+     2573 - SVALBARD AND JAN MAYEN
+     2574 - SWAZILAND
+     186 - Sweden
+     188 - Switzerland
+     187 - Syria
+     194 - Taiwan
+     2575 - TAJIKISTAN
+     189 - Tanzania
+     190 - Thailand
+     100769 - Tibet
+     2576 - TIMOR-LESTE
+     2577 - TOGO
+     2578 - TOKELAU
+     192 - Tonga
+     2579 - TRINIDAD AND TOBAGO
+     193 - Tunisia
+     191 - Turkey
+     2580 - TURKMENISTAN
+     2581 - TURKS AND CAICOS ISLANDS
+     2582 - TUVALU
+     195 - Uganda
+     2583 - UKRAINE
+     2584 - UNITED ARAB EMIRATES
+     100621 - United Arab Emirates
+     196 - United Kingdom
+     2585 - UNITED STATES MINOR OUTLYING ISLANDS
+     199 - Uruguay
+     200 - US Virgin Islands
+     198 - USA
+     2586 - UZBEKISTAN
+     2587 - VANUATU
+     202 - Venezuela
+     201 - Vietnam
+     2588 - VIRGIN ISLANDS, BRITISH
+     2589 - WALLIS AND FUTUNA
+     2590 - WESTERN SAHARA
+     100487 - Worldwide
+     100534 - Worldwide excl USA/Canada
+     2591 - YEMEN
+     203 - Yugoslavia
+     204 - Zaire
+     206 - Zambia
+     205 - Zimbabwe
+  -----
+  [11] - Phone Number
+  Data type is string[20]
+  -----
+  [12] - FAX Phone
+  Data type is string[20]
+  -----
+  [13] - Company Code
+  Data type is string[5]
+  If present, must match entry in IC2_COMPANY_ADDR table.
+  -----
+  [14] - Cell Phone
+  Data type is string[20]
+
+--------------------
+ADDRTYPE|[2]|[3]|[4]
+SegmentKey: ADDRTYPE
+Use this segment to link a customer to an address.
+--------------------
+  [2] - Account ID
+  Field is Required
+  Data type is string[9]
+  Primary Account ID.  May use macro representing account id.
+  -----
+  [3] - Address ID
+  Field is Required
+  Data type is int
+  -----
+  [4] - Address Type Code
+  Field is Required
+  Data type is int
+  Value in Message Category 39 (Address Types)
+     100886 - Email
+     219 - Home
+     220 - Mail
+     100866 - Property
+     100959 - Temphome
+     100821 - Tempwork
+     100773 - Vacation
+     221 - Work
+
+--------------------
+DEPENDENT|[2]|[3]|[4]
+SegmentKey: DEPENDENT
+Use this segment to link the policy holder to spouse and dependents.
+--------------------
+  [2] - Account ID
+  Field is Required
+  Data type is string[9]
+  Primary Account ID.  May use macro representing account id.
+  -----
+  [3] - Dependent Account ID
+  Field is Required
+  Data type is string[9]
+  Person related to Primary Account ID. May use macro representing account id.
+  -----
+  [4] - Relationship Code
+  Field is Required
+  Data type is int
+  Value in Message Category 32 (Relationships).  Relationship to Primary Account ID.
+     100682 - 3rdContact
+     216 - Beneficiary
+     100581 - Brother
+     210 - Daughter
+     211 - Dependent
+     212 - Father
+     101061 - Father-In-Law
+     100969 - friend
+     207 - Husband
+     213 - Mother
+     100654 - Mother-In-Law
+     100577 - Nephew
+     100752 - Niece
+     217 - Policy Holder
+     100827 - relative
+     100817 - Sister
+     101092 - Sister-In-Law
+     209 - Son
+     214 - Spouse
+     215 - Unknown
+     208 - Wife
+
+--------------------
+DIARY|[2]
+SegmentKey: DIARY
+--------------------
+  [2] - Message
+  Data type is string[999]
+
+--------------------
+CLAIM_DIARY|[2]
+SegmentKey: CLAIM_DIARY
+--------------------
+  [2] - Message
+  Field is Required
+  Data type is string[10500]
+
+--------------------
+HEALTH_HIST|[2]|[3]
+SegmentKey: HEALTH_HIST
+--------------------
+  [2] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [3] - History
+  Field is Required
+  Data type is string[500]
+
+--------------------
+PERSDEMO|[2]|[3]|[4]|[5]|[6]|[7]|[8]|[9]|[10]|[11]|[12]
+SegmentKey: PERSDEMO
+--------------------
+  [2] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [3] - Call Preference Code
+  Data type is int
+  Value in Message Category 15
+     100591 - AM
+     100983 - Not Applicable
+     101075 - PM
+  -----
+  [4] - Nationality Code
+  Data type is int
+  Value in Message Category 6
+     100935 - American
+     101001 - Australian
+     100855 - British
+     100784 - Bruneian
+     100525 - Burmese
+     100519 - French
+     101064 - Hongkongers
+     100512 - Indonesian
+     100649 - Japanese
+     100999 - Korean
+     100557 - Malaysian
+     100684 - New Zealander
+     100477 - Others
+     100925 - Singaporean
+     100860 - Taiwanese
+     100514 - Thai
+     100997 - Vietnamese
+  -----
+  [5] - Race Code
+  Data type is int
+  Value in Message Category 7
+     100644 - Caucasian
+     100506 - Chinese
+     100785 - Eurasian
+     101126 - Indian
+     100650 - Japanese
+     100850 - Malay
+  -----
+  [6] - Religion Code
+  Data type is int
+  Value in Message Category 8
+     100851 - Buddhism
+     100642 - Christianity
+     100517 - Free Thinker
+     101057 - Hinduism
+     100789 - Islam
+     101048 - Nicheren Shoshu
+     100815 - Others
+     100559 - Roman Catholicism
+     100723 - Sikhism
+     100847 - Taoism
+  -----
+  [7] - Education Code
+  Data type is int
+  Value in Message Category 9
+     100930 - Degree
+     100992 - Diploma
+     100993 - GCE A Level
+     100655 - GCE N Level
+     100994 - GCE O Level
+     100643 - Honours
+     100507 - Masters
+     100958 - Others
+     100555 - Ph.D
+     100658 - Primary
+  -----
+  [8] - Occupation Code
+  Data type is int
+  Value in Message Category CNV3
+     1001971 - *Employed
+     1001970 - *Self-employed
+     1001973 - *Student
+     1001972 - *Unemployed
+     1001118 - Accountant
+     1001974 - Accountant
+     1001339 - Acrobat
+     1001167 - Actor
+     1001032 - Actuary
+     1001274 - Acupuncturist
+     1001975 - Advertiser
+     1001125 - Advertising account executive
+     1001144 - Advertising copywriter
+     1001301 - Advertising salesman
+     1001126 - Advocate & solicitor
+     1001340 - Aerialist
+     1001947 - Agricultural and fishery labourer and re
+     1001976 - Agricultural Chemicals & Fertilizer Manu
+     100953 - Agriculture & Fishery Workers
+     1001100 - Agronomist
+     1001234 - Air cargo officer
+     1001926 - Aircraft cleaner
+     1001608 - Aircraft electrician
+     1001600 - Aircraft engine fitter
+     1001597 - Aircraft engine mechanic
+     1001527 - Aircraft joiner
+     1001959 - Aircraft loader
+     1001555 - Aircraft pipe & tube fitter
+     1001576 - Aircraft rigger
+     1001977 - Aircrew
+     1001895 - Airport mobile equipment driver
+     1001406 - Airport/ground hostess
+     100000 - All Job Type
+     1001887 - Ambulance driver
+     1001110 - Anaethetist
+     1001092 - Anatomist
+     1001099 - Animal scientist
+     1001801 - Anodiser
+     1001135 - Anthropologist
+     1001297 - Appraiser & valuer
+     1001497 - Aquarium fish farm worker
+     1001102 - Arboriculturist
+     1001978 - Architect
+     1001130 - Archivist
+     1001979 - Armed Forces Personnel
+     1001151 - Art instructor
+     1001980 - Artist (Commercial)
+     1001791 - Asbestos cement product making machine o
+     1001981 - Asbestos Industry
+     1001283 - Assistant accountant
+     1001169 - Asst engineer, civil & structural
+     1001170 - Asst engineer, electrical
+     1001171 - Asst engineer, electronics
+     1001172 - Asst engineer, mechanical
+     1001982 - Atomic / Nuclear Energy Related Risks
+     1001983 - Attorney
+     1001298 - Auctioneer
+     1001984 - Auctioneer
+     1001619 - Audio & video equipment mechanic
+     1001373 - Audit clerk
+     1001119 - Auditor
+     1001139 - Author
+     1001779 - Automated assembly line and industrial r
+     1001985 - Aviation Industry Manufacturing
+     1001695 - Backet maker
+     1001095 - Bacteriologist
+     1001677 - Baker (general)
+     1001987 - Baker (Working In Bakery)
+     1001986 - Baker (Working In Shop)
+     1001394 - Bank teller
+     1001988 - Banker
+     1001436 - Bar/lounge hostess
+     1001440 - Barber
+     1001435 - Bartender
+     1001672 - Batik printer
+     1001870 - Battery assembler
+     1001863 - Bean curd making machine operator
+     1001441 - Beautician
+     1001989 - Beautician
+     1001916 - Bell captain
+     1001917 - Bellboy/hotel porter
+     1001400 - Bill collector
+     1001375 - Billing clerk
+     1001093 - Biochemist
+     1001244 - Biological technician
+     1001087 - Biologist
+     1001843 - Biscuit making machine operator
+     1001579 - Blacksmith (general)
+     1001907 - Boatswain
+     1001532 - Boiler & pipe insulator
+     1001768 - Boiler fireman
+     1001562 - Boilermaker
+     1001818 - Book embossing machine operator
+     1001990 - Bookbinder
+     1001817 - Bookbinding machine operator
+     1001371 - Bookkeeper
+     1001991 - Boots & Shoe Maker / Repairer
+     1001785 - Boring and drilling machine setter-opera
+     1001088 - Botanist
+     1001678 - Break baker
+     1001855 - Brewer
+     1001992 - Brewery Workers
+     1001642 - Brick & tile moulder
+     1001511 - Bricklayer
+     1001993 - Bricklayer
+     1001696 - Brush & broom maker
+     1001588 - Buffing & polishing machine operator
+     1001995 - Builder
+     1001994 - Builders Merchant (Own Premises Only)
+     1001043 - Building architect
+     1001940 - Building caretaker/watchman
+     1001607 - Building electrician
+     1001531 - Building insulator
+     1001542 - Building maintenance worker
+     1001534 - Building painter
+     1001900 - Bulldozer operator
+     1001423 - Bus conductor
+     1001890 - Bus driver
+     1001996 - Butcher (Including Slaughtering)
+     1001997 - Butcher (Not Slaughtering)
+     1001837 - Butter making machine operator
+     1001295 - Buyer
+     1001421 - Cabin attendant/steward
+     1001688 - Cabinet & furniture maker
+     1001474 - Canvasser
+     1001231 - Captain, port
+     1001938 - Car park attendant
+     1001998 - Carpenter (Excluding Power-Driven Woodwo
+     1001522 - Carpenter (general)
+     1001820 - Carton and paper box making machine oper
+     1001150 - Cartoonist
+     1001391 - Cashier (general)
+     1001999 - Casinos
+     1001790 - Cast concrete product making machine ope
+     1002000 - Cattle Dealer
+     1002001 - Cement / Stone Workers
+     1001518 - Cement finisher
+     1001519 - Cementer (petroleum & gas wells)
+     1001734 - Centrifugal casting machine operator
+     1001884 - Chauffeur
+     1002002 - Chauffeur
+     1001760 - Chemical filtering & separating equipmen
+     1001759 - Chemical heat treating plant operator
+     1002003 - Chemical Manufacturing
+     1001806 - Chemical products machine operator nec
+     1001761 - Chemical still & reactor operator
+     1002004 - Chemist
+     1001027 - Chemist, analytical
+     1001024 - Chemist, general
+     1001025 - Chemist, organic
+     1001026 - Chemist, physical
+     1001215 - Chief engineer officer (ship)
+     1001420 - Chief steward (ship)
+     1001447 - Child-care worker
+     1001273 - Chinese physician
+     1002005 - Chiropodist
+     1001257 - Chiropractor
+     1001839 - Chocolate making machine operator
+     1001158 - Choreographer
+     1001465 - Cinema projectionist
+     1001546 - Cladding & curtain wall erector
+     1001746 - Clay mixer
+     1001922 - Cleaner (industrial establishment)
+     1002006 - Cleaner (Industrial)
+     1002007 - Cleaner (Offices - Light)
+     1001303 - Clearing & forwarding agent
+     1002008 - Clergyman
+     100952 - Clerical Workers
+     1002009 - Clerk
+     1001179 - Clerk of works
+     1001211 - Clerk, telegraph
+     1001410 - Client information clerk nec
+     1001693 - Clog maker
+     1001337 - Clown
+     1002010 - Coal Merchant
+     1001718 - Cobbler
+     1001380 - Coding clerk (data processing)
+     1001680 - Coffee & tea taster
+     1001862 - Coffee/cocoa bean roasting and grinding
+     1001861 - Coffee/tea blending machine operator
+     1001325 - Commercial artist
+     1001328 - Commercial products designer
+     1002011 - Communication Services (Radio & TV)
+     1001319 - Community social worker
+     1002012 - Company Director (Non-Manual)
+     1001333 - Compere
+     1001152 - Composer
+     1001774 - Compressor operator
+     1001616 - Computer & related electronic equipment
+     1002013 - Computer Analyst / Programmer / Operator
+     1002014 - Computer Manufacturing
+     1001037 - Computer systems designer and analyst
+     1001516 - Concrete form worker
+     1001793 - Concrete mixing plant operator (incld. c
+     1002015 - Confectioner
+     1001840 - Confectionery making machine operator
+     1002016 - Construction
+     1001523 - Construction carpenter
+     1001524 - Construction joiner
+     1001956 - Construction labourer and related worker
+     1001567 - Constructional steel erector
+     1001736 - Continuous rod casting machine operator
+     1001225 - Controller, air traffic
+     1001432 - Cook (hotel & catering services)
+     1001560 - Coppersmith
+     1001550 - Coremaker
+     1001120 - Cost accountant
+     1002017 - Crane Operator (Excluding Tower Cranes)
+     1002018 - Credit Agencies (Other Than Banks)
+     1001140 - Critic
+     1001498 - Crocodile farm worker
+     1002019 - Crude Petroleum / Oil / Natural Gas Extr
+     1001758 - Crushing, grinding & chemical mixing equ
+     1001731 - Cupola furnaceman
+     1001131 - Curator (art gallery & museum)
+     2451 - Customer Service
+     1002020 - Cutlery (Hand Tools / General Hardware /
+     1001590 - Cutting instrument sharpender
+     1001763 - Cylinder filler & tester (compressed & l
+     1001836 - Dairy product pasteurizing machine opera
+     1001835 - Dairy product processing machine operato
+     1002021 - Dairyman (Manual)
+     1002022 - Dairyman (Not Manual)
+     1001160 - Dance instructor
+     1001159 - Dancer
+     1002023 - Dancing Instructor
+     1001382 - Data processing control clerk
+     1001040 - Database administrator
+     1002024 - Decorator
+     1001501 - Deep sea fishery worker
+     1001726 - Deep-boring machine operator
+     1001544 - Demolition worker
+     1001469 - Demonstrator
+     1001266 - Dental nurse
+     1001272 - Dental technician
+     1001112 - Dentist
+     1002025 - Dentist
+     1001722 - Derrickman (petroleum & gas wells)
+     1001194 - Designer, automation
+     1001735 - Die casting machine operator
+     1001259 - Dietician
+     1000981 - Director
+     1001165 - Director motion picture, radio & tv
+     1001164 - Director stage
+     2452 - Disabled
+     1001335 - Disc jockey
+     1001330 - Display artist
+     1002026 - Diving & Related Occupations
+     100814 - DO NOT USE orgl-see SG occ cd
+     1002027 - Dock Workers
+     1001230 - Dockmaster, dry dock
+     1002028 - Doctor
+     1001352 - Dog trainer
+     1001912 - Domestic helper (general)
+     1001941 - Doorman
+     1002029 - Draftsman
+     1001901 - Dredge operator
+     1002030 - Drinking Establishments
+     1002032 - Driving (Local)
+     1002031 - Driving Instructor
+     1001888 - Driving instructor and tester
+     1002033 - Drug Manufacturing
+     1002034 - Dry Cleaner (Working with Chemicals & Dr
+     1001334 - Dubbing artiste
+     1001830 - Dyeing machine operator
+     1001091 - Ecologist
+     1001133 - Economist
+     1001116 - Education methods adviser
+     1002035 - Electric / Gas & Water Utilities (Repair
+     1001627 - Electric cable jointer
+     1001624 - Electric power lineman
+     1001625 - Electric traction lineman
+     1002036 - Electrical & Electronic Goods (Manufactu
+     1001868 - Electrical equipment/component assembler
+     1001605 - Electrical fitter (general)
+     1001612 - Electrical household appliance repairman
+     1001606 - Electrical lift, escalator & related equ
+     1001873 - Electrical/electronic products quality c
+     1002037 - Electrician
+     1001869 - Electronic equipment/component assembler
+     1001617 - Electronic signalling systems fitter
+     1001614 - Electronics fitter (general)
+     1001796 - Electro-plater
+     1001660 - Electrotyper
+     1001446 - Embalmer
+     1001967 - Employed
+     1001304 - Employment agent and labour contractor
+     1001050 - Engineer, aerodrome construction
+     1001065 - Engineer, aeronautical
+     1001067 - Engineer, air-conditioning & refrigerati
+     1001060 - Engineer, audio & video equipment
+     1001079 - Engineer, automation
+     1001066 - Engineer, automotive
+     1001048 - Engineer, building construction
+     1001068 - Engineer, chemical
+     1001046 - Engineer, civil
+     1001058 - Engineer, computer
+     1001054 - Engineer, electrical
+     1001056 - Engineer, electronics
+     1001223 - Engineer, flight
+     1001049 - Engineer, highway, street & bridge const
+     1001069 - Engineer, industrial
+     1001062 - Engineer, industrial machinery & tools
+     1001073 - Engineer, industrial safety
+     1001063 - Engineer, marine
+     1001217 - Engineer, marine superintendent
+     1001061 - Engineer, mechanical
+     1001081 - Engineer, metal-mining
+     1001070 - Engineer, methods
+     1001080 - Engineer, non-metalliferous mining
+     1001082 - Engineer, petroleum & natural gas
+     1001055 - Engineer, power generation & distributio
+     1001072 - Engineer, production
+     1001051 - Engineer, railway construction
+     1001059 - Engineer, semi-conductor
+     1001052 - Engineer, sewerage & sanitary
+     1001053 - Engineer, soil mechanic & piling
+     1001047 - Engineer, structural
+     1001057 - Engineer, telecommunications
+     1001071 - Engineer, work study
+     1002038 - Engineering
+     1002039 - Engines
+     1002040 - Entertainers
+     1001090 - Entomologist
+     1001379 - Enumerator/market research interviewer
+     1002041 - Estate Agent
+     1001898 - Excavating machine operator
+     1001299 - Exhibition/convention organiser/co-ordin
+     1002042 - Explosives (Use & Manufacturing)
+     1001279 - Extracurriculum teacher
+     1001742 - Extruder operator (metal)
+     1001712 - Fabrics examiner
+     1001713 - Fabrics repairer
+     1002043 - Farmer (Not Manual)
+     1001250 - Farming & forestry adviser
+     1001329 - Fashion & garment designer
+     1001477 - Fashion model
+     1001865 - Feed mixing machine operator
+     1001856 - Fermenting-room man
+     1001699 - Fibre preparer
+     1001748 - Fibreglass maker
+     1001480 - Field crop farm worker (general)
+     1001368 - Filing clerk
+     1001121 - Financial analyst
+     1001238 - Fire & safety officer
+     1001894 - Fire-engine driver
+     1001452 - Fireman (fire bridgade)
+     1001496 - Fish & prawn farm worker
+     1001866 - Fish meal making machine operator
+     1002044 - Fishing Industry
+     1001558 - Flame cutter
+     1001222 - Flight navigator
+     1001233 - Flight operations officer
+     1001513 - Floor & wall tile setter
+     1001486 - Flower & orchid farm worker
+     1001224 - Flying instructor
+     1002045 - Food & Drink Industry (Manufacture)
+     1001437 - Food & drinks stall assistant
+     1001684 - Food processing & related trades worker
+     1001285 - Foreign exchange dealer
+     1001495 - Forestry worker & logger
+     1001581 - Forging-press operator
+     1001905 - Fork lift truck operator
+     1002046 - Fruit Merchant
+     1001484 - Fruit tree farm worker
+     1001846 - Fruit-press operator
+     1002047 - Funeral Director
+     1001732 - Furnaceman (metal reheating)
+     1001730 - Furnaceman, metal melting
+     1002048 - Furnisher
+     1002049 - Furniture & Fixture Manufacturing
+     1001706 - Furniture upholsterer
+     1001701 - Furrier & related worker
+     1001799 - Galvanizer
+     1001929 - Garbage disposal worker
+     1001943 - Gardener
+     1002050 - Gardener (Jobbing
+     1001704 - Garment cutter
+     1001703 - Garment marker
+     1001702 - Garment pattern maker
+     1002051 - Gas Fitters
+     1001553 - Gas pipe fitter
+     1001637 - Gem cutter & polisher
+     1001636 - Gemm setter
+     1000982 - Gen mgr in agriculture and quarrying
+     1000984 - Gen mgr in construction
+     1000989 - Gen mgr in finance, real estate and biz
+     1000987 - Gen mgr in lodging and catering svs
+     1000983 - Gen mgr in manufacturing
+     1000986 - Gen mgr in retail trade
+     1000988 - Gen mgr in transport and communications
+     1000985 - Gen mgr in wholesale trade
+     1002052 - General Manufacturing (Skilled & Semi-Sk
+     1001107 - General physician
+     1002053 - General Store Worker (Unless Listed Else
+     1001108 - General surgeon
+     1001028 - Geologist
+     1001029 - Geophysicist
+     1001853 - Germination worker (malting)
+     1001651 - Glass & ceramic painter & decorator
+     1001744 - Glass & ceramics kiln & related machine
+     1001644 - Glass blower
+     1001650 - Glass engraver and etcher
+     1001645 - Glass lens moulder
+     1001745 - Glass mixer
+     1001747 - Glaze maker
+     1002054 - Glazier & Glass Manufacturing (Excluding
+     1001960 - Godown labourer
+     1001638 - Goldsmith & silversmith
+     1001306 - Government executive officer
+     1002055 - Government Workers (Excluding Plumbing
+     1001842 - Grain and spice milling machine operator
+     1001944 - Grass cutter
+     1002056 - Grocer
+     1001439 - Hair stylist/hairdresser
+     1002057 - Hairdresser
+     1001580 - Hammersmith
+     1001653 - Hand compositor
+     1001964 - Hand pakcer
+     1001473 - Hawker/stall holder (other than prepared
+     1001472 - Hawker/stall holder (prepared food or dr
+     2453 - Health Care
+     1001908 - Helmsman
+     1001136 - Historian
+     1001574 - Hoisting equipment rigger (construction)
+     1001572 - Hoisting equipment rigger (general)
+     1001351 - Horse trainer
+     1001247 - Horticultural technician
+     1001101 - Horticulturist
+     1001937 - Hospital attendant
+     1001797 - Hot-dip plater
+     1002058 - Hotel Proprietor
+     1001404 - Hotel receptionist
+     1001429 - House steward
+     1001541 - Housebuilder (general)
+     1002059 - Household Appliances Manufacturing
+     1001428 - Housekeeper (hotels & other establishmen
+     1001430 - Housekeeping matron
+     1002060 - Housewife
+     1001502 - Hunter & trapper
+     1001849 - Hydrogenation operator (oils and fats)
+     1001864 - Ice making machine operator
+     1001838 - Ice-cream making machine operator
+     1001596 - Industrial & office machinery mechanic
+     1001459 - Industrial investigator
+     1001263 - Industrial nurse
+     1001327 - Industrial products designer
+     1001041 - Information technology researcher
+     1001500 - Inland & coastal waters fishery worker/k
+     1001155 - Instrumentalist
+     1002061 - Insurance Broker / Agent
+     1001366 - Insurance clerk
+     1001460 - Insurance investigator
+     1001288 - Insurance sales agent & broker
+     1001326 - Interior decorator
+     1001324 - Interpreter
+     1002062 - Jeweler
+     1001639 - Jewellery engraver
+     1001635 - Jewellery worker (general)
+     1001584 - Jig & gauge maker
+     1002063 - Jockey
+     1001141 - Journalist
+     1001129 - Judge
+     1001348 - Keeper in zoological, bird & aquatic par
+     1001362 - Key-punch & punched-card machine operato
+     1001685 - Kiln drier
+     1001854 - Kilnman (malting)
+     1001277 - Kindergarten teacher
+     1001919 - Kitchen assistant
+     1001826 - Knitting machine operator
+     1001936 - Laboratory attendant
+     1001045 - Landscape architect
+     1001953 - Latex tank cleaner
+     1001782 - Lathe setter-operator
+     1001913 - Laundress (household)
+     1001915 - Laundry and dry cleaning worker
+     1002064 - Laundry Staff
+     1001127 - Lawyer
+     1002065 - Lawyer / Attorney
+     1002066 - Leather & Fur Trade
+     1001719 - Leather goods maker/assembler
+     1001117 - Lecturer
+     1001372 - Ledger & accounts clerk
+     1001365 - Legal clerk
+     1001128 - Legal officer
+     101060 - Legislator, Mgr.& Sr.Officials
+     1001647 - Lens grinding machine operator
+     1001648 - Lens polishing machine operator
+     1001132 - Librarian
+     1001367 - Library clerk
+     1001461 - Life guard
+     1001910 - Lighterman
+     1002067 - Linen Supplier
+     1001654 - Linotype operator
+     1001661 - Lithographic stone engraver
+     1001235 - Load-sheet officer (aircraft)
+     1001586 - Locksmith
+     1002068 - Logging & Saw Mills
+     1001961 - Lorry attendant
+     1001892 - Lorry driver
+     1001844 - Macaroni, noodle and vermicelli making m
+     1001828 - Machien embroiderer
+     1001876 - Machine labeller
+     1001780 - Machine supervisors and general foremen
+     1001602 - Machinery erector & installer
+     1001599 - Machinery fitter (general)
+     1001594 - Machinery mechanic (general)
+     1001338 - Magician
+     1001443 - Make-up man (stage & studio)
+     1001313 - Management executive
+     1000998 - Manager, administration
+     1000994 - Manager, bar
+     1001036 - Manager, computer operations
+     1000995 - Manager, discotheque
+     1001122 - Manager, fund
+     1000991 - Manager, hotel
+     1001000 - Manager, industrial relations
+     1000992 - Manager, lodging and boarding house
+     1000999 - Manager, personnel/human resource
+     1001001 - Manager, property/estate
+     1000993 - Manager, restaurant and/or nightclub
+     1000997 - Manager, retail trade
+     1001035 - Manager, systems development
+     1001123 - Manager, treasury
+     1000996 - Manager, wholesale trade
+     1000980 - Managing director
+     1001442 - Manicurist
+     1001955 - Manufacturing labourer and related worke
+     1001601 - Marine engine fitter
+     1001216 - Marine engineer officer
+     1001554 - Marine pipe fitter
+     1001221 - Marine superintendent
+     1001232 - Marine surveyor
+     1002069 - Marine Surveyor
+     1001124 - Market research analyst
+     1001346 - Martial arts instructor
+     1001255 - Masseur (medical)
+     1001448 - Masseur (non-medical)
+     1001388 - Material planning clerk
+     1001030 - Mathematician
+     1001708 - Mattress maker
+     1001874 - Mechanical products quality checker and
+     1001293 - Medical detailer
+     1001096 - Medical pathologist
+     1001243 - Medical science technician
+     1001405 - Medical/dental receptionist
+     1001933 - Messenger
+     1002070 - Metal Cans & Shipping Containers Manufac
+     1001803 - Metal cleaner
+     1001662 - Metal engraver
+     1001739 - Metal heat treating plant operator
+     1001549 - Metal moulder
+     1001585 - Metal pattern maker
+     1001733 - Metal pourer
+     1001737 - Metal rolling mill worker
+     1001568 - Metal shipwright
+     1001800 - Metal sprayer
+     1001083 - Metallurgist
+     1001781 - Metalworking machine setter-operator (ge
+     1001023 - Meteorologist
+     1001417 - Meter reader
+     1001265 - Midwife
+     1001783 - Milling machine setter-operator
+     1001504 - Miner
+     1001728 - Mineral ore & stone processing plant ope
+     1002071 - Mining (Coal / Zinc / Diamond / Gold / e
+     1001168 - Minister of religion
+     1001479 - Mixed farming worker
+     1001878 - Mobile machinery supervisor and general
+     1001286 - Money broker
+     1001396 - Money changer
+     1001399 - Moneylender
+     1001655 - Monotype keyboard operator
+     1001509 - Monument carver-setter
+     1002072 - Motion Picture Industry
+     1002073 - Motor Vehicle
+     1001924 - Motor vehicle cleaner/polisher
+     1001595 - Motor vehicle mechanic
+     1001537 - Motor vehicle spray painter
+     1001883 - Motorcycle delivery man
+     1001897 - Motorised farm machinery operator
+     1001237 - Mrt operations officer
+     1001880 - Mrt train operator
+     1002074 - Museum Worker (Non-Manual)
+     1001482 - Mushroom farm worker
+     1001157 - Music instructor
+     1001634 - Musical instrument maker, repairer & tun
+     1001455 - Narcotics officer
+     1001064 - Naval architect
+     1001475 - Newsvendor
+     1001354 - Non-ordained religious associate profess
+     2454 - Non-Profit/Volunteer
+     1001788 - Numerical control machine setter-operato
+     1002075 - Nurse
+     1001487 - Nursery workers
+     1001254 - Occupational therapist
+     1001392 - Office cashier
+     1001921 - Office cleaner
+     1001364 - Office clerk (general)
+     1002076 - Office Machinery
+     1002077 - Office Managers & Employees
+     1001935 - Office/library attendant
+     1002078 - Oil & Gas Rig Workers
+     1001577 - Oil & gas well drilling rigger
+     1001847 - Oil pressman (edible oils)
+     1001031 - Operations research analyst
+     1001201 - Operator, console
+     1001213 - Operator, flight radio
+     1001205 - Operator, motion picture camera
+     1001207 - Operator, radio & tv studio equipment
+     1001210 - Operator, radio telephone (land-based)
+     1001208 - Operator, sound recording equipment
+     1001206 - Operator, television camera
+     1001204 - Operator, video camera
+     1001646 - Optical glass cutter
+     1002079 - Optical Goods Manufacturing
+     1001632 - Optical instrument maker & repairer
+     1001252 - Optician
+     1002080 - Optician
+     1001251 - Optometrist
+     1001154 - Orchestra & band conductor
+     1001153 - Orchestrator
+     1001105 - Orchidologist
+     1001729 - Ore & metal furnace operator
+     1001271 - Orthopaedic appliance maker and repairer
+     1001717 - Orthopaedic footwear maker
+     1001270 - Orthopaedic technician
+     1001256 - Osteopath
+     1001377 - Other accounting & finance clerks
+     1001316 - Other administrative & related associate
+     1001370 - Other administrative clerks
+     1001249 - Other agronomy and related technicians
+     1001353 - Other animal/bird keepers & trainers
+     1001499 - Other aquatic life cultivation workers
+     1001872 - Other assemblers
+     1001355 - Other associate professional nec
+     1001347 - Other athletes & related associate profe
+     1001939 - Other attendants nec
+     1001620 - Other audio & video equipment servicers
+     1001845 - Other baked and cereal products mahcine
+     1001698 - Other basketry weavers & related trades
+     1001819 - Other binding and related machine operat
+     1001582 - Other blacksmiths, hammersmiths & forgin
+     1001859 - Other brewers and wine and other beverag
+     1001514 - Other bricklayers, stonemasons & tile se
+     1001240 - Other building and fire inspectors
+     1001547 - Other building trades workers nec
+     1001891 - Other bus, tram and related drivers
+     1001305 - Other business service agents
+     1001694 - Other cabinet makers & related workers
+     1001889 - Other car, taxi and light goods vehicle
+     1001529 - Other carpenters & joiners
+     1001401 - Other cashiers & related clerks nec
+     1001393 - Other cashiers & ticket clerks
+     1001766 - Other chemical processing plant operator
+     1001418 - Other clerical workers nec
+     1001341 - Other clowns, magicians & related associ
+     1001658 - Other compositors, typesetters & related
+     1001383 - Other computer operations clerks
+     1001520 - Other concrete placers, concrete finishe
+     1001433 - Other cooks
+     1001841 - Other dairy and confectinery products ma
+     1001363 - Other data entry operators
+     1001331 - Other decorators & commercial designers
+     1001267 - Other dental assistants
+     1001914 - Other domestic helpers and cleaners
+     1001904 - Other earth moving and related machinery
+     1001628 - Other electrical line installers, repair
+     1001613 - Other electricians & electrical fitters
+     1001618 - Other electronics fitters, mechanics & s
+     1001483 - Other field crop & vegetable farm worker
+     1001300 - Other finance & sales associate professi
+     1001453 - Other fire fighters
+     1001681 - Other food & beverage tasters & graders
+     1001867 - Other food and related products machine
+     1001851 - Other fruit, vegetable and nut processin
+     1001930 - Other garbage collectors
+     1000990 - Other general managers
+     1001652 - Other glass engravers & related decorati
+     1001649 - Other glass makers, cutters, grinders &
+     1001309 - Other government associate professionals
+     1001444 - Other hairdressers, beauticians & relate
+     1001896 - Other heavy truck drivers
+     1001920 - Other helpers & cleaners in hotels & rel
+     1001923 - Other helpers and cleaners nec
+     1001488 - Other horticultural & nursery farm worke
+     1001431 - Other house stewards & related workers
+     1001533 - Other insulation workers
+     1001289 - Other insurance representatives
+     1001640 - Other jewellery & precious metal workers
+     1001965 - Other labourers and related workers nec
+     1001946 - Other landscape, park and garden mainten
+     1001246 - Other life science technicians
+     1001906 - Other lifting truck operators
+     1001490 - Other livestock & dairy farm workers
+     1001877 - Other machine operators nec
+     1001604 - Other machinery fitters
+     1001598 - Other machinery mechanics
+     1001789 - Other machine-tool setter-operators
+     1001414 - Other mail distribution clerks
+     1001962 - Other material and freight handling work
+     1001676 - Other meat & fish preparers
+     1001743 - Other metal drawers & extruders
+     1001804 - Other metal finishers, platers and coate
+     1001593 - Other metal grinders, polishers & tool s
+     1001738 - Other metal melters, casters & rolling m
+     1001794 - Other mineral products machin operators
+     1001478 - Other models
+     1001275 - Other modern health associate profession
+     1001264 - Other nurses
+     1001540 - Other painters & related workers
+     1001822 - Other paper and paperboard products mahc
+     1001757 - Other papermaking plant operators
+     1001451 - Other personal care & household service
+     1001258 - Other physiotherapists & related associa
+     1001556 - Other plumbers & pipe fitters
+     1001643 - Other potters & related workers
+     1001494 - Other poultry farm workers
+     1001633 - Other precision instrument makers & repa
+     1001278 - Other pre-primary education teachers
+     1001669 - Other printing engravers & etchers
+     1001390 - Other production clerks
+     1001463 - Other protective service & related worke
+     1001875 - Other quality checkers adn testers
+     1001336 - Other radio & television announcers & re
+     1001882 - Other railway brakers and related worker
+     1001407 - Other receptionists & information clerks
+     1001578 - Other riggers & cable splicers
+     1001811 - Other rubber and plastics products machi
+     1001954 - Other rubber processing workers
+     1001287 - Other securities & finance dealers & bro
+     1001466 - Other service workers nec
+     1001564 - Other sheet metal workers
+     1001911 - Other ships' deck crew and related worke
+     1001720 - Other shoemakers & related workers
+     1001471 - Other shop sales workers & demonstrators
+     1001673 - Other silk screen, block & textile print
+     1001322 - Other social work associate professional
+     1001476 - Other stall & market sales workers
+     1001381 - Other statistical clerks
+     1001312 - Other statistical, mathematical & relate
+     1001772 - Other steam turbine, boiler & engine ope
+     1001387 - Other stock clerks
+     1001510 - Other stone plitters, cutters & carvers
+     1001571 - Other structural metal preparers & erect
+     1001932 - Other sweepers and related workers
+     1001282 - Other teaching associate professionals n
+     1001294 - Other technical & commercial sales repre
+     1001623 - Other telegraph & telephone installers &
+     1001409 - Other telephone operators
+     1001397 - Other tellers & counter clerks
+     1001705 - Other textile leather & related pattern
+     1001832 - Other textile treating machine operators
+     1001714 - Other textile, garment & related trades
+     1001683 - Other tobacco preparers & tobacco produc
+     1001860 - Other tobacco products machine operators
+     1001587 - Other toolmakers & related workers
+     1001425 - Other transport conductors & related wor
+     1001928 - Other transport equipment cleaners
+     1001427 - Other travel guides
+     1001485 - Other tree & shrub crop farm workers
+     1001709 - Other upholsterers & related workers
+     1001438 - Other waiters & bartenders
+     1001942 - Other watchmen and related workers
+     1001778 - Other water treatment plant and related
+     1001727 - Other well drillers & borers & related w
+     1001754 - Other wood processing plant operators
+     1001815 - Other wood products machine operators
+     1001687 - Other wood treaters
+     1001361 - Other word processor & related operators
+     2458 - Other/Not Listed
+     1001149 - Painter
+     1002081 - Painter
+     1001563 - Panel beater
+     1001821 - Paper product making machine operator
+     1001755 - Paper pulp plant operator
+     1001756 - Papermaking machine operator
+     1001462 - Park ranger
+     1001528 - Parquetry worker
+     1001857 - Pasteuizer attendant (malt liquor)
+     1001679 - Pastry & confectionery maker
+     1001398 - Pawnbroker
+     1002082 - Pawnbroker
+     1001963 - Pedal vehicle driver
+     1001715 - Pelt dresser, tanner & fellmonger
+     1001350 - Performer/trainer in crocodile farm
+     1001349 - Performer/trainer in zoological, bird &
+     1002083 - Personnel Agency
+     1001369 - Personnel clerk
+     1001314 - Personnel officer
+     1001450 - Pest exterminator
+     1001416 - Petition & letter writer
+     1001470 - Petrol service station attendant
+     1002084 - Petrol Station Attendant
+     1002085 - Petroleum & Coal Products (Refining Gas
+     1001762 - Petroleum & natural gas refining plant o
+     1001795 - Pharmaceutical and toiletry products mac
+     1001269 - Pharmaceutical assistant/dispenser
+     2455 - Pharmaceutical/Biotechnology
+     1001114 - Pharmacist
+     1001098 - Pharmacologist
+     1001663 - Photo-engraver
+     1001078 - Photogrammetrist
+     1002086 - Photographer (Studio Only)
+     1001203 - Photographer, commercial
+     1001202 - Photographer, general
+     1001805 - Photographic products machine operator
+     1001664 - Photogravure cameraman
+     1001667 - Photogravure etcher
+     1001665 - Photogravure retoucher
+     1001666 - Photo-mechanical transferrer
+     1001657 - Photo-type-setting machine operator
+     1001345 - Physical fitness instructor
+     1001021 - Physicist electricity and magnetism
+     1001022 - Physicist electronics
+     1001016 - Physicist general
+     1001018 - Physicist heat
+     1001019 - Physicist light
+     1001017 - Physicist mechanics
+     1001020 - Physicist sound
+     1001094 - Physiologist
+     1001253 - Physiotherapist
+     1002087 - Physiotherapist
+     1001692 - Picture frame maker
+     1001489 - Pig farm worker
+     1001902 - Pile driver operator
+     1001545 - Pipe & drain layer
+     1001552 - Pipe fitter (general)
+     1002088 - Pipeline Construction
+     1001784 - Planing machine setter-operator
+     100812 - Plant and Machine Operators
+     1001103 - Plant pathologist
+     1001248 - Plant tissue culture technician
+     1001106 - Plant tissue culturist
+     1001530 - Plasterer
+     1001810 - Plastics product making machine operator
+     1002089 - Plumber
+     1001551 - Plumber (general)
+     1001751 - Plywood core layer
+     1001752 - Plywood press operator
+     1002090 - Police & Firefighters
+     1001308 - Police inspectors & detectives
+     1001454 - Policeman
+     1001137 - Political scientist
+     1001934 - Porter (except hotel)
+     1001395 - Postal clerk
+     1001411 - Postal/courier service supervisor
+     1001412 - Postman
+     1002091 - Pottery Manufacturing
+     1001641 - Pottery worker
+     1001491 - Poultry farm worker (general)
+     1001492 - Poultry hatchery worker
+     1001493 - Poultry inseminator
+     1001767 - Power generating plant operator
+     1001787 - Precision grinding machine setter-operat
+     1001631 - Precision instrument maker, assembler &
+     1001813 - Precision wood sawyer
+     1001239 - Premises maintenance officer
+     1001276 - Primary school teacher
+     1002092 - Printer (Not Operating Presses)
+     1002093 - Printer (Operating Presses)
+     1001816 - Printing machine operator
+     1001668 - Printing plate retoucher
+     1001458 - Private inquiry agent
+     1001456 - Private police
+     1001457 - Private security guard
+     1001280 - Private tutor
+     1001413 - Process server
+     1001162 - Producer motion picture
+     1001163 - Producer radio & television
+     1001161 - Producer theatrical
+     1001166 - Producer/director of commercials
+     1001721 - Production craftsman & related worker ne
+     100955 - Production Craftsmen & others
+     1001389 - Production planning clerk
+     1002094 - Products Manufacturing
+     1001261 - Professional nurse (general)
+     1001342 - Professional sportsman
+     1002095 - Professional Sportsmen
+     101137 - Professionals
+     1001038 - Programmer application
+     1001039 - Programmer systems
+     1001415 - Proof reader
+     1001321 - Psychiatric social worker
+     1001111 - Psychiatrist
+     1001138 - Psychologist
+     1001464 - Public address equipment operator
+     1001241 - Public health inspector
+     1001260 - Public health nutritionist
+     1001315 - Public relations officer
+     1001145 - Publicity writer
+     1001775 - Pumping station operator
+     1001296 - Purchasing agent
+     1001084 - Quantity surveyor
+     1002096 - Quantity Surveyor
+     1002097 - Quarrying
+     1001505 - Quarryman (granite)
+     1001506 - Quarryman (sand)
+     1002098 - Race Tracks
+     1002099 - Racing (Motor / Aircraft / Boat / Horse
+     1001332 - Radio & television announcer
+     1001615 - Radio, television & radar equipment fitt
+     1001958 - Railway and road vehicle loader
+     1001881 - Railway brakerman, signalman and shunter
+     1001927 - Railway carriage cleaner
+     1001879 - Railway engine driver
+     1001771 - Railway engine fireman
+     1001422 - Railway guard
+     1002100 - Railway Workers
+     1001697 - Rattan furniture maker
+     1001290 - Real estate agent
+     1001403 - Receptionist (general)
+     1001848 - Refining machien operator (oils and fats
+     1001603 - Refrigeration & air-conditioning plant i
+     1001777 - Refrigeration system operator
+     1001515 - Reinforced concreter (general)
+     1001517 - Reinforcing iron worker
+     1001281 - Relief teacher
+     1002101 - Religious Organization
+     1001142 - Reporter
+     1002102 - Research & Development Lab
+     1001311 - Research officer
+     1002103 - Restaurant
+     2456 - Retail
+     1001570 - Riveter
+     1002104 - Road Construction & Maintenance
+     1001903 - Road making machine oeprator
+     1001521 - Roofer
+     1001918 - Room steward/chambermaid
+     1001573 - Rope & cable splicer (general)
+     1001723 - Rotary driller (petroleum & gas wells)
+     1001951 - Rubber coagulator
+     1002105 - Rubber Industry (Manufacturing & Process
+     1001809 - Rubber laminating machine operator
+     1001808 - Rubber millman
+     1001948 - Rubber sheets clipper and sorter
+     1001242 - Safety inspector (vehicles, processes &
+     1001710 - Sail, tent & awning maker
+     1001467 - Sales supervisor
+     1002106 - Salesman (City
+     1002107 - Salesman (Public Markets & Traveling)
+     1001802 - Sandblaster/shotblaster (metal)
+     1001850 - Sauce making machine operator
+     1001834 - Sausage making machine operator
+     1001591 - Saw repairer & sharpener
+     1001749 - Sawyer
+     1001543 - Scaffolder
+     1002108 - Scaffolders
+     1001115 - School principal
+     1002109 - School Teacher (Not Woodwork)
+     1002110 - Scientific Instruments & Related
+     1001143 - Script writer
+     1001148 - Sculptor
+     1001909 - Seaman
+     1001741 - Seamless pipe & tube drawer
+     1001356 - Secretary
+     1001284 - Securities broker
+     1001376 - Securities clerk
+     1002111 - Securities Commodities & Services
+     1001966 - Self-employed
+     100568 - Service, Shop & Market Sales
+     1001786 - Shaping and honing machine setter-operat
+     1001559 - Sheet metal worker (general)
+     1001952 - Sheet rubber maker
+     1001925 - Ship and ship tank cleaner
+     1001526 - Ship carpenter
+     1001609 - Ship electrician
+     1001525 - Ship joiner
+     1001218 - Ship master
+     1001220 - Ship pilot
+     1001569 - Ship plater
+     1001575 - Ship rigger
+     1001384 - Shipping clerk
+     1002112 - Ship's Crew
+     1001769 - Ship's fireman
+     1001219 - Ship's navigating officer
+     1001770 - Ship's oiler & greaser
+     1001419 - Ship's purser
+     1001212 - Ship's radio officer
+     1001716 - Shoemaker
+     1001538 - Sign painter
+     1001670 - Silk screen printer
+     1001156 - Singer
+     1001675 - Slaughterer
+     1001949 - Smokehouse labourer
+     1001950 - Smokehouse stoker
+     1001765 - Soap making machine operator
+     1001449 - Social escort
+     1001034 - Social research analyst
+     1001318 - Social welfare worker
+     1001317 - Social worker (general)
+     1001320 - Social worker, delinquency
+     1001134 - Sociologist
+     1001042 - Software engineer
+     1001104 - Soil scientist
+     1002113 - Space & Research Technology
+     1001262 - Specialised nurse
+     1001109 - Specialised surgeon
+     1001823 - Spinner, thread and yarn
+     1001343 - Sports coach
+     1001344 - Sports official
+     1001536 - Spray painter (except construction & mot
+     1000974 - Sr government offical
+     1000977 - Sr official of employers' organisation
+     1000979 - Sr official of other economic-interest o
+     1000976 - Sr official of political party organisat
+     1000978 - Sr official of workers' organisation
+     1000975 - Sr statutory board official
+     1001611 - Stage & studio electrician
+     1001773 - Stationary engine operator (general)
+     1002114 - Stationer
+     1001378 - Statistical clerk (general)
+     1001310 - Statistical officer
+     1001033 - Statistician
+     1001307 - Statutory board executive officer
+     1002115 - Steel Manufacuring
+     1002116 - Steeplejack
+     1001358 - Stenographer
+     1001659 - Stereotyper
+     1001957 - Stevedore
+     1002117 - Stock Broker
+     1001385 - Stock records clerk
+     1001508 - Stone carver
+     1001507 - Stone cutter & finisher
+     1001512 - Stonemason
+     1001386 - Storekeeper
+     1001931 - Street sweeper & cleaner (except driver,
+     1001565 - Structural metal preparers & erectors
+     1001535 - Structural steel & ship painter
+     1001566 - Structural steel worker (workshop)
+     1001969 - Student
+     1001147 - Sub-editor
+     1001852 - Sugar processing and refining machine op
+     1001503 - Supervisor & general foreman (extraction
+     1001548 - Supervisor & general foreman (metal, mac
+     1001674 - Supervisor & general foremen (food proce
+     1001226 - Supervisor, air transport svs
+     1001227 - Supervisor, railway svs (mrt)
+     1001228 - Supervisor, road transport svs
+     1001209 - Supervisor, telecommunications svs
+     1001229 - Supervisor, traffic (ship's cargo)
+     1002118 - Surgeon
+     1002119 - Surveyor
+     1001074 - Surveyor (general)
+     1001075 - Surveyor (land)
+     1001076 - Surveyor (mine)
+     1001077 - Surveyor hydrographic
+     1001236 - Surveyor, airworthiness
+     1001827 - Sweing machine operator
+     1001764 - Synthetic fibre making machine operator
+     1001858 - Syrup making machine operator
+     1002120 - Tailor
+     1001700 - Tailor/dressmaker
+     1001885 - Taxi driver
+     1002121 - Taxi Driver
+     1001245 - Taxidermist
+     1001291 - Technical sales representative
+     1001292 - Technical service adviser
+     1001146 - Technical writer
+     1001187 - Technician, aeronautical engineering
+     1001189 - Technician, air-conditioning & refrigera
+     1001185 - Technician, audio & video equipment
+     1001195 - Technician, automation
+     1001188 - Technician, automotive engineering
+     1001177 - Technician, building
+     1001190 - Technician, chemical engineering
+     1001173 - Technician, chemistry
+     1001175 - Technician, civil engineering
+     1001183 - Technician, computer
+     1001180 - Technician, electrical engineering
+     1001181 - Technician, electronics engineering
+     1001191 - Technician, industrial engineering
+     1001178 - Technician, land surveying
+     1001186 - Technician, mechanical engineering
+     1001196 - Technician, mechantronics
+     1001214 - Technician, medical x-ray
+     1001199 - Technician, petroleum & natural gas extr
+     1001198 - Technician, physical metallurgy
+     1001174 - Technician, physics
+     1001192 - Technician, production engineering
+     1001200 - Technician, quantity surveying
+     1001197 - Technician, refining & smelting
+     1001184 - Technician, semi-conductor
+     1001176 - Technician, structural engineering
+     1001182 - Technician, telecommunications
+     1001193 - Technician, work study
+     100567 - Technicians & Assoc.Profession
+     1001085 - Technologist ceramics & glass
+     1001086 - Technologist food & drink
+     1001621 - Telephone & telecommunications installer
+     1001626 - Telephone & telecommunications lineman
+     1001622 - Telephone & telecommunications mechanic
+     1001408 - Telephone operator (telephone exchange)
+     1001360 - Teletypist
+     1001792 - Terrazzo tile making machine operator
+     1001829 - Textile bleaching machine operator
+     1001592 - Textile card grinder
+     1002122 - Textile Manufacturing
+     1002123 - Textile Merchant
+     1001671 - Textile printer
+     1001833 - Textile products mahcine operator nec
+     1001831 - Textile washing and shrinking machine op
+     1002124 - Theater Staff
+     1001424 - Ticket inspector
+     1001561 - Tinsmith
+     1001682 - Tobacco preparer
+     1002125 - Tobacconist
+     1001583 - Tool & die maker
+     1001589 - Tool grinder (machine tools)
+     1001426 - Tourist guide
+     1001044 - Town planner
+     1001871 - Toy assembler
+     1001302 - Trade broker
+     1001893 - Trailer-truck driver
+     1001323 - Translator
+     1002126 - Transportion Equipment Manufacturing (Ra
+     1001402 - Travel agency & related clerk
+     1001945 - Tree cutter
+     1001899 - Trench digging machine operator
+     1002127 - Tunneling
+     1001656 - Type-casting machine operator
+     1001359 - Typist
+     1001807 - Tyre making and vulcanishing machine oep
+     1001711 - Umbrella maker
+     1001445 - Undertaker
+     2457 - Unemployed
+     1001968 - Unemployed
+     1002137 - Unemployed
+     1002128 - Unskilled Laborers
+     1002129 - Upholster
+     1001886 - Van driver
+     1001481 - Vegetable farm worker
+     1001689 - Vehicle body builder
+     1001610 - Vehicle electrician
+     1001707 - Vehicle upholsterer
+     1001690 - Veneer applier
+     1001750 - Veneer cutter
+     1001357 - Verbatim reporter
+     1001113 - Veterinarian
+     1001268 - Veterinary assistant
+     1001097 - Veterinary pathologist
+     1002130 - Veterinary Surgeon
+     1001374 - Wages clerk
+     1001434 - Waiter (general)
+     1001539 - Wall/ceiling paperhanger
+     1001629 - Watch & clock assembler
+     1001630 - Watch & clock repairer
+     1001776 - Water treatment plan operator (waterwork
+     1001825 - Weaing machine operator
+     1002131 - Weapons
+     1001557 - Welder
+     1002132 - Welderer
+     1001725 - Well driller & borer (except oil & gas w
+     1001724 - Well puller (petroleum & gas wells)
+     1001468 - Wholesale & retail trade salesman
+     1001824 - Winder, thread and yarn
+     1002133 - Window Cleaner
+     1002134 - Wine Merchant
+     1001740 - Wire drawer
+     1001798 - Wire-coating machine operator
+     1001691 - Wood furniture finisher
+     1001753 - Wood grader
+     1001814 - Wood turner
+     1001686 - Wood-treating worker
+     1002135 - Woodworking Industry (Excluding Tree Fel
+     1001812 - Woodworking mahcine setter-operator
+     1002136 - Worker
+     1001009 - Working proprietor agriculture & quarryi
+     1001008 - Working proprietor bar
+     1001007 - Working proprietor cafe, creamery, coffe
+     1001011 - Working proprietor construction
+     1001013 - Working proprietor finance and insurance
+     1001004 - Working proprietor hotel
+     1001005 - Working proprietor lodging and boarding
+     1001010 - Working proprietor manufacturing
+     1001015 - Working proprietor personal & household
+     1001014 - Working proprietor real est and biz svs
+     1001006 - Working proprietor restaurant and/or nig
+     1001003 - Working proprietor retail trade
+     1001012 - Working proprietor transport and communi
+     1001002 - Working proprietor wholesale trade
+     1001089 - Zoologist
+  -----
+  [9] - Industry Code
+  Data type is int
+  Value in Message Category CNV4
+     1002176 - Administrative & Support
+     1002143 - Advertising
+     1002145 - Aerospace/Aviation
+     1002146 - Airlines
+     1002144 - Architect
+     1002167 - Arts & Entertainment
+     1002159 - Arts/Entertainment/Media
+     1002147 - Athletics/Sports
+     1002168 - Automobile/Transportation
+     1002138 - Banking & Finance
+     1002148 - Biotechnology
+     1002149 - Building & Construction
+     1002169 - Business
+     1002184 - Chemicals
+     1002170 - Consulting
+     1002165 - Education
+     1002150 - Electronics
+     1002161 - Energy/Mining/Oil & Gas
+     1002151 - Engineering
+     1002153 - F&B
+     1002152 - Fashion
+     1002154 - Freight Forwarding/Delivery
+     1002140 - Government
+     1002156 - Healthcare/Medical
+     1002155 - Hotel & Restaurant
+     1002177 - Human Resources
+     1002157 - Information Technology/Multimedia
+     1002171 - Insurance
+     1002172 - Law/Legal
+     1002183 - Leisure/Recreation
+     1002158 - Manufacturing
+     1002178 - Marine
+     1002141 - Military
+     1002160 - Models/Singers/Musicians
+     1002181 - Not Applicable
+     1002182 - Optometry
+     1002175 - Others
+     1002162 - Property/Real Estate
+     1002179 - Religion
+     1002180 - Research & Development
+     1002163 - Retail & Services
+     1002173 - Sales & Marketing
+     1002142 - Singapore Police Force
+     1002164 - Social & Community Services
+     1002174 - Telecommunication
+     1002166 - Tourism
+     1002139 - Transportation
+  -----
+  [10] - Marital Status Code
+  Data type is int
+  Value in Message Category 12
+     100633 - Divorced
+     101122 - Married
+     100474 - Others
+     100852 - Separated
+     100716 - Single
+  -----
+  [11] - Height
+  Data type is string[10]
+  -----
+  [12] - Weight
+  Data type is string[10]
+
+--------------------
+SENSITIVITY|[2]|[3]
+SegmentKey: SENSITIVITY
+--------------------
+  [2] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [3] - Sensitivity Code
+  Field is Required
+  Data type is int
+  Value in Message Category 42 (Sensitivity Code)
+     101046 - Bad Account
+     100928 - Chief Justice
+     100906 - Child Med Excl-See Ind Policy
+     100578 - Citibank Staff
+     100640 - Competitor
+     228 - Complaint Registered
+     100838 - Deceased
+     101135 - Diplomat
+     100760 - Do not change ph name sequence
+     100962 - Driver
+     100493 - Exceed u/w limit for HIP
+     101111 - Exceed u/w limit for PA
+     101002 - Hazardous Occupation
+     100864 - Holder of Multiple Policies
+     100861 - Insurance Agent
+     101004 - Law Enforcement Ofr/Civil Def
+     100725 - Medical Excl - See Indiv Pol
+     100560 - Missing : date of birth
+     100996 - Missing : telephone number
+     100726 - No Call - Home
+     100663 - No Call - Home & Office
+     101138 - No Call - Office
+     100476 - No correspondence to Customer
+     101103 - No Dependent Enrolment
+     100706 - No Dependent HIP Enrl
+     100837 - No Dependent PA Enrl
+     100565 - No Further Enrolment
+     100727 - No Further HIP Enrolment
+     101093 - No Further PA Enrolment
+     100617 - No PH DD Enrolment
+     100834 - No Spouse DD Enrolment
+     100764 - No Spouse Enrolment
+     100974 - No Spouse HIP Enrolment
+     101098 - No Spouse PA Enrolment
+     101112 - No Upgrade of Plan
+     100748 - Refer diary message
+     100904 - Refer Herman Diary
+     100535 - Refer Over-Insured Spreadsheet
+     100613 - Refrain from SMS blast
+     100688 - Refrain from TM activity
+     100661 - Regular Claimant
+     101134 - Returned mail : No such addres
+     100868 - SAF Personnel
+     100963 - See Brokerage on payment hist
+     100924 - Senior Govt Official
+     100516 - Sensitive
+     100651 - Sponsor - biz partner
+     101109 - Spouse Deceased
+     101026 - Spouse Hazardous Occupation
+     100902 - Spouse Insurance Agent
+     100531 - Spouse Medical Exc-See Ind Pol
+     101051 - Staff Account
+     100694 - Suspicious Claim(s)
+     100897 - Taxi Driver
+     101013 - TM Uncontactable
+     100615 - Unsubscribe-Email
+
+--------------------
+SENS_REMOVE|[2]|[3]
+SegmentKey: SENS_REMOVE
+--------------------
+  [2] - Account ID
+  Field is Required
+  Data type is string[9]
+  Must be account id with leading spaces included.
+  -----
+  [3] - Sensitivity Code
+  Field is Required
+  Data type is int
+  Value in Message Category 42 (Sensitivity Code)
+     101046 - Bad Account
+     100928 - Chief Justice
+     100906 - Child Med Excl-See Ind Policy
+     100578 - Citibank Staff
+     100640 - Competitor
+     228 - Complaint Registered
+     100838 - Deceased
+     101135 - Diplomat
+     100760 - Do not change ph name sequence
+     100962 - Driver
+     100493 - Exceed u/w limit for HIP
+     101111 - Exceed u/w limit for PA
+     101002 - Hazardous Occupation
+     100864 - Holder of Multiple Policies
+     100861 - Insurance Agent
+     101004 - Law Enforcement Ofr/Civil Def
+     100725 - Medical Excl - See Indiv Pol
+     100560 - Missing : date of birth
+     100996 - Missing : telephone number
+     100726 - No Call - Home
+     100663 - No Call - Home & Office
+     101138 - No Call - Office
+     100476 - No correspondence to Customer
+     101103 - No Dependent Enrolment
+     100706 - No Dependent HIP Enrl
+     100837 - No Dependent PA Enrl
+     100565 - No Further Enrolment
+     100727 - No Further HIP Enrolment
+     101093 - No Further PA Enrolment
+     100617 - No PH DD Enrolment
+     100834 - No Spouse DD Enrolment
+     100764 - No Spouse Enrolment
+     100974 - No Spouse HIP Enrolment
+     101098 - No Spouse PA Enrolment
+     101112 - No Upgrade of Plan
+     100748 - Refer diary message
+     100904 - Refer Herman Diary
+     100535 - Refer Over-Insured Spreadsheet
+     100613 - Refrain from SMS blast
+     100688 - Refrain from TM activity
+     100661 - Regular Claimant
+     101134 - Returned mail : No such addres
+     100868 - SAF Personnel
+     100963 - See Brokerage on payment hist
+     100924 - Senior Govt Official
+     100516 - Sensitive
+     100651 - Sponsor - biz partner
+     101109 - Spouse Deceased
+     101026 - Spouse Hazardous Occupation
+     100902 - Spouse Insurance Agent
+     100531 - Spouse Medical Exc-See Ind Pol
+     101051 - Staff Account
+     100694 - Suspicious Claim(s)
+     100897 - Taxi Driver
+     101013 - TM Uncontactable
+     100615 - Unsubscribe-Email
+
+--------------------
+SUPPRESS|[2]|[3]
+SegmentKey: SUPPRESS
+--------------------
+  [2] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [3] - Reason
+  Field is Required
+  Data type is int
+  Value in Message Category 37 (Suppression Code)
+     100883 - Fulfillment via Email
+     100926 - No Call - Home
+     100717 - No Call - Home and Office
+     100511 - No Call - Office
+     100634 - No Promotional Mail
+
+--------------------
+COMPLAINT|[2]|[3]|[4]|[5]|[6]|[7]|[8]|[9]|[10]|[11]|[12]|[13]|[14]|[15]
+SegmentKey: COMPLAINT
+--------------------
+  [2] - Reason
+  Field is Required
+  Data type is int
+  Must be 'new'and Reason for Complaint. Value from Message Category C5 (Reason)
+     380 - Billing Dispute
+     382 - Claim Related
+     378 - Enrollment Dispute
+     383 - Other
+     381 - Service Complaint
+     379 - Sponsor Complaint
+  -----
+  [3] - Action
+  Field is Required
+  Data type is int
+  Must provide complaint Action for new complaint. Value from Message Category C3 (Action)
+     368 - CS Investigating
+     364 - Pending Claim
+     366 - Pending Higher Authority
+     369 - Pending Operation
+     367 - Pending Sponsor
+     365 - Pending TM
+     370 - Pending Underwriting/DM
+  -----
+  [4] - Assigned To
+  Field is Required
+  Data type is string[15]
+  Must assign operator for new complaint.
+  -----
+  [5] - Received Via
+  Field is Required
+  Data type is int
+  Must provide the Received channel of the the complaint. Value from Message Category C2 (Received channel)
+     361 - E-Mail
+     360 - Fax
+     363 - Phone
+     362 - Walk-In
+     359 - Write-In
+  -----
+  [6] - Complainant
+  Field is Required
+  Data type is int
+  Must provide the Initiator of the complaint. Value from Message Category C1 (Initiator)
+     357 - Family of Policy Holder
+     358 - Others
+     355 - Policy Holder
+     356 - Sponsor
+  -----
+  [7] - Reference Type
+  Field is Required
+  Data type is int
+  Must provide the Reference type for the complaint. Value from Message Category CR (Reference Type)
+     1663 - Campaign
+     1664 - Policy
+     1665 - Seller
+  -----
+  [8] - Reference
+  Data type is string[300]
+  This field is optional. Allows to enter the reference values based on the reference type (for example, if reference type is 'P' then reference value should be policy1,policy2,policy3)
+  -----
+  [9] - Standard Complaint1
+  Data type is int
+  This field is optional. Value from Message Category 23 (Standard Complaint)
+     101100 - Aggressive Sales tactics
+     100558 - Billing Dispute
+     100705 - Churning
+     101053 - Claims Related
+     101089 - Delay/failure in process
+     100620 - Disclosure issues
+     100824 - Disputes over claim amt awardd
+     100610 - Disputes over liability
+     100759 - Disputes ovr uw decision (new)
+     101021 - Disputes ovr uw decision-renew
+     101083 - Enrolment dispute
+     101022 - Fraud/forgery
+     100763 - Inappropriate advice
+     101041 - Junk Mail
+     100700 - Misrepresentation
+     100783 - NR of Policy
+     101044 - Others
+     100585 - Replacement of policy
+     100639 - Service Complaint
+     100605 - Staff Related Issues
+     101028 - Unauthorised transaction
+  -----
+  [10] - Standard Complaint4
+  Data type is int
+  This field is optional. Value from Message Category 23 (Standard Complaint)
+     101100 - Aggressive Sales tactics
+     100558 - Billing Dispute
+     100705 - Churning
+     101053 - Claims Related
+     101089 - Delay/failure in process
+     100620 - Disclosure issues
+     100824 - Disputes over claim amt awardd
+     100610 - Disputes over liability
+     100759 - Disputes ovr uw decision (new)
+     101021 - Disputes ovr uw decision-renew
+     101083 - Enrolment dispute
+     101022 - Fraud/forgery
+     100763 - Inappropriate advice
+     101041 - Junk Mail
+     100700 - Misrepresentation
+     100783 - NR of Policy
+     101044 - Others
+     100585 - Replacement of policy
+     100639 - Service Complaint
+     100605 - Staff Related Issues
+     101028 - Unauthorised transaction
+  -----
+  [11] - Standard Complaint3
+  Data type is int
+  This field is optional. Value from Message Category 23 (Standard Complaint)
+     101100 - Aggressive Sales tactics
+     100558 - Billing Dispute
+     100705 - Churning
+     101053 - Claims Related
+     101089 - Delay/failure in process
+     100620 - Disclosure issues
+     100824 - Disputes over claim amt awardd
+     100610 - Disputes over liability
+     100759 - Disputes ovr uw decision (new)
+     101021 - Disputes ovr uw decision-renew
+     101083 - Enrolment dispute
+     101022 - Fraud/forgery
+     100763 - Inappropriate advice
+     101041 - Junk Mail
+     100700 - Misrepresentation
+     100783 - NR of Policy
+     101044 - Others
+     100585 - Replacement of policy
+     100639 - Service Complaint
+     100605 - Staff Related Issues
+     101028 - Unauthorised transaction
+  -----
+  [12] - Standard Complaint4
+  Data type is int
+  This field is optional. Value from Message Category 23 (Standard Complaint)
+     101100 - Aggressive Sales tactics
+     100558 - Billing Dispute
+     100705 - Churning
+     101053 - Claims Related
+     101089 - Delay/failure in process
+     100620 - Disclosure issues
+     100824 - Disputes over claim amt awardd
+     100610 - Disputes over liability
+     100759 - Disputes ovr uw decision (new)
+     101021 - Disputes ovr uw decision-renew
+     101083 - Enrolment dispute
+     101022 - Fraud/forgery
+     100763 - Inappropriate advice
+     101041 - Junk Mail
+     100700 - Misrepresentation
+     100783 - NR of Policy
+     101044 - Others
+     100585 - Replacement of policy
+     100639 - Service Complaint
+     100605 - Staff Related Issues
+     101028 - Unauthorised transaction
+  -----
+  [13] - Standard Complaint5
+  Data type is int
+  This field is optional. Value from Message Category 23 (Standard Complaint)
+     101100 - Aggressive Sales tactics
+     100558 - Billing Dispute
+     100705 - Churning
+     101053 - Claims Related
+     101089 - Delay/failure in process
+     100620 - Disclosure issues
+     100824 - Disputes over claim amt awardd
+     100610 - Disputes over liability
+     100759 - Disputes ovr uw decision (new)
+     101021 - Disputes ovr uw decision-renew
+     101083 - Enrolment dispute
+     101022 - Fraud/forgery
+     100763 - Inappropriate advice
+     101041 - Junk Mail
+     100700 - Misrepresentation
+     100783 - NR of Policy
+     101044 - Others
+     100585 - Replacement of policy
+     100639 - Service Complaint
+     100605 - Staff Related Issues
+     101028 - Unauthorised transaction
+  -----
+  [14] - Correspondence Type
+  Field is Required
+  Data type is int
+  Value from message category DLVRYCHN.
+     1993 - E-Mail
+     1994 - Print
+     1995 - Print Preview
+     1807 - Test Print Output
+  -----
+  [15] - Comments
+  Data type is string[10500]
+  Free text.
+
+--------------------
+CALLBACK|[2]|[3]|[4]|[5]|[6]|[7]
+SegmentKey: CALLBACK
+--------------------
+  [2] - Reason
+  Field is Required
+  Data type is string[3000]
+  Must provide the Reason for call back.
+  -----
+  [3] - Phone
+  Field is Required
+  Data type is string[20]
+  Must provide contact phone number of the person for call back.
+  -----
+  [4] - Assigned To
+  Field is Required
+  Data type is string[15]
+  Must assign operator code for new call back.
+  -----
+  [5] - Contact Person Name
+  Data type is string[150]
+  If customer name is provided in this field it will consider, else it will update the name of the customer associated with this Acct Id.
+  -----
+  [6] - Priority
+  Field is Required
+  Data type is int
+  Must assign the priority value for the call back. Value from Message Category ZZ (Priority)
+     1658 - High
+     1656 - Low
+     1657 - Medium
+  -----
+  [7] - Call When
+  Field is Required
+  Data type is timestamp
+  Must assign the callwhen Timestamp value for the call back. It should be in 'YYYY-MM-dd hh:mm' format.
+
+--------------------
+MASTER|[2]|[3]
+SegmentKey: MASTER
+Segment is required
+--------------------
+  [2] - Policy Holder Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [3] - Policy Holder Address Type
+  Field is Required
+  Data type is int
+  Value in Message Category 39 (Address Types)
+     100886 - Email
+     219 - Home
+     220 - Mail
+     100866 - Property
+     100959 - Temphome
+     100821 - Tempwork
+     100773 - Vacation
+     221 - Work
+
+--------------------
+PAYMENT|[2]|[3]|[4]|[5]|[6]|[7]|[8]|[9]|[10]||[12]|CAC  |[14]|[15]|[16]|[17]
+SegmentKey: PAYMENT
+Segment is required
+--------------------
+  [2] - Policy Payer Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [3] - Policy Payer Address Type
+  Field is Required
+  Data type is int
+  Value in Message Category 39 (Address Types)
+     100886 - Email
+     219 - Home
+     220 - Mail
+     100866 - Property
+     100959 - Temphome
+     100821 - Tempwork
+     100773 - Vacation
+     221 - Work
+  -----
+  [4] - Payment Method Code
+  Field is Required
+  Data type is int
+  Value in Message Category L6 (Payment Method).  Must match options for split in LJA_PAY_OPTIONS table.
+     882 - Credit Card Billing
+     884 - Direct Billing
+     886 - GIRO
+  -----
+  [5] - Payment Frequency Code
+  Field is Required
+  Data type is int
+  Value in Message Category L5 (Payment Frequency). Must match frequencies specified in LJA_PAY_FREQ table.
+     873 - Annual
+     877 - Monthly
+  -----
+  [6] - Bill Account Number
+  Data type is string[30]
+  Required for Credit Card, GIRO and DDA payment methods.
+  -----
+  [7] - Credit Card Expiration
+  Data type is string[5]
+  If present, format MM/YY.
+  -----
+  [8] - Bank Code
+  Data type is string[10]
+  For DDA, must match LJA_PAY_OPTIONS entry.
+     7010            - ABN-ARMO BANK NV
+     7454            - AMERICAN EXPRESS BANK LIMITED
+     7931            - Australia & New Zealand Banking Group Lt
+     0               - Bank code - 0              
+     141-            - Bank code - 141-           
+     142-            - Bank code - 142-           
+     3762            - Bank code - 3762           
+     7056            - BANK NEGARA INDONESIA 1946
+     7083            - BANK OF CHINA
+     7108            - BANK OF INDIA
+     7117            - BANK OF SINGAPORE LIMITED
+     7126            - BANK OF TOKYO LIMITED, THE
+     7153            - CHASE MANHATTAN BANK NA, THE
+     7162            - CHUNG KHIAW BANK LIMITED
+     7214            - CITIBANK NA
+     7269            - CLOSED -INDUSTRIAL & COMMERCIAL BANK LTD
+     7463            - DEUTSCHE BANK AG
+     7171            - DEVELOPMENT BANK OF SINGAPORE LIMITED
+     7199            - FAR EASTERN BANK LIMITED
+     7223            - FOUR SEAS BANK LIMITED
+     7232            - HONGKONG & SHANGHAI BANKING CORP LTD
+     7241            - INDIAN BANK
+     7250            - INDIAN OVERSEAS BANK
+     7676            - INTERNATIONAL BANK OF SINGAPORE LTD
+     7029            - KEPPEL TATLEE BANK OF SINGAPORE LIMITED
+     7278            - KWANGTUNG PROVINCIALBANK, THE
+     7296            - LEE WAH BANK LIMITED
+     7302            - MALAYAN BANKING BERHAD
+     7339            - OVERSEA-CHINESE BANKING CORP LTD
+     9812            - POST OFFICE SAVINGS BANK
+     7366            - RHB Bank Berhad
+     7968            - SECURITY PACIFIC NATIONAL BANK
+     7852            - SOCIETE GENERALE
+     7144            - STANDARD CHARTERED BANK
+     7588            - TAT LEE BANK LIMITED
+     7357            - UCO BANK
+     7375            - UNITED OVERSEAS BANK LIMITED
+     5032            - UNITED OVERSEAS FINANCE LIMITED
+     7348            - use UOB code - OUB merged with UOB
+  -----
+  [9] - Bank Branch Code
+  Data type is string[10]
+     041        - (041) OCEAN BUILDING
+     042        - (042) ORCHARD ROAD
+     043        - (043) TANGLIN
+     044        - (044) QUEENSTOWN
+     046        - (046) JURONG
+     047        - (047) SANFORD BUILDING
+     049        - (049) BEACH ROAD
+     050        - (050) UPPER BUKIT TIMAH
+     051        - (051) MARINE PARADE
+     052        - (052) COLLYER QUAY
+     979        - ACCOUNTS DEPARTMENT
+     099        - ACU
+     908        - Admiralty Branch
+     043        - AIRPORT TERMINAL 2 (043)
+     010        - ALEXANDRA
+     524        - ALEXANDRA VILLAGE (524)
+     931        - ALJUNIED
+     032        - ALJUNIED (032)
+     525        - ALJUNIED (525)
+     008        - ANCHORPOINT (008)
+     014        - ANCHORPOINT (014)
+     017        - ANCHORPOINT (017)
+     023        - ANCHORPOINT (023)
+     507        - ANG MO KIO
+     008        - ANG MO KIO
+     927        - ANG MO KIO
+     507        - ANG MO KIO
+     519        - ANG MO KIO (519)
+     657        - ANG MO KIO (657)
+     684        - Ang Mo Kio (684)
+     008        - ANG MO KIO AVE 10
+     528        - ANG MO KIO CENTRAL (528)
+     010        - ANG MO KIO(010)
+     028        - ANG MO KIO(028)
+     574        - Auto Loan Centre (574)
+     513        - BALESTIER
+     028        - BALESTIER (028)
+     008        - BALESTIER PLAZA (008)
+     003        - BALESTIER ROAD
+     021        - BALESTIER ROAD
+     516        - BALESTIER ROAD (516)
+     006        - BALESTIER ROAD(006)
+     924        - BEACH ROAD
+     512        - BEDOK
+     009        - BEDOK
+     928        - BEDOK
+     512        - BEDOK
+     027        - BEDOK (027)
+     053        - BEDOK (053)
+     053        - BEDOK (053)
+     520        - BEDOK (520)
+     612        - BEDOK (612)
+     011        - BEDOK NORTH
+     662        - BEDOK NORTH (662)
+     991        - BILLS & REMITTANCES DEPT
+     012        - BISHAN
+     154        - BISHAN (154)
+     538        - BISHAN (538)
+     025        - Boon Lay
+     010        - BOON LAY
+     035        - BOON LAY (035)
+     0          - Branch - 0         
+     003        - Branch - 003       
+     010        - Branch - 010       
+     011        - Branch - 011       
+     012        - Branch - 012       
+     014        - Branch - 014       
+     025        - Branch - 025       
+     030        - Branch - 030       
+     030        - Branch - 030       
+     031        - Branch - 031       
+     033        - Branch - 033       
+     035        - Branch - 035       
+     040        - Branch - 040       
+     050        - Branch - 050       
+     050        - Branch - 050       
+     051        - Branch - 051       
+     060        - Branch - 060       
+     062        - Branch - 062       
+     065        - Branch - 065       
+     072        - Branch - 072       
+     080        - Branch - 080       
+     082        - Branch - 082       
+     092        - Branch - 092       
+     100        - Branch - 100       
+     101        - Branch - 101       
+     101        - Branch - 101       
+     102        - Branch - 102       
+     103        - Branch - 103       
+     107        - Branch - 107       
+     109        - Branch - 109       
+     112        - Branch - 112       
+     113        - Branch - 113       
+     115        - Branch - 115       
+     115        - Branch - 115       
+     116        - Branch - 116       
+     119        - Branch - 119       
+     120        - Branch - 120       
+     122        - Branch - 122       
+     122        - Branch - 122       
+     123        - Branch - 123       
+     125        - Branch - 125       
+     127        - Branch - 127       
+     128        - Branch - 128       
+     129        - Branch - 129       
+     132        - Branch - 132       
+     134        - Branch - 134       
+     135        - Branch - 135       
+     137        - Branch - 137       
+     138        - Branch - 138       
+     140        - Branch - 140       
+     142        - Branch - 142       
+     142        - Branch - 142       
+     145        - Branch - 145       
+     146        - Branch - 146       
+     160        - Branch - 160       
+     162        - Branch - 162       
+     172        - Branch - 172       
+     180        - Branch - 180       
+     180        - Branch - 180       
+     182        - Branch - 182       
+     192        - Branch - 192       
+     200        - Branch - 200       
+     202        - Branch - 202       
+     203        - Branch - 203       
+     206        - Branch - 206       
+     208        - Branch - 208       
+     208        - Branch - 208       
+     208        - Branch - 208       
+     210        - Branch - 210       
+     213        - Branch - 213       
+     215        - Branch - 215       
+     216        - Branch - 216       
+     216        - Branch - 216       
+     217        - Branch - 217       
+     217        - Branch - 217       
+     221        - Branch - 221       
+     230        - Branch - 230       
+     242        - Branch - 242       
+     243        - Branch - 243       
+     247        - Branch - 247       
+     252        - Branch - 252       
+     260        - Branch - 260       
+     304        - Branch - 304       
+     311        - Branch - 311       
+     400        - Branch - 400       
+     403        - Branch - 403       
+     405        - Branch - 405       
+     407        - Branch - 407       
+     410        - Branch - 410       
+     450        - Branch - 450       
+     455        - Branch - 455       
+     493        - Branch - 493       
+     547        - Branch - 547       
+     701        - Branch - 701       
+     702        - Branch - 702       
+     703        - Branch - 703       
+     704        - Branch - 704       
+     705        - Branch - 705       
+     714        - Branch - 714       
+     801        - Branch - 801       
+     808        - Branch - 808       
+     924        - Branch - 924       
+     570        - Branch (570)
+     124        - Bras Basah (124)
+     126        - Bras Basah (126)
+     147        - BRAS BASAH (147)
+     148        - BRAS BASAH (148)
+     151        - Bras Basah (151)
+     152        - Bras Basah (152)
+     154        - Bras Basah (154)
+     155        - Bras Basah (155)
+     156        - Bras Basah (156)
+     158        - Bras Basah (158)
+     159        - Bras Basah (159)
+     160        - Bras Basah (160)
+     161        - Bras Basah (161)
+     170        - Bras Basah (170)
+     182        - Bras Basah (182)
+     183        - Bras Basah (183)
+     184        - Bras Basah (184)
+     211        - Bras Basah (211)
+     021        - BUKIT BATOK
+     533        - BUKIT BATOK (533)
+     041        - BUKIT BATOK CENTRAL(041)
+     010        - BUKIT MERAH
+     518        - BUKIT MERAH
+     007        - BUKIT MERAH
+     925        - BUKIT MERAH
+     004        - BUKIT MERAH
+     518        - BUKIT MERAH BRANCH
+     012        - BUKIT PANJANG (012)
+     545        - BUKIT PANJANG (545)
+     008        - BUKIT TIMAH
+     926        - BUKIT TIMAH
+     002        - BUKIT TIMAH
+     516        - BUKIT TIMAH
+     006        - BUKIT TIMAH (006)
+     007        - BUKIT TIMAH (007)
+     518        - BUKIT TIMAH (518)
+     542        - BUKIT TIMAH (542)
+     554        - Bukit Timah (554)
+     027        - BUKIT TIMAH BRANCH
+     516        - BUKIT TIMAH BRANCH
+     026        - BUKIT TIMAH(026)
+     510        - BUONA VISTA
+     510        - BUONA VISTA
+     032        - BUONA VISTA (032)
+     660        - BUONA VISTA (660)
+     033        - CAMBRIDGE ROAD (033)
+     013        - CAPITAL TOWER/BEDOK (013)
+     082        - Cashline
+     557        - CAUSEWAY POINT (557)
+     501        - CECIL STREET
+     001        - CECIL STREET
+     610        - CECIL STREET (610)
+     651        - CECIL STREET (651)
+     015        - CENTRAL SUB-BRANCH (015)
+     025        - CHANGI (025)
+     040        - CHANGI AIRPORT(040)
+     016        - CHINATOWN SUB-BRANCH (016)
+     017        - Chinatown(017)
+     523        - CHOA CHU KANG
+     523        - Choa Chu Kang
+     016        - Choa Chu Kang (016)
+     054        - Choa Chu Kang (054)
+     673        - CHOA CHU KANG(673)
+     050        - CHURCH STREET
+     018        - CITIBANK CARD CENTRE (018)
+     002        - CITY HALL
+     014        - CITY PLAZA (014)
+     020        - City Plaza (020)
+     562        - CITYLINK MALL (562)
+     007        - CLEMENTI
+     014        - CLEMENTI
+     929        - CLEMENTI
+     508        - CLEMENTI
+     030        - CLEMENTI (030)
+     049        - CLEMENTI (049)
+     522        - CLEMENTI (522)
+     544        - CLEMENTI (544)
+     622        - CLEMENTI (622)
+     658        - CLEMENTI (658)
+     032        - CLEMENTI BRANCH
+     650        - COLEMAN (650)
+     060        - COLEMAN BRANCH
+     042        - Coleman Street (042)
+     046        - COLEMAN STREET (046)
+     001        - COLLYER QUAY
+     152        - COLLYER QUAY(152)
+     565        - COMPASS POINT (565)
+     567        - COMPASS POINT (567)
+     526        - Concourse
+     051        - Consumer Banking
+     039        - CORRESPONDENT BANKING
+     057        - Credit Card Account
+     018        - DBS ANG MO KIO (018)
+     024        - DBS BALESTIER (024)
+     022        - DBS BATTERY ROAD(022)
+     017        - DBS BEDOK (017)
+     070        - DBS Bishan (070)
+     014        - DBS BUKIT TIMAH (014)
+     118        - DBS CHINA SQUARE (118)
+     066        - DBS Choa Chu Kang (066)
+     020        - DBS CLEMENTI(020)
+     052        - DBS EUNOS STATION (052)
+     064        - DBS GLENEAGLES (064)
+     008        - DBS GREAT WORLD CITY (008)
+     012        - DBS HARBOURFRONT (012)
+     063        - DBS HOLLAND VILLAGE (063)
+     122        - DBS Hougang Central (122)
+     023        - DBS HOUGANG(023)
+     054        - DBS IMM (054)
+     002        - DBS JURONG (002)
+     065        - DBS LIAT TOWERS (065)
+     027        - DBS PARKWAY PARADE (027)
+     100        - DBS Plaza Singapura (100)
+     006        - DBS QUEENSWAY (006)
+     033        - DBS RAFFLES CITY (033)
+     048        - DBS RAFFLES PLACE (048)
+     011        - DBS ROCHOR (011)
+     047        - DBS SERANGOON GARDEN(047)
+     001        - DBS SHENTON WAY (001)
+     010        - DBS SOUTH BRIDGE (010)
+     074        - DBS SUNTEC CITY (074)
+     029        - DBS TAMPINES CENTRE(029)
+     015        - DBS THOMSON (015)
+     005        - DBS TOA PAYOH (005)
+     025        - DBS TOWNER ROAD(025)
+     019        - DBS WOODLANDS(019)
+     048        - DHOBY GHAUT (048)
+     004        - DHOBY GHAUT BRANCH
+     025        - Direct Banking (025)
+     7931       - DO NOT USE
+     507        - EAST COAST (507)
+     512        - EAST COAST (512)
+     549        - EAST COAST (549)
+     560        - EAST POINT MALL (560)
+     583        - FairPrice Plus (583)
+     587        - FairPrice Plus (587)
+     592        - FairPrice Plus (592)
+     005        - FEB ANG MO KIO (005)
+     001        - FEB MAIN (001)
+     002        - FEB NEIL ROAD (002)
+     003        - FEB SERANGOON ROAD (003)
+     004        - FEB UPPER SERANGOON (004)
+     036        - FINANCE & TAX
+     037        - Financial Institutions Group (037)
+     511        - GEYLANG
+     011        - GEYLANG
+     916        - GEYLANG
+     003        - GEYLANG
+     511        - GEYLANG
+     509        - GEYLANG (509)
+     014        - GEYLANG SERAI (014)
+     552        - Ginza Plaza (552)
+     001        - GLOBAL FINANCE - IBG (001)
+     920        - GRANGE ROAD
+     569        - HarbourFront (569)
+     909        - HAVELOCK
+     040        - HAVELOCK ROAD
+     010        - HEAD OFFICE
+     001        - HEAD OFFICE
+     001        - HEAD OFFICE
+     601        - HEAD OFFICE
+     000        - HEAD OFFICE
+     021        - HEAD OFFICE
+     501        - HEAD OFFICE
+     081        - HEADQUARTERS
+     028        - Hoe Chiang
+     020        - HOLLAND ROAD(020)
+     018        - HOLLAND VILLAGE (018)
+     024        - HOLLAND VILLAGE (024)
+     144        - Holland Village Branch (144)
+     015        - HOUGANG
+     013        - HOUGANG
+     933        - HOUGANG
+     019        - HOUGANG (019)
+     613        - Hougang (613)
+     543        - HOUGANG MALL (543)
+     556        - HOUGANG MALL (556)
+     561        - HOUGANG POINT (561)
+     120        - ibanking
+     050        - Institutional Ac
+     031        - INVESTMENT BANKING(031)
+     028        - ITEM PROCESSING (028)
+     030        - JALAN BESAR
+     004        - JALAN BESAR
+     005        - JALAN BESAR
+     506        - JALAN BESAR (506)
+     521        - JALAN BESAR (521)
+     655        - JALAN BESAR (655)
+     050        - JALAN SULTAN
+     515        - JALAN SULTAN (515)
+     676        - JALAN SULTAN (676)
+     661        - JOO CHIAT (661)
+     665        - JOO CHIAT (665)
+     515        - JOO CHIAT ROAD
+     912        - JOO CHIAT ROAD
+     515        - JOO CHIAT ROAD
+     640        - JULAN SULTAN (640)
+     002        - JURONG
+     003        - JURONG
+     018        - JURONG (018)
+     030        - JURONG (030)
+     146        - JURONG (146)
+     514        - JURONG (514)
+     013        - JURONG EAST
+     015        - JURONG EAST
+     936        - JURONG EAST
+     525        - Jurong East
+     041        - JURONG EAST (041)
+     527        - JURONG EAST (527)
+     051        - Jurong East MRT (051)
+     019        - JURONG EAST(019)
+     053        - JURONG POINT (053)
+     553        - Jurong Point (553)
+     917        - JURONG TOWN
+     018        - JURONG WEST
+     535        - JURONG WEST (535)
+     615        - JURONG WEST (615)
+     671        - Jurong West (671)
+     675        - JURONG WEST (675)
+     521        - JURONG WEST BRANCH
+     521        - JURONG WEST BRANCH
+     002        - JURONG WEST BRANCH
+     503        - KALLANG
+     919        - KALLANG
+     503        - KALLANG
+     620        - KALLANG (620)
+     653        - KALLANG (653)
+     663        - KALLANG (663)
+     016        - KALLANG INDUSTRIAL ESTATE
+     007        - KATONG
+     006        - KATONG
+     913        - KATONG
+     006        - KATONG
+     504        - KATONG
+     621        - KATONG (621)
+     654        - KATONG (654)
+     014        - KATONG SUB-BRANCH (014)
+     614        - KHATIB (614)
+     932        - KING GEORGE'S AVENUE
+     022        - Kovan(022)
+     007        - LAVENDER STREET (007)
+     098        - Liat Tower (098)
+     069        - LIAT TOWERS (069)
+     056        - LIAT TOWERS (56)/ORCHARD STATION
+     032        - LIDO BRANCH
+     081        - LOCAL CLEARING (081)
+     509        - LUCKY PLAZA
+     509        - LUCKY PLAZA
+     619        - LUCKY PLAZA (619)
+     659        - LUCKY PLAZA (659)
+     678        - LUCKY PLAZA (678)
+     906        - MACPHERSON
+     019        - MacPherson Road
+     004        - MACPHERSON ROAD(004)
+     001        - MAIN BRANCH
+     020        - MAIN BRANCH
+     001        - MAIN BRANCH
+     001        - MAIN BRANCH
+     001        - MAIN BRANCH
+     001        - MAIN BRANCH
+     001        - MAIN BRANCH
+     001        - MAIN BRANCH (001)
+     011        - MAIN BRANCH (011)
+     001        - MAIN OFFICE
+     001        - MAIN OFFICE
+     001        - MAIN OFFICE (001)
+     921        - MARINA BRANCH
+     037        - MARINA SQUARE(037)
+     012        - MARINE PARADE
+     031        - MARINE PARADE
+     009        - MARINE PARADE (009)
+     015        - MARINE PARADE (015)
+     040        - MARINE PARADE (040)
+     151        - MARINE PARADE (151)
+     005        - Maybank@HDB Hub (005)
+     004        - MIDDLE ROAD
+     003        - MIDDLE ROAD
+     005        - MIDDLE ROAD (005)
+     566        - MOUNT ELIZABETH (566)
+     029        - MOUNT ELIZABETH(029)
+     563        - MYBANK.OCBC.COM (563)
+     537        - NANYANG TECHNOLOGICAL U(537)
+     902        - NEW BRDIGE ROAD
+     002        - NEW BRIDGE ROAD
+     602        - NEW BRIDGE ROAD
+     019        - NEW BRIDGE ROAD(019)
+     591        - North (591)
+     629        - North (629)
+     004        - NORTH BRANCH
+     002        - NORTH BRANCH
+     503        - NORTH BRANCH (503)
+     581        - North Branch (581)
+     911        - NORTH BRIDGE ROAD
+     009        - NORTH BRIDGE ROAD(009)
+     013        - NORTH SUB-BRANCH (013)
+     550        - NORTHPOINT (550)
+     669        - NORTHPOINT (669)
+     674        - NORTHPOINT (674)
+     501        - OCBC CENTRE (501)
+     504        - OCBC CENTRE (504)
+     517        - OCBC CENTRE (517)
+     589        - OCBC Centre (589)
+     590        - OCBC Centre (590)
+     601        - OCBC CENTRE (601)
+     602        - OCBC Centre (602)
+     603        - OCBC CENTRE (603)
+     604        - OCBC CENTRE (604)
+     618        - OCBC CENTRE (618)
+     701        - OCBC CENTRE (701)
+     702        - OCBC CENTRE (702)
+     703        - OCBC CENTRE (703)
+     704        - OCBC CENTRE (704)
+     705        - OCBC CENTRE (705)
+     141        - OCEAN BUILDING (141)
+     060        - One Raffles Quay (060)
+     029        - Orchard
+     603        - ORCHARD
+     052        - Orchard (052)
+     508        - ORCHARD (508)
+     155        - Orchard Central (155)
+     540        - ORCHARD MRT (540)
+     002        - ORCHARD ROAD
+     017        - ORCHARD ROAD
+     012        - ORCHARD ROAD - CSG
+     002        - ORCHARD ROAD - IB
+     142        - ORCHARD ROAD (142)
+     582        - Orchard Road (582)
+     320        - OUB Grange(320)
+     351        - OUB Raffles Place (351)
+     346        - OUB Yishun (346)
+     918        - OUTRAM ROAD
+     004        - PARKWAY PARADE (004)
+     036        - PARKWAY PARADE(036)
+     530        - PASIR RIS BRANCH
+     530        - Pasir Ris Branch
+     044        - PASIR RIS(044)
+     680        - Pasir Ris(680)
+     631        - PCL (631)
+     633        - PCL (633)
+     502        - PEOPLE'S PARK
+     502        - PEOPLE'S PARK
+     630        - PEOPLE'S PARK (630)
+     652        - PEOPLE'S PARK (652)
+     668        - PEOPLE'S PARK (668)
+     051        - Personal Bk Ac/Loans
+     207        - POSB AMK North (207)
+     200        - POSB Bedok Central (200)
+     178        - POSB Bras Basah (178)
+     130        - POSB Bukit Panjang (130)
+     146        - POSB Macpherson (146)
+     141        - POSB Newton (141)
+     195        - POSB West Coast (195)
+     171        - POSB Woodlands West(171)
+     584        - Premier Banking Offshore (584)
+     031        - PRIVATE BANK
+     576        - Punggol Plaza (576)
+     910        - QUEENSTOWN
+     008        - QUEENSTOWN(008)
+     011        - QUEENSWAY(011)
+     901        - RAFFLES PLACE
+     541        - RAFFLES PLACE MRT (541)
+     934        - RIVER VALLEY ROAD
+     922        - ROBINSON ROAD
+     002        - ROBINSON ROAD (002)
+     002        - ROBINSON ROAD (002)
+     016        - ROBINSON ROAD (016)
+     564        - ROBINSON ROAD (564)
+     505        - ROCHOR
+     505        - ROCHOR
+     003        - ROCHOR ROAD
+     047        - ROCHOR ROAD(047)
+     147        - SANFORD BUILDING(147)
+     003        - SCOTTS MALL (003)
+     013        - SELEGIE (013)
+     015        - SELEGIE (015)
+     005        - SELEGIE HOUSE
+     003        - SELEGIE ROAD
+     904        - SELEGIE ROAD
+     023        - SELETAR HILLS(023)
+     520        - SERANGOON CENTRAL
+     520        - SERANGOON CENTRAL
+     012        - SERANGOON GARDEN (012)
+     145        - SERANGOON GARDEN (145)
+     547        - SERANGOON GARDEN (547)
+     551        - Serangoon Garden (551)
+     024        - SERANGOON GARDEN(024)
+     018        - SERANGOON ROAD
+     002        - SERANGOON ROAD
+     045        - SERANGOON -SAV (045)
+     992        - SETTLEMENT - DBU
+     995        - SETTLEMENT - G & S
+     996        - SETTLEMENT - SGS
+     016        - SHENTON WAY
+     001        - SHENTON WAY
+     003        - Shenton Way (003)
+     050        - SHENTON WAY (050)
+     067        - Shenton Way (067)
+     055        - Shenton Way (55)
+     060        - SHENTON WAY (60)/JURONG WEST BRANCH
+     009        - SHENTON WAY(009)
+     051        - SHENTON WAY(051)
+     011        - SHENTON WAY-CSG (011)
+     012        - SIGLAP(012)
+     031        - SIGLAP(031)
+     001        - SINGAPORE BRANCH
+     001        - SINGAPORE BRANCH
+     001        - SINGAPORE BRANCH
+     001        - SINGAPORE BRANCH
+     617        - SIX AVENUE (617)
+     666        - Sixth Avenue (666)
+     579        - SMU (579)
+     022        - SOUTH BRANCH
+     007        - SOUTH BRIDGE (007)
+     903        - SOUTH BRIDGE ROAD
+     011        - SOUTH BRIDGE ROAD (011)
+     022        - SOUTH SUB-BRANCH
+     012        - SOUTH SUB-BRANCH (012)
+     022        - SPRINGLEAF GARDEN (022)
+     021        - STAFF (021)
+     558        - SUN PLAZA (558)
+     149        - SUNTEC CITY (149)
+     052        - Suntec City Mall (052)
+     056        - SUNTEC PB CENTRE
+     013        - TAMAN JURONG - CSG
+     003        - TAMAN JURONG - IB
+     019        - TAMPINES
+     930        - TAMPINES
+     003        - TAMPINES (003)
+     038        - TAMPINES (038)
+     510        - TAMPINES (510)
+     534        - TAMPINES (534)
+     546        - TAMPINES (546)
+     548        - TAMPINES (548)
+     517        - TAMPINES BRANCH
+     533        - TAMPINES BRANCH
+     517        - TAMPINES BRANCH
+     022        - TAMPINES CENTRAL
+     522        - TAMPINES CENTRAL
+     004        - TAMPINES CENTRAL (004)
+     042        - TAMPINES CENTRAL (042)
+     522        - TAMPINES CENTRAL BR (COMM 19/9/1991)
+     667        - TAMPINES SOUTH (667)
+     683        - TAMPINES SOUTH (683)
+     42         - TAMPINES(dun use)
+     905        - TANGLIN
+     143        - TANGLIN (143)
+     003        - TANJONG PAGAR
+     009        - TANJONG PAGAR (009)
+     021        - Tanjong Pagar (021)
+     672        - Tanjong Pagar (672)
+     529        - TANJONG PAGAR(529)
+     023        - TECK WHYE
+     106        - Telepark (106)
+     009        - TELOK BLANGAH
+     021        - TEXTILE CENTRE(021)
+     506        - THOMSON
+     506        - THOMSON
+     531        - THOMSON (531)
+     656        - THOMSON (656)
+     007        - THOMSON ROAD (007)
+     006        - TIONG BAHRU
+     907        - TIONG BAHRU
+     011        - TIONG BAHRU (011)
+     050        - TIONG BAHRU PLAZA (050)
+     006        - TOA PAYOH
+     915        - TOA PAYOH
+     015        - TOA PAYOH (015)
+     526        - TOA PAYOH CENTRAL (526)
+     568        - Toa Payoh Central (568)
+     611        - TOA PAYOH CENTRAL (611)
+     677        - TOA PAYOH CENTRAL (677)
+     539        - TOA PAYOH MRT (539)
+     026        - TOWER ROAD (026)
+     588        - Ubi (588)
+     308        - UOB Admiralty(308)
+     327        - UOB Ang Mo Kio Ave 1 (327)
+     057        - UOB ANSON ROAD (057)
+     328        - UOB Bedok Central (328)
+     067        - UOB BENDEMEER ROAD (067)
+     066        - UOB BISHAN (066)
+     437        - UOB Bukit Merah(437)
+     003        - UOB City Plaza (003)
+     064        - UOB GEYLANG (064)
+     307        - UOB Great World City (307)
+     063        - UOB HOUGANG (063)
+     448        - UOB Hougang MRT(448)
+     447        - UOB Hougang North (447)
+     002        - UOB Jalan Sultan (002)
+     058        - UOB JALAN SULTAN (058)
+     432        - UOB Jalan Sultan (432)
+     336        - UOB Jurong East Central (336)
+     013        - UOB JURONG TOWN(013)
+     062        - UOB KATONG(062)
+     332        - UOB King George's (332)
+     001        - UOB Main (001)
+     080        - UOB Main (080)
+     311        - UOB North Bridge(311)
+     016        - UOB NOVENA (016)
+     068        - UOB ORCHARD (068)
+     494        - UOB Raffles City (494)
+     493        - UOB Rivervale Mall (493)
+     069        - UOB SENNETT ESTATE (069)
+     431        - UOB Shenton Way (431)
+     492        - UOB SMU Campus
+     343        - UOB South Bridge (343)
+     018        - UOB Tanglin (018)
+     059        - UOB UPPER BUKIT TIMAH (059)
+     060        - UOB Vivo City (060)
+     422        - UOB Vivo City (422)
+     441        - UOB West Coast (441)
+     446        - UOB Yishun Central (446)
+     150        - UPPER BUKIT TIMAH(150)
+     013        - UPPER PAYA LEBAR
+     604        - UPPER SERANGOON
+     914        - UPPER SERANGOON
+     007        - UPPER SERANGOON
+     514        - UPPER SERANGOON
+     511        - UPPER SERANGOON (511)
+     532        - UPPER SERANGOON (532)
+     536        - UPPER SERANGOON (536)
+     664        - UPPER SERANGOON (664)
+     670        - UPPER SERANGOON (670)
+     023        - UPPER SERANGOON ROAD
+     514        - UPPER SERANGOON ROAD
+     009        - UPPER SERANGOON ROAD
+     010        - UPPER SERANGOON ROAD (010)
+     923        - UPPER THOMSON
+     005        - UPPER THOMSON (005)
+     006        - UPPER THOMSON (006)
+     052        - UPPER THOMSON (052)
+     017        - VICTORIA CONCERT HALL (017)
+     004        - VISA CREDITCARD
+     495        - Vivo City (495)
+     057        - VIVOCITY (057)
+     011        - WEST COAST
+     034        - WEST COAST ROAD (034)
+     555        - White Sands (555)
+     026        - Woodlands
+     022        - WOODLANDS (022)
+     616        - WOODLANDS (616)
+     004        - WOODLANDS 888 PLAZA (004)
+     532        - WOODLANDS BRANCH
+     045        - Woodlands(045)
+     015        - WORLD TRADE CENTRE
+     937        - WORLD TRADE CENTRE
+     005        - YIO CHU KANG
+     014        - YISHUN
+     024        - Yishun
+     016        - YISHUN
+     020        - Yishun (020)
+     039        - YISHUN (039)
+     530        - YISHUN (530)
+     519        - YISHUN BRANCH
+     519        - YISHUN BRANCH
+     003        - YISHUN BRANCH
+     056        - ZHENGHUA (056)
+     012        - ZHU JIAO
+  -----
+  [10] - Credit Card Code
+  Data type is string[5]
+  If present, must match LJA_PAY_OPTIONS entries for base campaign/split.
+     13    - Global MasterCard
+     12    - Global VISA
+     32    - MayBank Master Card
+     34    - Maybank Master Card Debit Card
+     31    - MayBank Visa
+  -----
+  [11] - Tax Jurisdiction Code
+  Must be left empty
+  -----
+  [12] - Name on Billing
+  Data type is string[50]
+  -----
+  [13] - Collector Code
+  Must be "CAC  "
+  Data type is string[5]
+  This value will be set automatically for credit card and dda payment methods.
+     CAC   - Cash/Check
+  -----
+  [14] - Employee Number
+  Data type is string[20]
+  Associated primarily with ESB policies
+  -----
+  [15] - Debit Day of Month
+  Data type is int
+  -----
+  [16] - Tax Application Code
+  Field is Required
+  Data type is int
+  Value in Message Category SE (S6 Tax Application Reasons)
+     1956 - All taxes included in amount
+     2191 - Force direct tax computation on premium or benefit
+     2165 - Includes VAT only, No Stamp Duty
+     1396 - No taxes included in amount
+     2150 - Tax Charge
+     100780 - Tax Exclusion : NCB refund
+     100509 - Tax Exclusions : INA absorbing
+     101043 - Tax Exclusions : Non-resident
+     2151 - Tax Refund
+     1395 - Use normal tax rules for amount
+  -----
+  [17] - Last 5 Bill Account Number
+  Data type is string[5]
+  Last 5 Bill Account number from the Bill Account Number field in POL_PAYMENT
+
+--------------------
+TRANSACTION|[2]|[3]|[4]|[5]|[6]|[7]
+SegmentKey: TRANSACTION
+Segment is required
+--------------------
+  [2] - Effective Date
+  Field is Required
+  Data type is datetime
+  -----
+  [3] - Account ID for Session
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [4] - CorrespondenceType
+  Data type is int
+  From message category DLVRYCHN.
+     1993 - E-Mail
+     0 - None
+     1994 - Print
+     1995 - Print Preview
+     1807 - Test Print Output
+  -----
+  [5] - Free Text
+  Data type is string[400]
+  -----
+  [6] - Application Date
+  Data type is datetime
+  -----
+  [7] - Application Number
+  Data type is string[30]
+
+--------------------
+TRANNEW|SG11029610|[3]|[4]|[5]|[6]|[7]|[8]
+SegmentKey: TRANNEW
+Segment is required
+--------------------
+  [2] - Split ID
+  Field is Required
+  Must be "SG11029610"
+  Data type is string[12]
+  -----
+  [3] - Seller ID
+  Field is Required
+  Data type is string[10]
+  Free text to identify seller.
+  -----
+  [4] - Suspension Reason 1
+  Data type is int
+  Value in Message Category SS (S6 Policy Suspend Reasons)
+     101085 - Awaiting cancellation
+     1410 - Awaiting Customer GIRO Form
+     1407 - Awaiting GIRO/DDA Approval
+     1406 - Batch Assigned - Poss. Miss
+     1409 - Bounceback
+     1414 - Campaign Suspension
+     1408 - Data Incomplete
+     1412 - General Policy Hold
+     1415 - Lapsation - 2+ Months Unpaid
+     1411 - Missing Required Data Elements
+     1416 - New Registration - AutoSuspend
+     1417 - Premium Check Failed
+     100819 - ROP maturity
+     1413 - Security Hold
+     100822 - SPACE/Bot upload-retn f chking
+     100792 - U/W Pend Indemnity Approval
+  -----
+  [5] - Suspension Reason 2
+  Data type is int
+  Value in Message Category SS (S6 Policy Suspend Reasons)
+     101085 - Awaiting cancellation
+     1410 - Awaiting Customer GIRO Form
+     1407 - Awaiting GIRO/DDA Approval
+     1406 - Batch Assigned - Poss. Miss
+     1409 - Bounceback
+     1414 - Campaign Suspension
+     1408 - Data Incomplete
+     1412 - General Policy Hold
+     1415 - Lapsation - 2+ Months Unpaid
+     1411 - Missing Required Data Elements
+     1416 - New Registration - AutoSuspend
+     1417 - Premium Check Failed
+     100819 - ROP maturity
+     1413 - Security Hold
+     100822 - SPACE/Bot upload-retn f chking
+     100792 - U/W Pend Indemnity Approval
+  -----
+  [6] - Suspension Reason 3
+  Data type is int
+  Value in Message Category SS (S6 Policy Suspend Reasons)
+     101085 - Awaiting cancellation
+     1410 - Awaiting Customer GIRO Form
+     1407 - Awaiting GIRO/DDA Approval
+     1406 - Batch Assigned - Poss. Miss
+     1409 - Bounceback
+     1414 - Campaign Suspension
+     1408 - Data Incomplete
+     1412 - General Policy Hold
+     1415 - Lapsation - 2+ Months Unpaid
+     1411 - Missing Required Data Elements
+     1416 - New Registration - AutoSuspend
+     1417 - Premium Check Failed
+     100819 - ROP maturity
+     1413 - Security Hold
+     100822 - SPACE/Bot upload-retn f chking
+     100792 - U/W Pend Indemnity Approval
+  -----
+  [7] - Replaced Policy
+  Data type is string[15]
+  Prior policy that was replaced with this NEW policy.
+  -----
+  [8] - Policy Expiration Date
+  Field is Required
+  Data type is datetime
+
+--------------------
+PRODUCT|MBDT01|[3]|[4]|[5]|[6]|[7]
+SegmentKey: PRODUCT-MBDT01
+Segment is required
+Required component of @MBPK3 package.
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBDT01"
+  Data type is string[6]
+  EverDental (Dental)
+  -----
+  [3] - Coverage Code
+  Field is Required
+  Data type is int
+  Who is covered - Message category COVERAGE
+     1681 - Main Insured and Spouse
+     1680 - Main Insured Only
+     1683 - Spouse Only
+  -----
+  [4] - Number of Eligible Dependents
+  Data type is int
+  -----
+  [5] - Premium Override Amount
+  Data type is double
+  -----
+  [6] - Premium Override Expire
+  Data type is string[5]
+  If present, format MM/YY.
+  -----
+  [7] - Premium Override Reason
+  Data type is int
+  Value in Message Category SW (S6 Premium Override Reasons)
+     100829 - Goodhealth Premium
+     100604 - Incorrect Date Of Birth
+     100611 - Incorrect Prem (at Conversion)
+     100761 - Incorrect Prem (PM vs Mkt Mat)
+     100754 - Incorrect Rating Factor
+     100478 - Incorrect Sex Code Used
+     0 - None
+     100485 - Staff Premium
+
+--------------------
+INSURED|MBDT01|[3]|[4]
+SegmentKey: INSURED-MBDT01
+Segment is required
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBDT01"
+  Data type is string[6]
+  -----
+  [3] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [4] - Relationship Code
+  Field is Required
+  Data type is int
+  Must be value in INSURED message category.
+     1677 - Main Insured
+     1678 - Spouse
+
+--------------------
+RATING_GROUP|MBDT01|1|1||||||||||||||||||||
+SegmentKey: RATING_GROUP-MBDT01
+Segment is required
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBDT01"
+  Data type is string[6]
+  -----
+  [3] - Benefit Level
+  Field is Required
+  Must be "1"
+  Data type is int
+  Minimum value is 1
+  Maximum value is 1
+  Must be level allowed by PM product definition.
+     1 - Plan A                        
+  -----
+  [4] - Units
+  Field is Required
+  Must be "1"
+  Data type is double
+  Minimum value is 1
+  Maximum value is 1
+  Must be in PM product units range.
+  -----
+  [5] - Rating Factor 1
+  Must be left empty
+  -----
+  [6] - Rating Factor 2
+  Must be left empty
+  -----
+  [7] - Rating Factor 3
+  Must be left empty
+  -----
+  [8] - Rating Factor 4
+  Must be left empty
+  -----
+  [9] - Rating Factor 5
+  Must be left empty
+  -----
+  [10] - Rating Factor 6
+  Must be left empty
+  -----
+  [11] - Rating Factor 7
+  Must be left empty
+  -----
+  [12] - Rating Factor 8
+  Must be left empty
+  -----
+  [13] - Rating Factor 9
+  Must be left empty
+  -----
+  [14] - Rating Factor 10
+  Must be left empty
+  -----
+  [15] - Benefit Rating Factor 1
+  Must be left empty
+  -----
+  [16] - Benefit Rating Factor 2
+  Must be left empty
+  -----
+  [17] - Benefit Rating Factor 3
+  Must be left empty
+  -----
+  [18] - Benefit Rating Factor 4
+  Must be left empty
+  -----
+  [19] - Benefit Rating Factor 5
+  Must be left empty
+  -----
+  [20] - Benefit Rating Factor 6
+  Must be left empty
+  -----
+  [21] - Benefit Rating Factor 7
+  Must be left empty
+  -----
+  [22] - Benefit Rating Factor 8
+  Must be left empty
+  -----
+  [23] - Benefit Rating Factor 9
+  Must be left empty
+  -----
+  [24] - Benefit Rating Factor 10
+  Must be left empty
+
+--------------------
+BENEFICIARY|MBDT01|[3]|[4]
+SegmentKey: BENEFICIARY-MBDT01
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBDT01"
+  Data type is string[6]
+  -----
+  [3] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [4] - Text
+  Field is Required
+  Data type is string[400]
+  Text with beneficiary info.
+
+--------------------
+BENEF_DETAIL|MBDT01|[3]|[4]|[5]|[6]
+SegmentKey: BENEF_DETAIL-MBDT01
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBDT01"
+  Data type is string[6]
+  -----
+  [3] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [4] - Name
+  Field is Required
+  Data type is string[40]
+  Name of beneficiary
+  -----
+  [5] - Relationship
+  Field is Required
+  Data type is string[25]
+  Relationship of beneficiary (free text)
+  -----
+  [6] - Percentage
+  Field is Required
+  Data type is double
+  Percentage of benefit that goes to beneficiary (all details for product/acctid must sum to 100.0)
+
+--------------------
+EXCLUSION|MBDT01|[3]|[4]
+SegmentKey: EXCLUSION-MBDT01
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBDT01"
+  Data type is string[6]
+  -----
+  [3] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [4] - Exclusion Code
+  Field is Required
+  Data type is int
+  Value is Message Category CONV5
+
+--------------------
+PRODUCT|MBDT02|[3]|[4]|[5]|[6]|[7]
+SegmentKey: PRODUCT-MBDT02
+Segment is required
+Required component of @MBPK3 package.
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBDT02"
+  Data type is string[6]
+  EverDental (PA)
+  -----
+  [3] - Coverage Code
+  Field is Required
+  Data type is int
+  Who is covered - Message category COVERAGE
+     1681 - Main Insured and Spouse
+     1680 - Main Insured Only
+     1683 - Spouse Only
+  -----
+  [4] - Number of Eligible Dependents
+  Data type is int
+  -----
+  [5] - Premium Override Amount
+  Data type is double
+  -----
+  [6] - Premium Override Expire
+  Data type is string[5]
+  If present, format MM/YY.
+  -----
+  [7] - Premium Override Reason
+  Data type is int
+  Value in Message Category SW (S6 Premium Override Reasons)
+     100829 - Goodhealth Premium
+     100604 - Incorrect Date Of Birth
+     100611 - Incorrect Prem (at Conversion)
+     100761 - Incorrect Prem (PM vs Mkt Mat)
+     100754 - Incorrect Rating Factor
+     100478 - Incorrect Sex Code Used
+     0 - None
+     100485 - Staff Premium
+
+--------------------
+INSURED|MBDT02|[3]|[4]
+SegmentKey: INSURED-MBDT02
+Segment is required
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBDT02"
+  Data type is string[6]
+  -----
+  [3] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [4] - Relationship Code
+  Field is Required
+  Data type is int
+  Must be value in INSURED message category.
+     1677 - Main Insured
+     1678 - Spouse
+
+--------------------
+RATING_GROUP|MBDT02|1|1||||||||||||||||||||
+SegmentKey: RATING_GROUP-MBDT02
+Segment is required
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBDT02"
+  Data type is string[6]
+  -----
+  [3] - Benefit Level
+  Field is Required
+  Must be "1"
+  Data type is int
+  Minimum value is 1
+  Maximum value is 1
+  Must be level allowed by PM product definition.
+     1 - Plan A                        
+  -----
+  [4] - Units
+  Field is Required
+  Must be "1"
+  Data type is double
+  Minimum value is 1
+  Maximum value is 1
+  Must be in PM product units range.
+  -----
+  [5] - Rating Factor 1
+  Must be left empty
+  -----
+  [6] - Rating Factor 2
+  Must be left empty
+  -----
+  [7] - Rating Factor 3
+  Must be left empty
+  -----
+  [8] - Rating Factor 4
+  Must be left empty
+  -----
+  [9] - Rating Factor 5
+  Must be left empty
+  -----
+  [10] - Rating Factor 6
+  Must be left empty
+  -----
+  [11] - Rating Factor 7
+  Must be left empty
+  -----
+  [12] - Rating Factor 8
+  Must be left empty
+  -----
+  [13] - Rating Factor 9
+  Must be left empty
+  -----
+  [14] - Rating Factor 10
+  Must be left empty
+  -----
+  [15] - Benefit Rating Factor 1
+  Must be left empty
+  -----
+  [16] - Benefit Rating Factor 2
+  Must be left empty
+  -----
+  [17] - Benefit Rating Factor 3
+  Must be left empty
+  -----
+  [18] - Benefit Rating Factor 4
+  Must be left empty
+  -----
+  [19] - Benefit Rating Factor 5
+  Must be left empty
+  -----
+  [20] - Benefit Rating Factor 6
+  Must be left empty
+  -----
+  [21] - Benefit Rating Factor 7
+  Must be left empty
+  -----
+  [22] - Benefit Rating Factor 8
+  Must be left empty
+  -----
+  [23] - Benefit Rating Factor 9
+  Must be left empty
+  -----
+  [24] - Benefit Rating Factor 10
+  Must be left empty
+
+--------------------
+BENEFICIARY|MBDT02|[3]|[4]
+SegmentKey: BENEFICIARY-MBDT02
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBDT02"
+  Data type is string[6]
+  -----
+  [3] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [4] - Text
+  Field is Required
+  Data type is string[400]
+  Text with beneficiary info.
+
+--------------------
+BENEF_DETAIL|MBDT02|[3]|[4]|[5]|[6]
+SegmentKey: BENEF_DETAIL-MBDT02
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBDT02"
+  Data type is string[6]
+  -----
+  [3] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [4] - Name
+  Field is Required
+  Data type is string[40]
+  Name of beneficiary
+  -----
+  [5] - Relationship
+  Field is Required
+  Data type is string[25]
+  Relationship of beneficiary (free text)
+  -----
+  [6] - Percentage
+  Field is Required
+  Data type is double
+  Percentage of benefit that goes to beneficiary (all details for product/acctid must sum to 100.0)
+
+--------------------
+EXCLUSION|MBDT02|[3]|[4]
+SegmentKey: EXCLUSION-MBDT02
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBDT02"
+  Data type is string[6]
+  -----
+  [3] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [4] - Exclusion Code
+  Field is Required
+  Data type is int
+  Value is Message Category CONV5
+
+--------------------
+POLREF|[2]|[3]
+SegmentKey: POLREF
+--------------------
+  [2] - Reference Key
+  Field is Required
+  Data type is int
+  Must match available reference key category ('POLREF' category)
+     1691 - Prospect Reference
+     1687 - REF1
+     1696 - REF10
+     1688 - REF2
+     1689 - REF3
+     1690 - REF4
+     1692 - REF6
+     1693 - REF7
+     1694 - REF8
+     1695 - REF9
+  -----
+  [3] - Reference Text
+  Field is Required
+  Data type is string[120]
+  Free text
+
+--------------------
+INDEXATION|[2]|[3]
+SegmentKey: INDEXATION
+--------------------
+  [2] - Start Code
+  Field is Required
+  Data type is int
+  Value from Msg Category IDXSTART
+  -----
+  [3] - FreezeCode
+  Field is Required
+  Data type is int
+  Value from Msg Category IDXFREEZ
+
+--------------------
+PREMCHECK|[2]|[3]
+SegmentKey: PREMCHECK
+--------------------
+  [2] - Premium Amount
+  Field is Required
+  Data type is double
+  -----
+  [3] - PremCheck Action
+  Field is Required
+  Data type is string[7]
+  Default value is SUSPEND
+  Must be 'suspend' or 'error'. Defaults to 'suspend' if not provided.
+     suspend
+     error
+
+--------------------
+BILL|[2]
+SegmentKey: BILL
+--------------------
+  [2] - Immediate Bill Code
+  Field is Required
+  Data type is int
+  Value from message category 'IMMBILL'
+     2052 - Bill immediately
+     2051 - Bill immediately and reconcile to Paid
+     2050 - Do not bill immediately
+
+--------------------
+END
+SegmentKey: END
+Segment is required
+--------------------
+
+
+------------------------------------------------
+Classic Transaction Template (With Field Names)
+------------------------------------------------
+BEGIN|?_RunID|?_SequenceNumber|NEW|SG|?_PolicyNumber|?_ProviderID
+BASDEMO|?_AccountID|?_LastName|?_FirstName|?_MiddleName|?_Nickname|?_FormalName|?_Title|?_LanguageCode|?_PersonalID|?_NameSequenceCode|?_BirthDate|?_SexCode|?_EMailAddress|?_EMailFulfill|?_ProspectReference||?_PersonalityCode|?_ProfitCode|?_AlternateFirstName|?_AlternateLastName
+ADDRESS|?_AddressID|?_AddressLine1|?_AddressLine2|?_AddressLine3|?_AddressLine4|?_PostalCode|?_City||?_CountryCode|?_PhoneNumber|?_FaxPhone|?_CompanyCode|?_CellPhone
+ADDRTYPE|?_AccountID|?_AddressID|?_AddressTypeCode
+DEPENDENT|?_AccountID|?_DependentAccountID|?_RelationshipCode
+DIARY|?_Message
+CLAIM_DIARY|?_Message
+HEALTH_HIST|?_AccountID|?_History
+PERSDEMO|?_AccountID|?_CallPreferenceCode|?_NationalityCode|?_RaceCode|?_ReligionCode|?_EducationCode|?_OccupationCode|?_IndustryCode|?_MaritalStatusCode|?_Height|?_Weight
+SENSITIVITY|?_AccountID|?_SensitivityCode
+SENS_REMOVE|?_AccountID|?_SensitivityCode
+SUPPRESS|?_AccountID|?_Reason
+COMPLAINT|?_Reason|?_Action|?_OperatorAssigned|?_ReceivedChannel|?_Initiator|?_SourceType|?_Source|?_StandardComplaint1|?_StandardComplaint2|?_StandardComplaint3|?_StandardComplaint4|?_StandardComplaint5|?_CorrespondenceType|?_Comments
+CALLBACK|?_Reason|?_ContactPhone|?_OperatorAssigned|?_ContactPerson|?_Priority|?_CallWhen
+MASTER|?_PolicyHolderAccountID|?_PolicyHolderAddressType
+PAYMENT|?_PolicyPayerAccountID|?_PolicyPayerAddressType|?_PaymentMethodCode|?_PaymentFrequencyCode|?_BillAccountNumber|?_CreditCardExpiration|?_BankCode|?_BankBranchCode|?_CreditCardCode||?_NameOnBilling|CAC  |?_EmployeeNumber|?_DebitDayOfMonth|?_TaxApplicationCode|?_Last5BillAcctNum
+TRANSACTION|?_EffectiveDate|?_AccountID|?_CorrespondenceType|?_FreeText|?_ApplicationDate|?_ApplicationNumber
+TRANNEW|SG11029610|?_SellerID|?_SuspensionReason1|?_SuspensionReason2|?_SuspensionReason3|?_ReplacedPolicy|?_PolicyExpirationDate
+PRODUCT|MBDT01|?_CoverageCode|?_NumberOfEligibleDependents|?_PremiumOverrideAmount|?_PremiumOverrideExpire|?_PremiumOverrideReason
+INSURED|MBDT01|?_AccountID|?_RelationshipCode
+RATING_GROUP|MBDT01|1|1||||||||||||||||||||
+BENEFICIARY|MBDT01|?_AccountID|?_Text
+BENEF_DETAIL|MBDT01|?_AccountID|?_Name|?_Relationship|?_Percentage
+EXCLUSION|MBDT01|?_AccountID|?_ExclusionCode
+PRODUCT|MBDT02|?_CoverageCode|?_NumberOfEligibleDependents|?_PremiumOverrideAmount|?_PremiumOverrideExpire|?_PremiumOverrideReason
+INSURED|MBDT02|?_AccountID|?_RelationshipCode
+RATING_GROUP|MBDT02|1|1||||||||||||||||||||
+BENEFICIARY|MBDT02|?_AccountID|?_Text
+BENEF_DETAIL|MBDT02|?_AccountID|?_Name|?_Relationship|?_Percentage
+EXCLUSION|MBDT02|?_AccountID|?_ExclusionCode
+POLREF|?_ReferenceKey|?_ReferenceText
+INDEXATION|?_StartCode|?_FreezeCode
+PREMCHECK|?_PremiumAmount|?_PremCheckAction
+BILL|?_ImmediateBillCode
+END
+------------------------------------
+
+BOTLAidDataSet written to d:\s6work\BOTLAID.NEW.SG11029610.xml
+
+Finished processing at 5:39:28 PM on 1/2/2012.
+Total duration from start of program was 0 hours, 0 minutes, 4.087 seconds.
