@@ -1,3 +1,0 @@
-  [5] - Rating Factor 1
-  Must be left empty
-  -----

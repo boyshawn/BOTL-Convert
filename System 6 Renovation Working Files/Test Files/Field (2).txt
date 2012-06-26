@@ -1,4 +1,0 @@
-  [3] - Last Name (Surname)
-  Field is Required
-  Data type is string[50]
-  -----

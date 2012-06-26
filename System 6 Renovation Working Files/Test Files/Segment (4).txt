@@ -1,4 +1,0 @@
-END
-SegmentKey: END
-Segment is required
---------------------

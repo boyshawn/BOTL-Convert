@@ -1,6 +1,0 @@
-  [5] - Country Code
-  Field is Required
-  Must be "SG"
-  Data type is string[2]
-  Value in Message Category 27 (Country)
-  -----
