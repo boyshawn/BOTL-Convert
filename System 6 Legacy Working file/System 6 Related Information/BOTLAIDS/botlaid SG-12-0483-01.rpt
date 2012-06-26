@@ -1,0 +1,842 @@
+------------------------------------------------------------------------
+BOTLAID Report
+Report Date: 2012-05-28    Report Time: 15.18
+
+This BOTLAID report consists of two sections.   The first section is an
+alphabetical list of the BOTL segments that are allowed for the input
+transaction type.  This section gives information about allowable values
+for the segment fields.  The second section provides a summary of which
+segments are required or when they may used. The botlaid report plus the
+information in the botl.doc and segments.doc documents should provide a
+complete resource for building BOTL input transactions.
+------------------------------------------------------------------------
+
+--------------------
+Input Values
+--------------------
+Country is SG
+Language is 01
+BOTL Transaction is NEW
+Campaign ID is SG12048301
+
+--------------------
+Segment: ADDRESS
+--------------------
+
+[10] Codes for Message Category '36' (Provinces)...
+     none (leave empty)
+
+[11] Codes for Message Category '27' (Country)...
+     00  Home Office                     
+     SG  Singapore                       
+
+[14] Company Code...
+     00001  Berger Paints S'pore Pte Ltd    
+     00002  Wieland Metals S'pore (P) Ltd   
+     00003  Johnson & Higgins Pte Ltd       
+     00004  Visa International              
+     00005  Singapore Inst Of Management    
+     00006  3M Singapore Pte Ltd            
+     00007  Imation Singapore Pte Ltd       
+     00008  Jurong Engineering Ltd          
+     00010  St Paul Re Management Pte Ltd   
+     00011  NCR Singapore Pte Ltd           
+     00012  Singapore Press Holdings Ltd    
+     00013  Times Periodicals Pte Ltd       
+     00014  Times Properties Pte Ltd        
+     00015  Delco Electronics S P L         
+     00016  L & M Group                     
+     0009   United Airlines Inc             
+     0017   Air Express Intl S P L          
+     0018   Getz Bros & Co                  
+     0019   Becton Dickinson & Co           
+     0020   Marsh & Mclennan P L            
+     0021   Tan Tock Seng Hospital          
+     0023   J&H Marsh & McLennan Pte Ltd    
+     0024   HSBC Capital (Asia) Pte Ltd     
+     0025   Segwick Private Limited         
+     0026   Sedgwick Management Services    
+     0027   Sedgwick Asia Pacific Pte Ltd   
+     0028   HSBC Capitals (Asia) P L        
+     0029   Ecolab Pte Ltd                  
+     0030   HSBC Gibbs Insurance Brokers    
+     0031   AMP Manufacturing (S) P L       
+     0032   Hilti Far East Pte Ltd          
+     0033   Wayfoong Mortgage & Finance S   
+     0034   Sedgwick Re Asia Pacific P L    
+     0035   Walter Wright Mammoet S P L     
+     22     Oceanic Textiles Pte Ltd        
+     0036   CIGNA Worldwide Inc (SEARO)     
+     0037   CIGNA Insurance S Ltd           
+     0038   Maxtor Peripherals (S) P L      
+     0039   Otis Elevator Co (S) P L        
+     0040   Merrill Lynch Int'l Bank Ltd    
+     0041   Seagate Technology Int'l        
+     0042   TAS                             
+     0043   ACE Insurance Limited           
+     0044   Sonoco Singapore Pte Ltd        
+     0045   HLN Promax                      
+     1      Bedok Transport Pte Ltd         
+     2      Lian Yick Construction Pte Ltd  
+     003    rocket-x                        
+     21     Rocket-x                        
+     004    ZQ International Pte Ltd        
+     3      c/o Fyfe Asia Pte Ltd           
+     4      c/o Fibrwrap Construction PL    
+     5      China Heping Construction       
+     6      Bridge Oil Far East Pte Ltd     
+     7      Yoo Seong Engineering Pte Ltd   
+     8      KSC Construction Pte Ltd        
+     9      Retailtech Systems Pte Ltd      
+     10     Hi-Tech Electronics Pte Ltd     
+     11     Enercon Sytems Intl L.L.C       
+     12     Exclusiv International Pte Ltd  
+     13     Master Express Engineering Pte  
+     14     NKH Construction Equipment P L  
+     15     Komars Holding Pte Ltd          
+     16     Earnson Management (S) Pte Ltd  
+     17     Marubeni International          
+     02     Alpine Engineering Svs PL       
+     18     Ban Hock Hin Co Pte Ltd         
+     01     Heatec Jietong Pte Ltd          
+     03     Alpine Engineering Services PL  
+     23     HLN Metal Centre Pte Ltd        
+     19     1st Base Pte Ltd                
+
+--------------------
+Segment: ADDRTYPE
+--------------------
+
+[ 4] Codes for Message Category '39' (Address Types)...
+     01  Home                            
+     02  Mail                            
+     03  Work                            
+     15  Property                        
+     aa  Email                           
+     ab  Temphome                        
+     ac  Tempwork                        
+     D3  Vacation                        
+
+--------------------
+Segment: BASDEMO
+--------------------
+
+[ 9] Codes for Message Category '3 ' (Caller Title)...
+     01  Mr                              
+     02  Mrs                             
+     03  Ms                              
+     04  Dr                              
+     05  Miss                            
+     06  Mdm                             
+     09  Prof                            
+
+[10] Codes for Message Category '21' (Customer Category)...
+     none (leave empty)
+
+[14] Codes for Message Category 'ZA' (Name sequence combination)...
+     01  Surname, First                  
+     02  Surname, First , Middle         
+     03  Middle , Surname, First         
+     04  First , Surname                 
+     05  Middle , Surname                
+     06  First , Middle , Surname        
+     07  Middle , First , Surname        
+     08  Surname, Middle                 
+     09  First , Middle                  
+     10  Middle , First                  
+     11  First , Surname, Middle         
+     12  Surname, Middle , First         
+     13  Surname                         
+     14  First, Middle, Surname-Nicknam  
+
+[16] Codes for Message Category '16' (Sex)...
+     01  Male                            
+     02  Female                          
+
+--------------------
+Segment: BEGIN
+--------------------
+
+[ 4] Transaction Code is NEW
+
+[ 5] Country Code is SG
+
+--------------------
+Segment: DEPENDENT
+--------------------
+
+[ 5] Codes for Message Category '32' (Relationships)...
+     01  Husband                         
+     02  Wife                            
+     03  Son                             
+     04  Daughter                        
+     05  Dependent                       
+     06  Father                          
+     07  Mother                          
+     08  Spouse                          
+     09  Mother-In-Law                   
+     10  Father-In-Law                   
+     99  Unknown                         
+     aa  3rdContact                      
+     ab  Sister                          
+     ac  Niece                           
+     ad  Nephew                          
+     ae  Sister-In-Law                   
+     af  Brother                         
+     ag  relative                        
+     ah  friend                          
+     BN  Beneficiary                     
+     PH  Policy Holder                   
+
+--------------------
+Segment: EXCLUSION
+--------------------
+
+No exclusions are defined so this segment cannot be used.
+
+--------------------
+Segment: INDEXATION
+--------------------
+
+Campaign/Split SG12048301 is not indexed so no INDEXATION segment is needed.
+
+--------------------
+Segment: INSURED  (for product WSPAB1)
+--------------------
+
+General Product Info for Insured...
+Product is GROUP rated.
+
+[ 3] Product ID is WSPAB1
+
+[ 5] Relationship Codes...
+     MI  Main Insured (Policy Holder)
+     SP  Spouse
+     DP  Dependent
+
+[ 6] Leave empty (Benefit Levels not used for group-rated product)
+
+[ 7] Leave empty (Benefit Units not used for group-rated product)
+
+[ 8] Leave empty (Rating factor not used for group-rated product)
+
+[ 9] Leave empty (Rating factor not used for group-rated product)
+
+[10] Leave empty (Rating factor not used for group-rated product)
+
+[11] Leave empty (Rating factor not used for group-rated product)
+
+[12] Leave empty (Rating factor not used for group-rated product)
+
+[13] Leave empty (Rating factor not used for group-rated product)
+
+[14] Leave empty (Rating factor not used for group-rated product)
+
+[15] Leave empty (Rating factor not used for group-rated product)
+
+--------------------
+Segment: MASTER
+--------------------
+
+[ 3] Codes for Message Category '39' (Address Types)...
+     01  Home                            
+     02  Mail                            
+     03  Work                            
+     15  Property                        
+     aa  Email                           
+     ab  Temphome                        
+     ac  Tempwork                        
+     D3  Vacation                        
+
+--------------------
+Segment: PERSDEMO
+--------------------
+
+[ 4] Codes for Message Category '15' (Prefer Callback)...
+     00  Not Applicable                  
+     T1  AM                              
+     T2  PM                              
+
+[ 5] Codes for Message Category '6 ' (Nationality)...
+     01  Singaporean                     
+     02  Malaysian                       
+     03  Indonesian                      
+     04  Bruneian                        
+     05  Thai                            
+     06  Japanese                        
+     07  French                          
+     08  British                         
+     09  American                        
+     10  Taiwanese                       
+     11  Hongkongers                     
+     12  Vietnamese                      
+     13  Burmese                         
+     14  Korean                          
+     15  Australian                      
+     aa  New Zealander                   
+     ab  Others                          
+
+[ 6] Codes for Message Category '7 ' (Race)...
+     01  Chinese                         
+     02  Malay                           
+     03  Indian                          
+     04  Eurasian                        
+     05  Caucasian                       
+     06  Japanese                        
+
+[ 7] Codes for Message Category '8 ' (Religion)...
+     01  Taoism                          
+     02  Buddhism                        
+     03  Christianity                    
+     04  Nicheren Shoshu                 
+     05  Roman Catholicism               
+     06  Free Thinker                    
+     07  Islam                           
+     08  Hinduism                        
+     09  Sikhism                         
+     99  Others                          
+
+[ 8] Codes for Message Category '9 ' (Education)...
+     01  Ph.D                            
+     02  Masters                         
+     03  Honours                         
+     04  Degree                          
+     06  Diploma                         
+     07  GCE A Level                     
+     08  GCE O Level                     
+     09  GCE N Level                     
+     11  Primary                         
+     99  Others                          
+
+[ 9] Codes for Message Category '5 ' (Language)...
+     01  English                         
+     02  Spanish                         
+     03  Danish                          
+     04  Dutch                           
+     06  Finnish                         
+     07  French                          
+     08  German                          
+     09  Greek                           
+     10  Hebrew                          
+     11  Hindi                           
+     12  Hungarian                       
+     13  Indonesian                      
+     14  Italian                         
+     15  Japanese                        
+     16  Klingon                         
+     17  Norwegian                       
+     18  Philippine                      
+     19  Polish                          
+     20  Portuguese                      
+     21  Afrikaans                       
+     22  Swedish                         
+     23  Thai                            
+     24  Turkish                         
+     25  Vietnamese                      
+     26  Welsh                           
+     27  Mandarin                        
+     28  Cantonese                       
+
+[10] Codes for Message Category '10' (Occupation)...
+     00  All Job Type                    
+     10  Legislator, Mgr.& Sr.Officials  
+     20  Professionals                   
+     30  Technicians & Assoc.Profession  
+     40  Clerical Workers                
+     50  Service, Shop & Market Sales    
+     60  Agriculture & Fishery Workers   
+     70  Production Craftsmen & others   
+     80  Plant and Machine Operators     
+     90  DO NOT USE orgl-see SG occ cd   
+
+[11] Industry Code...
+     001  Banking & Finance               
+     002  Transportation                  
+     003  Government                      
+     004  Military                        
+     005  Singapore Police Force          
+     006  Advertising                     
+     007  Architect                       
+     008  Aerospace/Aviation              
+     009  Airlines                        
+     010  Athletics/Sports                
+     011  Biotechnology                   
+     012  Building & Construction         
+     013  Electronics                     
+     014  Engineering                     
+     015  Fashion                         
+     016  F&B                             
+     017  Freight Forwarding/Delivery     
+     018  Hotel & Restaurant              
+     019  Healthcare/Medical              
+     020  Information Technology/Multime  
+     021  Manufacturing                   
+     022  Arts/Entertainment/Media        
+     023  Models/Singers/Musicians        
+     024  Energy/Mining/Oil & Gas         
+     025  Property/Real Estate            
+     026  Retail & Services               
+     027  Social & Community Services     
+     028  Education                       
+     029  Tourism                         
+     030  Arts & Entertainment            
+     031  Automobile/Transportation       
+     032  Business                        
+     033  Consulting                      
+     034  Insurance                       
+     035  Law/Legal                       
+     036  Sales & Marketing               
+     037  Telecommunication               
+     099  Others                          
+     038  Administrative & Support        
+     039  Human Resources                 
+     040  Marine                          
+     041  Religion                        
+     042  Research & Development          
+     043  Not Applicable                  
+     044  Optometry                       
+     045  Leisure/Recreation              
+     046  Chemicals                       
+
+[12] Credit Card Codes...
+     11  American Express                
+     12  Global VISA                     
+     13  Global MasterCard               
+     14  Diners Club                     
+     15  Daimaru                         
+     16  Cold Storage                    
+     17  Yaohan                          
+     18  C. K. Tang                      
+     19  CitiBank Visa                   
+     20  CitiBank US$ VISA               
+     21  HongKong Bank VISA              
+     22  StandardChartered VISA          
+     23  CitiBank Master Card            
+     24  HongKong Bank Master Card       
+     25  StandardChartered Master Card   
+     26  IMM Card                        
+     27  DBS Visa                        
+     28  DBS MasterCard                  
+     29  Bank of China Visa              
+     30  Bank of China MasterCard        
+     31  MayBank Visa                    
+     33  JCB Visa Card                   
+     32  MayBank Master Card             
+     34  Maybank Master Card Debit Card  
+     35  UOB Platinum Visa               
+     36  UOB Gold Visa                   
+     38  American Express(Telemoney)     
+     39  Global Visa (Telemoney)         
+     37  Global Master (Telemoney)       
+     99  Amex Creditors Plan             
+
+[13] See Previous Credit Card Codes ...
+
+[14] See Previous Credit Card Codes ...
+
+[15] See Previous Credit Card Codes ...
+
+[16] See Previous Credit Card Codes ...
+
+--------------------
+Segment: POLICY
+--------------------
+
+[ 3] Payment Method Codes...
+     10  Credit Card Billing             
+     30  Direct Billing                  
+     50  GIRO                            
+
+[ 4] Payment Frequency Codes...
+     A   Annual                          
+     M   Monthly                         
+     Q   Quarterly                       
+
+[ 9] Credit Card Codes for Credit Card Payments (Payment Method '10')...
+     11  American Express                
+     12  Global VISA                     
+     13  Global MasterCard               
+
+[10] Tax Jurisdiction Codes...
+     **  Default Tax Jurisdiction
+
+[15] Presentation Currency...
+     65  Singapore Dollar                
+     99  Euro
+
+--------------------
+Segment: PRODUCT (for product WSPAB1)
+--------------------
+
+General Product Info...
+Product is GROUP rated.
+Beneficiary is not allowed.
+Exclusions are not permitted.
+Main Insured Age Limitations - Max: 70  Min: 18  Renew: 74
+Spouse Age Limitations       - Max: 70  Min: 18  Renew: 74
+Dependent Age Limitations    - Max: 22  Min:  0  Renew: 24
+
+[ 3] Product ID is WSPAB1
+
+[ 4] Coverage Type Code...
+     MO  Main Insured Only
+     MS  Main Insured and Spouse
+     MF  Main Insured and Family
+     MD  Main Insured and Dependents
+     SO  Spouse Only
+     SD  Spouse and Dependents
+
+[ 5] Benefit Levels (1 to 5).
+
+There are 0 rating factor(s) for this product.
+
+[ 7] No rating factor, leave empty.
+
+[ 8] No rating factor, leave empty.
+
+[ 9] No rating factor, leave empty.
+
+[10] No rating factor, leave empty.
+
+[11] No rating factor, leave empty.
+
+[12] No rating factor, leave empty.
+
+[13] No rating factor, leave empty.
+
+[14] No rating factor, leave empty.
+
+[15] Benefit Units (1.000000 to 1.000000).
+
+[16] Codes for Message Category 'SE' (S6 Tax Exclusion Reasons)...
+     00  No Tax Exclusions               
+     01  Tax Exclusions : Non-resident   
+     02  Tax Exclusions : INA absorbing  
+     03  Tax Exclusion : NCB refund      
+     99  Exclude All Taxes               
+
+[19] Codes for Message Category 'SW' (S6 Premium Override Reasons)...
+     aa  Incorrect Date Of Birth         
+     ab  Incorrect Sex Code Used         
+     ac  Incorrect Rating Factor         
+     ad  Incorrect Prem (at Conversion)  
+     ae  Staff Premium                   
+     af  Incorrect Prem (PM vs Mkt Mat)  
+     ag  Goodhealth Premium              
+
+There are 0 benefit rating factor(s) for this product.
+
+[20] No benefit rating factor, leave empty.
+
+[21] No benefit rating factor, leave empty.
+
+[22] No benefit rating factor, leave empty.
+
+[23] No benefit rating factor, leave empty.
+
+[24] No benefit rating factor, leave empty.
+
+[25] No benefit rating factor, leave empty.
+
+[26] No benefit rating factor, leave empty.
+
+[27] No benefit rating factor, leave empty.
+
+--------------------
+Segment: PROD_DATA  (for product WSPAB1)
+--------------------
+
+Product does not permit specific data values, so prod_data segment is not valid.
+
+--------------------
+Segment: SENSITIVITY
+--------------------
+
+[ 3] Codes for Message Category '42' (Sensitivity Code)...
+     01  Senior Govt Official            
+     02  Chief Justice                   
+     03  Competitor                      
+     04  Bad Account                     
+     05  Staff Account                   
+     06  Sensitive                       
+     07  Sponsor - biz partner           
+     08  Missing : date of birth         
+     09  Missing : telephone number      
+     10  Returned mail : No such addres  
+     11  Insurance Agent                 
+     12  Diplomat                        
+     13  Regular Claimant                
+     14  Holder of Multiple Policies     
+     15  No Further Enrolment            
+     16  Hazardous Occupation            
+     17  SAF Personnel                   
+     18  Medical Excl - See Indiv Pol    
+     19  Law Enforcement Ofr/Civil Def   
+     20  No Call - Home                  
+     21  No Call - Home & Office         
+     22  No Call - Office                
+     23  No Further HIP Enrolment        
+     99  Complaint Registered            
+     aa  Refer diary message             
+     aA  TM Uncontactable                
+     ab  No correspondence to Customer   
+     aB  Refrain from TM activity        
+     ac  Driver                          
+     aC  See Brokerage on payment hist   
+     ad  Citibank Staff                  
+     aD  Suspicious Claim(s)             
+     ae  No Further PA Enrolment         
+     aE  Refrain from SMS blast          
+     af  Do not change ph name sequence  
+     aF  Unsubscribe-Email               
+     ag  Taxi Driver                     
+     ah  No PH DD Enrolment              
+     ai  No Spouse Enrolment             
+     aj  No Spouse PA Enrolment          
+     ak  No Spouse HIP Enrolment         
+     al  No Spouse DD Enrolment          
+     am  Spouse Hazardous Occupation     
+     an  Spouse Insurance Agent          
+     ao  Spouse Medical Exc-See Ind Pol  
+     ap  No Dependent Enrolment          
+     aq  No Dependent PA Enrl            
+     ar  No Dependent HIP Enrl           
+     as  Refer Herman Diary              
+     at  Deceased                        
+     au  Refer Over-Insured Spreadsheet  
+     av  Child Med Excl-See Ind Policy   
+     aw  Spouse Deceased                 
+     ax  Exceed u/w limit for HIP        
+     ay  Exceed u/w limit for PA         
+     az  No Upgrade of Plan              
+
+--------------------
+Segment: SUPPRESS
+--------------------
+
+[ 4] Codes for Message Category '37' (Suppression Code)...
+     01  No Promotional Mail             
+     02  No Call - Home                  
+     03  No Call - Office                
+     04  No Call - Home and Office       
+     99  Fulfillment via Email           
+
+--------------------
+Segment: TRANNEW
+--------------------
+
+General Campaign Info for campaign SG12048301...
+Product for campaign is WSPAB1
+
+[ 4] Codes for Message Category 'SS' (S6 Policy Suspend Reasons)...
+     00  Batch Assigned - Poss. Miss     
+     01  Awaiting GIRO/DDA Approval      
+     02  Data Incomplete                 
+     03  Bounceback                      
+     04  Awaiting Customer GIRO Form     
+     05  Missing Required Data Elements  
+     06  General Policy Hold             
+     07  Security Hold                   
+     08  U/W Pend Indemnity Approval     
+     87  Campaign Suspension             
+     98  Lapsation - 2+ Months Unpaid    
+     99  New Registration - AutoSuspend  
+     aa  Awaiting cancellation           
+     ab  ROP maturity                    
+     ac  SPACE/Bot upload-retn f chking  
+     PF  Premium Check Failed            
+
+--------------------
+Segment: NEWACT
+--------------------
+
+[ 4] Codes for Message Category '27' (Valid Country Codes)...
+     00  Home Office                     
+     aa  Europe                          
+     ab  Myanmar                         
+     ac  Laos                            
+     ad  Guam                            
+     ae  Maldives                        
+     af  Bhutan                          
+     ag  Fiji                            
+     ah  Asean                           
+     ai  Worldwide                       
+     aj  Bahrain                         
+     ak  United Arab Emirates            
+     al  Czech Republic                  
+     am  Caribbean                       
+     an  Mali                            
+     ao  Asia                            
+     ap  Tibet                           
+     aq  Regional                        
+     ar  South East Asia                 
+     as  Worldwide excl USA/Canada       
+     AF  Afghanistan                     
+     AG  Algeria                         
+     AL  Albania                         
+     AN  Angola                          
+     AR  Argentina                       
+     AS  Austria                         
+     AU  Australia                       
+     BA  Bangladesh                      
+     BE  Belgium                         
+     BM  Burma                           
+     BO  Bolivia                         
+     BR  Brunei                          
+     BU  Bulgaria                        
+     BZ  Brazil                          
+     CA  Canada                          
+     CH  Chile                           
+     CM  Cambodia                        
+     CN  China                           
+     CO  Colombia                        
+     CR  Costa Rica                      
+     CU  Cuba                            
+     CY  Cyprus                          
+     CZ  Czechoslovak                    
+     DE  Denmark                         
+     DR  Dominican Rp                    
+     EC  Ecuador                         
+     EG  Egypt                           
+     ES  El Salvador                     
+     ET  Ethiopia                        
+     FI  Finland                         
+     FR  France                          
+     GA  Gambia                          
+     GE  Germany                         
+     GH  Ghana                           
+     GR  Greece                          
+     GT  Guatemala                       
+     GU  Guinea                          
+     HA  Haiti                           
+     HK  Hong Kong                       
+     HO  Honduras                        
+     HU  Hungary                         
+     IA  Iran                            
+     IC  Iceland                         
+     ID  India                           
+     IN  Indonesia                       
+     IQ  Iraq                            
+     IR  Ireland                         
+     IS  Israel                          
+     IT  Italy                           
+     JA  Jamaica                         
+     JO  Jordan                          
+     JP  Japan                           
+     KE  Kenya                           
+     KR  Korea                           
+     KU  Kuwait                          
+     LA  LARO                            
+     LB  Libya                           
+     LE  Lebanon                         
+     LI  Liberia                         
+     LR  LARO Fac-Re                     
+     LU  Luxembourg                      
+     MA  Malaysia                        
+     MC  Macau                           
+     MD  Madagasca                       
+     ME  Middle East                     
+     ML  Malawi                          
+     MO  Mongolia                        
+     MR  Morocco                         
+     MT  Malta                           
+     MU  Mauritius                       
+     MX  Mexico                          
+     MZ  Mozambique                      
+     NE  Netherlands                     
+     NG  Nigeria                         
+     NI  Nicaragua                       
+     NP  Nepal                           
+     NW  Norway                          
+     NZ  New Zealand                     
+     PA  Panama                          
+     PE  Peru                            
+     PG  Paraguay                        
+     PH  Philippines                     
+     PK  Pakistan                        
+     PN  Papua New Gn                    
+     PO  Poland                          
+     PR  Puerto Rico                     
+     PT  Portugal                        
+     RO  Romania                         
+     SA  South Africa                    
+     SD  Saudi Arabia                    
+     SE  Seychelles                      
+     SG  Singapore                       
+     SL  Sierra Leone                    
+     SP  Spain                           
+     SR  Sri Lanka                       
+     SU  Sudan                           
+     SW  Sweden                          
+     SY  Syria                           
+     SZ  Switzerland                     
+     TA  Tanzania                        
+     TH  Thailand                        
+     TK  Turkey                          
+     TO  Tonga                           
+     TU  Tunisia                         
+     TW  Taiwan                          
+     UG  Uganda                          
+     UK  United Kingdom                  
+     UR  Russia                          
+     US  USA                             
+     UY  Uruguay                         
+     VI  US Virgin Islands               
+     VN  Vietnam                         
+     VZ  Venezuela                       
+     YU  Yugoslavia                      
+     ZA  Zaire                           
+     ZB  Zimbabwe                        
+     ZM  Zambia                          
+
+--------------------
+Segment: DIARY
+--------------------
+[2]  Account ID
+[3]  Message
+
+--------------------
+Segment: HEALTH HISTORY
+--------------------
+[2]  Account ID
+[3]  Health History
+
+--------------------
+Segment: PROSREF
+--------------------
+[2]  new|update
+[3]  Prospect ID
+[4]  Prospect Reference
+
+
+----------------------------------------------------------------------------
+Transaction Segments Allowed for BOTL NEW Transaction
+----------------------------------------------------------------------------
+
+Segment                Comments
+---------------------  -------------------------------------------
+begin                  Required
+trannew                Required
+transaction            Required
+basdemo                Provide as needed to add new customer or update existing customer.
+address                Provide as needed to add new address or update existing address.
+addrtype               Provide as needed to assign addresses to customers.
+dependent              Provide as needed to add dependents.
+indexation             Provide for indexed products to set or update indexation information.
+sensitivity            Provide as needed to add sensitivity to account.
+suppress               May supply one per customer.
+persdemo               Provide as needed to add new persdemo or update existing persdemo.
+master                 Required
+policy                 Required
+premcheck              Optional.
+billdates              Optional.
+newact                 May supply one instance for travel policies only.
+prod_data              Product specific data may be entered, if product allows it.
+diary                  Provide as needed to add diary message for customer.
+health history         Provide as needed to add health history for customer.
+prosref                Provide as needed to add Prospect Reference.
+
+product|new|WSPAB1     Required.
+insured|new|WSPAB1     Required for each insured for product.
+
+end                    Required

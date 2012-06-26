@@ -1,0 +1,1 @@
+n:\system6\runtime\botl /ini=greendot.ini

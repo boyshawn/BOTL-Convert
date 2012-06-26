@@ -1,0 +1,415 @@
+*****************************************************************************************************************************************************
+BOTL Manager Report - BOTL Segment Definitions for Release 4
+Report Time: 1/2/2012 2:31:20 PM
+*****************************************************************************************************************************************************
+ 
+Field Comments
+- The "Req'd New" field indicates whether a field value must be present when it is part of an element that is new vs. an element being updated.
+- All dates must be specified in ISO format, e.g. 2006-12-15
+ 
+                                                                  Max  Database                             Req'd
+Tag                #  Field Name                         Type     Size Variable                             New    Description/Comments
+------------------ -- ---------------------------------- -------- ---- ------------------------------------ ------ ----------------------------------------------------
+ADDRESS             1 Tag                                string     25 -                                    yes    Must be 'ADDRESS'
+                    2 AddressID                          int        10 ic2_address.addr_id                  yes    For new address value is system generated value so provide macro name, e.g. $_addr1.
+                    3 AddressLine1                       string     80 ic2_address.addr1                    yes    
+                    4 AddressLine2                       string     80 ic2_address.addr2                    no     
+                    5 AddressLine3                       string     80 ic2_address.addr3                    no     
+                    6 AddressLine4                       string     80 ic2_address.addr4                    no     
+                    7 PostalCode                         string     15 ic2_address.post_code                yes    
+                    8 City                               string     40 ic2_address.city                     no     
+                    9 ProvinceCode                       int        10 ic2_address.province                 no     Value in Message Category 36 (Provinces)
+                   10 CountryCode                        int        10 ic2_address.country                  no     Value in Message Category 27 (Country)
+                   11 PhoneNumber                        string     20 ic2_address.phone                    no     
+                   12 FaxPhone                           string     20 ic2_address.faxphone                 no     
+                   13 CompanyCode                        string      5 ic2_address.company_key              no     If present, must match entry in IC2_COMPANY_ADDR table.
+                   14 CellPhone                          string     20 ic2_address.cellphone                no     
+ 
+ADDRTYPE            1 Tag                                string     25 -                                    yes    Must be 'ADDRTYPE'
+                    2 AccountID                          string      9 ic2_addr_type.acctid                 yes    Primary Account ID.  May use macro representing account id.
+                    3 AddressID                          int        10 ic2_addr_type.addr_id                yes    
+                    4 AddressTypeCode                    int        10 ic2_addr_type.addr_cd                yes    Value in Message Category 39 (Address Types)
+ 
+BASDEMO             1 Tag                                string     25 -                                    yes    Must be 'BASDEMO'
+                    2 AccountID                          string      9 ic2_basdemo.acctid                   yes    For new customers value is system generated value so create a macro name to represent the customer, e.g. $_acct1.
+                    3 LastName                           string     50 ic2_basdemo.lastname                 yes    
+                    4 FirstName                          string     50 ic2_basdemo.firstname                yes    
+                    5 MiddleName                         string     55 ic2_basdemo.middlename               no     
+                    6 Nickname                           string     15 ic2_basdemo.nickname                 no     
+                    7 FormalName                         string    150 ic2_basdemo.formalname               no     Will be built if not provided.
+                    8 Title                              int        10 ic2_basdemo.title                    no     Value in Message Category 3 (Caller Title)
+                    9 LanguageCode                       int        10 ic2_basdemo.language                 no     Value in Message Category 5  (Language)
+                   10 PersonalID                         string     30 ic2_basdemo.personalid               no     
+                   11 NameSequenceCode                   int        10 ic2_basdemo.nameseq                  yes    Value in Message Category ZA (Name sequence combination)
+                   12 BirthDate                          datetime   10 ic2_basdemo.birthdate                no     
+                   13 SexCode                            int        10 ic2_basdemo.sex                      no     Value in Message Category 90000 (Sex)
+                   14 EMailAddress                       string     80 ic2_basdemo.email_addr               no     
+                   15 EMailFulfill                       string      1 ic2_basdemo.email_fullfill           no     Value is 'Y' if email fulfillment is desired, 'N' otherwise. 'N' is default.
+                   16 ProspectReference                  string     30 ic2_basdemo.prosref                  no     
+                   17 CategoryCode                       int        10 ic2_basdemo.cat                      no     Value in Message Category 21 (Customer Category)
+                   18 PersonalityCode                    string      2 ic2_basdemo.personality              no     
+                   19 ProfitCode                         string      2 ic2_basdemo.profit                   no     
+                   20 AlternateFirstName                 string     50 ic2_basdemo.thai_first_name          no     
+                   21 AlternateLastName                  string     50 ic2_basdemo.thai_last_name           no     
+ 
+BASDEMO_JP          1 Tag                                string     25 -                                    yes    Must be 'BASDEMO_JP' - for Japan only.
+                    2 AccountID                          string      9 ic2_basdemo.acctid                   yes    If new account ID, use account ID from basdemo segment to identify the customer.
+                    3 SpecialFormalName                  string     50 ic2_basdemo.spec_formal_name         no     
+                    4 EmperorDate                        string     20 ic2_basdemo.emperor_date             no     
+ 
+BEGIN               1 Tag                                string     25 -                                    yes    Must be 'BEGIN'
+                    2 RunID                              string     20 bmgr_runid                           yes    Identifies the BOTL run
+                    3 SequenceNumber                     int        10 -                                    yes    All transactions require a unique sequence within a run.
+                    4 TransactionCode                    string      3 tran_code                            yes    One of...ACT,ADD,ADJ,AJR,CAN,CAR,CPN,CPR,END,IDN,NEW,PND,PNR,RNS,UPC
+                    5 CountryCode                        string      2 bmgm_country                         yes    Value in Message Category 27 (Country)
+                    6 PolicyNumber                       string     15 policy                               no     Blank is normal for NEW transactions. May provide policy for NEW transactions to pre-assign policy number.
+                    7 ProviderID                         string     30                                      no     This value may, optionally, be assigned by an external provider as a cross reference from the external provider to the policy or transaction.
+ 
+BENEFICIARY         1 Tag                                string     25 -                                    yes    Must be 'BENEFICIARY'
+                    2 ProductID                          string      6 pol_beneficiary.product_id           yes    
+                    3 AccountID                          string      9 pol_beneficiary.acctid               yes    May use macro representing account id.
+                    4 Text                               string    400 pol_beneficiary.free_text            yes    Text with beneficiary info.
+ 
+BENEF_DETAIL        1 Tag                                string     25 -                                    yes    Must be 'BENEF_DETAIL'
+                    2 ProductID                          string      6 pol_benef_detail.product_id          yes    
+                    3 AccountID                          string      9 pol_benef_detail.acctid              yes    May use macro representing account id.
+                    4 Name                               string     40 pol_benef_detail.name                yes    Name of beneficiary
+                    5 Relationship                       string     25 pol_benef_detail.relationship        yes    Relationship of beneficiary (free text)
+                    6 Percentage                         double     12 pol_benef_detail.percentage          yes    Percentage of benefit that goes to beneficiary (all details for product/acctid must sum to 100.0)
+ 
+BILL                1 Tag                                string     25 -                                    yes    Must be 'BILL'
+                    2 ImmediateBillCode                  int        10 -                                    yes    Value from message category 'IMMBILL'
+ 
+BILLDATES           1 Tag                                string     25 -                                    yes    Must be 'BILLDATES'
+                    2 BilledToDate                       datetime   10 pol_master.billed_to                 no     
+                    3 PaidToDate                         datetime   10 pol_master.paid_to                   no     
+ 
+CALLBACK            1 Tag                                string     25 -                                    yes    Must be 'CALLBACK'
+                    2 Reason                             string   3000 ic2_CALLBACK.Reason                  yes    Must provide the Reason for call back.
+                    3 ContactPhone                       string     20 ic2_CALLBACK.Phone                   yes    Must provide contact phone number of the person for call back.
+                    4 OperatorAssigned                   String     15 ic2_CALLBACK.Assign_Oper             yes    Must assign operator code for new call back.
+                    5 ContactPerson                      string    150 ic2_CALLBACK.Name                    no     If customer name is provided in this field it will consider, else it will update the name of the customer associated with this Acct Id.
+                    6 Priority                           int         4 ic2_CALLBACK.Priority                yes    Must assign the priority value for the call back. Value from Message Category ZZ (Priority)
+                    7 CallWhen                           Timestamp   10 ic2_CALLBACK.CallWhen                yes    Must assign the callwhen Timestamp value for the call back. It should be in 'YYYY-MM-dd hh:mm' format.
+ 
+CARDREG             1 Tag                                string     25 -                                    yes    Must be 'CARDREG'
+                    2 NewOrUpdate                        string      6 -                                    yes    Must be 'new' or 'update'
+                    3 CardID                             int        10 clst_id                              no     Must be empty if 'new' it will be set to (MAX(clst_id) 1) if at least one row exists
+                    4 AccountID                          string      9 clst_acctid                          yes    May use macro for account id.   This is the policy holder account id.
+                    5 ProductID                          string      6 clst_product                         yes    
+                    6 CardTypeID                         string      9 cct_type_id                          yes    
+                    7 CardAccountNumber                  string     20 clst_card                            yes    
+                    8 CardHolderName                     string     50 clst_holder                          no     
+                    9 Remark1                            string     50 clst_remark1                         no     
+                   10 Remark2                            string     50 clst_remark2                         no     
+                   11 CardStatus                         int        10 clst_status                          no     Defaults to 1 - 'Active Status' 0 - Inactive Status
+                   12 OperatorID                         string      2 clst_operid                          yes    
+                   13 CancelReason                       string      2 clst_canc_reason                     no     Must match msgd_id for msgd_category 'SF'. Should be empty if 'Active' status.
+                   14 LostCardTimestamp                  datetime   10 clst_los_timestamp                   no     Leavy empty if status is 'Active' - Date stored in timestamp format
+                   15 LostCardLocation                   string     50 clst_los_location                    no     Leave empty if status is 'Active'
+                   16 IssuerResponse                     string      2 clst_iss_resp                        no     Must match msgd_id for msgd_category 'SG'. Should be empty if 'Active' status.
+                   17 IssuerResponseDate                 datetime   10 clst_iss_resp_date                   no     Leave empty if status is 'Active' - Stored as timestamp format.
+                   18 ReportTimestamp                    string     26 clst_rpt_timestamp                   no     Leave empty if status is 'Active'. Defaults to current timestamp
+                   19 CorrespondenceType                 int        10 -                                    yes    From message category DLVRYCHN.
+ 
+CLAIM_DIARY         1 Tag                                string     25 -                                    yes    Must be 'CLAIM_DIARY'
+                    2 Message                            string   10500 ic2_claim_diary.comment              yes    
+ 
+COMPLAINT           1 Tag                                string     25 -                                    yes    Must be 'COMPLAINT'
+                    2 Reason                             int         4 ic2_COMPLAIN.Reason                  yes    Must be 'new'and Reason for Complaint. Value from Message Category C5 (Reason)
+                    3 Action                             int         4 ic2_COMPLAIN.Action                  yes    Must provide complaint Action for new complaint. Value from Message Category C3 (Action)
+                    4 OperatorAssigned                   string     15 ic2_COMPLAIN.Assign_Oper             yes    Must assign operator for new complaint.
+                    5 ReceivedChannel                    int         4 ic2_COMPLAIN.Recv_Channel            yes    Must provide the Received channel of the the complaint. Value from Message Category C2 (Received channel)
+                    6 Initiator                          int         4 ic2_COMPLAIN.Initiator               yes    Must provide the Initiator of the complaint. Value from Message Category C1 (Initiator)
+                    7 SourceType                         int         4 ic2_COMPLAIN.Ref_Type                yes    Must provide the Reference type for the complaint. Value from Message Category CR (Reference Type)
+                    8 Source                             string    300 ic2_COMPLAIN.Reference               no     This field is optional. Allows to enter the reference values based on the reference type (for example, if reference type is 'P' then reference value should be policy1,policy2,policy3)
+                    9 StandardComplaint1                 int         4 ic2_COMPLAIN.Comp1                   no     This field is optional. Value from Message Category 23 (Standard Complaint)
+                   10 StandardComplaint2                 int         4 ic2_COMPLAIN.Comp2                   no     This field is optional. Value from Message Category 23 (Standard Complaint)
+                   11 StandardComplaint3                 int         4 ic2_COMPLAIN.Comp3                   no     This field is optional. Value from Message Category 23 (Standard Complaint)
+                   12 StandardComplaint4                 int         4 ic2_COMPLAIN.Comp4                   no     This field is optional. Value from Message Category 23 (Standard Complaint)
+                   13 StandardComplaint5                 int         4 ic2_COMPLAIN.Comp5                   no     This field is optional. Value from Message Category 23 (Standard Complaint)
+                   14 CorrespondenceType                 int        10 -                                    yes    Value from message category DLVRYCHN.
+                   15 Comments                           string   10500 ic2_COMPLAIN.Other                   no     Free text.
+ 
+DEPENDENT           1 Tag                                string     25 -                                    yes    Must be 'DEPENDENT'
+                    2 AccountID                          string      9 ic2.ic2_dependents                   yes    Primary Account ID.  May use macro representing account id.
+                    3 DependentAccountID                 string      9 ic2.ic2_dependents                   yes    Person related to Primary Account ID. May use macro representing account id.
+                    4 RelationshipCode                   int        10 ic2.ic2_dependents                   yes    Value in Message Category 32 (Relationships).  Relationship to Primary Account ID.
+ 
+DIARY               1 Tag                                string     25 -                                    yes    Must be 'DIARY'
+                    2 Message                            string    999 ic2_diary.comment                    no     
+ 
+END                 1 Tag                                string     25 -                                    yes    Must be 'END'
+ 
+EXCLUSION           1 Tag                                string     25 -                                    yes    Must be 'EXCLUSION'
+                    2 ProductID                          string      6 pol_insexcl.product_id               yes    
+                    3 AccountID                          string      9 pol_insexcl.acctid                   yes    May use macro representing account id.
+                    4 ExclusionCode                      int        10 pol_insexcl.excl_code                yes    Value is Message Category CONV5
+ 
+HEALTH_HIST         1 Tag                                string     25 -                                    yes    Must be 'HEALTH_HIST'
+                    2 AccountID                          string      9 health_history.acctid                yes    May use macro representing account id.
+                    3 History                            string    500 health_history.history               yes    
+ 
+INDEXATION          1 Tag                                string     25 -                                    yes    Must be 'INDEXATION'
+                    2 StartCode                          int        10 pol_indexation.-                     yes    Value from Msg Category IDXSTART
+                    3 FreezeCode                         int        10 pol_indexation.-                     yes    Value from Msg Category IDXFREEZ
+ 
+INSURED             1 Tag                                string     25 -                                    yes    Must be 'INSURED'
+                    2 ProductID                          string      6 pol_insured.product_id               yes    
+                    3 AccountID                          string      9 pol_insured.acctid                   yes    May use macro representing account id.
+                    4 RelationshipCode                   int        10 pol_insured.relation                 yes    Must be value in INSURED message category.
+ 
+INSURED_REMOVE      1 Tag                                string     25 -                                    yes    Must be 'PRODUCT_REMOVE'
+                    2 ProductID                          string      6 pol_product.product_id               yes    
+                    3 AccountID                          string      9 pol_insured.acctid                   yes    May use macro representing account id.
+ 
+MASTER              1 Tag                                string     25 -                                    yes    Must be 'MASTER'
+                    2 PolicyHolderAccountID              string      9 pol_policy.policy                    yes    May use macro representing account id.
+                    3 PolicyHolderAddressType            int        10 pol_policy.ph_addrcd                 yes    Value in Message Category 39 (Address Types)
+ 
+NEWACT              1 Tag                                string     25 -                                    yes    Must be 'NEWACT'
+                    2 EventFromDate                      datetime   10 evt_fr_date                          yes    Must be within 1 week of the current date
+                    3 EventToDate                        datetime   10 evt_to_date                          yes    Must be later than the 'from' date above
+                    4 EventDestination1                  string      2 ->evt_destinat                       yes    Value in Message Category 27 (Country) (must be at least 1 destination)
+                    5 EventDestination2                  string      2 ->evt_destinat                       no     Value in Message Category 27 (Country)
+                    6 EventDestination3                  string      2 ->evt_destinat                       no     Value in Message Category 27 (Country)
+                    7 EventDestination4                  string      2 ->evt_destinat                       no     Value in Message Category 27 (Country)
+                    8 EventDestination5                  string      2 ->evt_destinat                       no     Value in Message Category 27 (Country)
+                    9 EventDestination6                  string      2 ->evt_destinat                       no     Value in Message Category 27 (Country)
+                   10 EventDestination7                  string      2 ->evt_destinat                       no     Value in Message Category 27 (Country)
+                   11 EventDestination8                  string      2 ->evt_destinat                       no     Value in Message Category 27 (Country)
+ 
+PAYMENT             1 Tag                                string     25 -                                    yes    Must be 'PAYMENT'
+                    2 PolicyPayerAccountID               string      9 pol_payment.payer_acctid             yes    May use macro representing account id.
+                    3 PolicyPayerAddressType             int        10 pol_payment.payer_addrcd             yes    Value in Message Category 39 (Address Types)
+                    4 PaymentMethodCode                  int        10 pol_payment.bill_method              yes    Value in Message Category L6 (Payment Method).  Must match options for split in LJA_PAY_OPTIONS table.
+                    5 PaymentFrequencyCode               int        10 pol_payment.bill_frequency           yes    Value in Message Category L5 (Payment Frequency). Must match frequencies specified in LJA_PAY_FREQ table.
+                    6 BillAccountNumber                  string     30 pol_payment.bill_acctnum             ?      Required for Credit Card, GIRO and DDA payment methods.
+                    7 CreditCardExpiration               string      5 pol_payment.cc_expire                no     If present, format MM/YY.
+                    8 BankCode                           string     10 pol_payment.bank_code                ?      For DDA, must match LJA_PAY_OPTIONS entry.
+                    9 BankBranchCode                     string     10 pol_payment.branch_code              no     
+                   10 CreditCardCode                     string      5 pol_payment.cred_card_code           ?      If present, must match LJA_PAY_OPTIONS entries for base campaign/split.
+                   11 TaxJurisdictionCode                int        10 pol_payment.tax_juris                ?      Must match available tax jurisdiciations (see taxrep).  Can be blank if none.
+                   12 NameOnBilling                      string     50 pol_payment.bill_name                no     
+                   13 CollectorCode                      string      5 pol_payment.collector                no     This value will be set automatically for credit card and dda payment methods.
+                   14 EmployeeNumber                     string     20 pol_payment.employee_num             no     Associated primarily with ESB policies
+                   15 DebitDayOfMonth                    int        10 pol_payment.debit_day                no     
+                   16 TaxApplicationCode                 int        10 pol_payment.tax_application          yes    Value in Message Category SE (S6 Tax Application Reasons)
+                   17 Last5BillAcctNum                   string      5 pol_payment.last_5_acctnum           no     Last 5 Bill Account number from the Bill Account Number field in POL_PAYMENT
+ 
+PERSDEMO            1 Tag                                string     25 -                                    yes    Must be 'PERSDEMO'
+                    2 AccountID                          string      9 ic2_persdemo.acctid                  yes    May use macro representing account id.
+                    3 CallPreferenceCode                 int        10 ic2_persdemo.pref_call               no     Value in Message Category 15
+                    4 NationalityCode                    int        10 ic2_persdemo.nationality             no     Value in Message Category 6
+                    5 RaceCode                           int        10 ic2_persdemo.race                    no     Value in Message Category 7
+                    6 ReligionCode                       int        10 ic2_persdemo.religion                no     Value in Message Category 8
+                    7 EducationCode                      int        10 ic2_persdemo.education               no     Value in Message Category 9
+                    8 OccupationCode                     int        10 ic2_persdemo.occupation              no     Value in Message Category CNV3
+                    9 IndustryCode                       int        10 ic2_persdemo.industry                no     Value in Message Category CNV4
+                   10 MaritalStatusCode                  int        10 ic2_persdemo.marital_status          no     Value in Message Category 12
+                   11 Height                             string     10 ic2_persdemo.height                  no     
+                   12 Weight                             string     10 ic2_persdemo.weight                  no     
+ 
+POLREF              1 Tag                                string     25 -                                    yes    Must be 'POLREF'
+                    2 ReferenceKey                       int        10 pol_reference.refkey                 yes    Must match available reference key category ('POLREF' category)
+                    3 ReferenceText                      string    120 pol_reference.text                   yes    Free text
+ 
+PREMCHECK           1 Tag                                string     25 -                                    yes    Must be 'PREMCHECK'
+                    2 PremiumAmount                      double     14 -                                    yes    
+                    3 PremCheckAction                    string      7 -                                    yes    Must be 'suspend' or 'error'. Defaults to 'suspend' if not provided.
+ 
+PRODUCT             1 Tag                                string     25 -                                    yes    Must be 'PRODUCT'
+                    2 ProductID                          string      6 pol_product.product_id               yes    
+                    3 CoverageCode                       int        10 pol_product.coverage_code            yes    Who is covered - Message category COVERAGE
+                    4 NumberOfEligibleDependents         int         5 pol_product.elig_dep                 ?      
+                    5 PremiumOverrideAmount              double     15 pol_product.ovr_amount               no     
+                    6 PremiumOverrideExpire              string      5 pol_product.ovr_exp                  no     If present, format MM/YY.
+                    7 PremiumOverrideReason              int        10 pol_product.ovr_reason               no     Value in Message Category SW (S6 Premium Override Reasons)
+ 
+PRODUCT_REMOVE      1 Tag                                string     25 -                                    yes    Must be 'PRODUCT_REMOVE'
+                    2 ProductID                          string      6 pol_product.product_id               yes    
+ 
+PROD_DATA           1 Tag                                string     25 -                                    yes    Must be 'PROD_DATA'
+                    2 ProductID                          string      6 pol_prod_data.product_id             yes    
+                    3 AccountID                          string      9 pol_prod_data.acctid                 yes    
+                    4 Category                           int        10 pol_prod_data.msg_key                yes    One of the message key values in the PM_PROD_SPECIFIC_DETAIL record for product.
+                    5 Counter                            int        10 pol_prod_data.counter                yes    Used when multiple values for category are permitted.
+                    6 Value                              string    120 pol_prod_data.sp_value               yes    Contains value associated with the specified category.
+ 
+RATING_GROUP        1 Tag                                string     25 -                                    yes    Must be 'RATING_GROUP'
+                    2 ProductID                          string      6 pol_premium.product_id               yes    
+                    3 BenefitLevel                       int        10 pol_premium.benefit_level            yes    Must be level allowed by PM product definition.
+                    4 Units                              double     12 pol_premium.                         yes    Must be in PM product units range.
+                    5 RatingFactor1                      int        10 pol_premium.                         no     
+                    6 RatingFactor2                      int        10 pol_premium.                         no     
+                    7 RatingFactor3                      int        10 pol_premium.                         no     
+                    8 RatingFactor4                      int        10 pol_premium.                         no     
+                    9 RatingFactor5                      int        10 pol_premium.                         no     
+                   10 RatingFactor6                      int        10 pol_premium.                         no     
+                   11 RatingFactor7                      int        10 pol_premium.                         no     
+                   12 RatingFactor8                      int        10 pol_premium.                         no     
+                   13 RatingFactor9                      int        10 pol_premium.                         no     
+                   14 RatingFactor10                     int        10 pol_premium.                         no     
+                   15 BenefitRatingFactor1               int        10 pol_premium.                         no     
+                   16 BenefitRatingFactor2               int        10 pol_premium.                         no     
+                   17 BenefitRatingFactor3               int        10 pol_premium.                         no     
+                   18 BenefitRatingFactor4               int        10 pol_premium.                         no     
+                   19 BenefitRatingFactor5               int        10 pol_premium.                         no     
+                   20 BenefitRatingFactor6               int        10 pol_premium.                         no     
+                   21 BenefitRatingFactor7               int        10 pol_premium.                         no     
+                   22 BenefitRatingFactor8               int        10 pol_premium.                         no     
+                   23 BenefitRatingFactor9               int        10 pol_premium.                         no     
+                   24 BenefitRatingFactor10              int        10 pol_premium.                         no     
+ 
+RATING_INDIVIDUAL   1 Tag                                string     25 -                                    yes    Must be 'RATING_INDIVIDUAL'
+                    2 ProductID                          string      6 pol_premium.product_id               yes    
+                    3 Individual                         string      2 pol_premium.individual               yes    May be MI,SP or DP.
+                    4 AccountID                          string      9 pol_premium.rate_acctid              yes    Required only for individually rated product dependents that are rated separately for each dependent. May use macro representing account id.
+                    5 BenefitLevel                       int        10 pol_premium.benefit_level            yes    Must be level allowed by PM product definition.
+                    6 Units                              double     12 pol_premium.units                    yes    Must be in PM product units range.
+                    7 RatingFactor1                      int        10 pol_premium.                         no     
+                    8 RatingFactor2                      int        10 pol_premium.                         no     
+                    9 RatingFactor3                      int        10 pol_premium.                         no     
+                   10 RatingFactor4                      int        10 pol_premium.                         no     
+                   11 RatingFactor5                      int        10 pol_premium.                         no     
+                   12 RatingFactor6                      int        10 pol_premium.                         no     
+                   13 RatingFactor7                      int        10 pol_premium.                         no     
+                   14 RatingFactor8                      int        10 pol_premium.                         no     
+                   15 RatingFactor9                      int        10 pol_premium.                         no     
+                   16 RatingFactor10                     int        10 pol_premium.                         no     
+                   17 BenefitRatingFactor1               int        10 pol_premium.                         no     
+                   18 BenefitRatingFactor2               int        10 pol_premium.                         no     
+                   19 BenefitRatingFactor3               int        10 pol_premium.                         no     
+                   20 BenefitRatingFactor4               int        10 pol_premium.                         no     
+                   21 BenefitRatingFactor5               int        10 pol_premium.                         no     
+                   22 BenefitRatingFactor6               int        10 pol_premium.                         no     
+                   23 BenefitRatingFactor7               int        10 pol_premium.                         no     
+                   24 BenefitRatingFactor8               int        10 pol_premium.                         no     
+                   25 BenefitRatingFactor9               int        10 pol_premium.                         no     
+                   26 BenefitRatingFactor10              int        10 pol_premium.                         no     
+ 
+SENSITIVITY         1 Tag                                string     25 -                                    yes    Must be 'SENSITIVITY'
+                    2 AccountID                          string      9 sensitivity.acctid                   yes    May use macro representing account id.
+                    3 SensitivityCode                    int        10 sensitivity.sens_code                yes    Value in Message Category 42 (Sensitivity Code)
+ 
+SENS_REMOVE         1 Tag                                string     25 -                                    yes    Must be 'SENS_REMOVE'
+                    2 AccountID                          string      9 sensitivity.acctid                   yes    Must be account id with leading spaces included.
+                    3 SensitivityCode                    int        10 sensitivity.sens_code                yes    Value in Message Category 42 (Sensitivity Code)
+ 
+SUPPRESS            1 Tag                                string     25 -                                    yes    Must be 'SUPPRESS'
+                    2 AccountID                          string      9 ic2_suppress.acctid                  yes    May use macro representing account id.
+                    3 Reason                             int        10 ic2_suppress.sup_code                yes    Value in Message Category 37 (Suppression Code)
+ 
+TRANACT             1 Tag                                string     25 -                                    yes    Must be 'TRANACT'
+                    2 SellerID                           string     10 trn_sellerid                         yes    
+                    3 EventFromDate                      datetime   10 evt_fr_date                          yes    Must be within 1 week of the current date
+                    4 EventToDate                        datetime   10 evt_to_date                          yes    Must be later than the 'from' date above
+                    5 EventDestination1                  string      2 ->evt_destinat                       yes    Value in Message Category 27 (Country) (must be at least 1 destination)
+                    6 EventDestination2                  string      2 ->evt_destinat                       no     Value in Message Category 27 (Country)
+                    7 EventDestination3                  string      2 ->evt_destinat                       no     Value in Message Category 27 (Country)
+                    8 EventDestination4                  string      2 ->evt_destinat                       no     Value in Message Category 27 (Country)
+                    9 EventDestination5                  string      2 ->evt_destinat                       no     Value in Message Category 27 (Country)
+                   10 EventDestination6                  string      2 ->evt_destinat                       no     Value in Message Category 27 (Country)
+                   11 EventDestination7                  string      2 ->evt_destinat                       no     Value in Message Category 27 (Country)
+                   12 EventDestination8                  string      2 ->evt_destinat                       no     Value in Message Category 27 (Country)
+ 
+TRANADD             1 Tag                                string     25 -                                    yes    Must be 'TRANADD'
+                    2 SplitID                            string     12 pol_transaction.split_key            yes    
+                    3 SellerID                           string     10 pol_transaction.seller_id            yes    
+                    4 SuspensionReason1                  int        10 -                                    no     Value in Message Category SS (S6 Policy Suspend Reasons)
+                    5 SuspensionReason2                  int        10 -                                    no     Value in Message Category SS (S6 Policy Suspend Reasons)
+                    6 SuspensionReason3                  int        10 -                                    no     Value in Message Category SS (S6 Policy Suspend Reasons)
+ 
+TRANADJ             1 Tag                                string     25 -                                    yes    Must be 'TRANADJ'
+                    2 ProductPackageID                   string      6 pol_transaction.product_id/package_i no     
+                    3 Amount                             double     15 pol_adjustment.amount                yes    Negative values are credits.
+                    4 ReasonCode                         int        10 pol_adjustment.reason                yes    Value in Message Category SA (S6 Adjustment Reasons)
+                    5 TaxApplicationCode                 string     10 pol_adjustment.tax_application       yes    Value in Message Category SE (S6 Tax Application Reasons)
+                    6 EndOfAdjustmentPeriod              datetime   10 pol_adjustment.to_date               no     
+ 
+TRANAJR             1 Tag                                string     25 -                                    yes    Must be 'TRANAJR'
+                    2 ReasonCode                         int        10 pol_adjustment.reason                yes    Value in Message Category SA (S6 Adjustment Reasons)
+ 
+TRANBIL             1 Tag                                string     25 -                                    yes    Must be 'TRANBIL'
+                    2 PaidSwitch                         string      1                                      yes    May be 'Y' for yes or 'N' for no.
+                    3 FreeText                           string    400 pol_transaction.free_text            no     
+ 
+TRANCAN             1 Tag                                string     25                                      yes    Must be 'TRANCAN'
+                    2 ProductPackageToCancel             string      6 pol_transaction.product_id/package_i yes    
+                    3 ReasonCode                         int        10 pol_transaction.reason               yes    Value in Message Category SC (S6 Cancellation Reasons)
+ 
+TRANCAR             1 Tag                                string     25 -                                    yes    Must be 'TRANCAR'
+                    2 ProductPackageToCancel             string      6 pol_transaction.product_id/package_i yes    
+                    3 ReasonCode                         int        10 pol_transaction.reason               yes    Value in Message Category SC (S6 Cancellation Reasons)
+                    4 RefundAmount                       double     15 pol_adjustment.amount                yes    A value of zero (0.0) signals that the system should automatically compute refund amount.  (allows values >= 0.0 only)
+ 
+TRANCPN             1 Tag                                string     25 -                                    yes    Must be 'TRANCPN'
+                    2 ReasonCode                         int        10 pol_transaction.reason               yes    Value in Message Category SC (S6 Cancellation Reasons)
+                    3 ReplacementPolicy                  string     15 pol_replacement.replacement_policy   no     Policy that replaces cancelled policy, if any.
+ 
+TRANCPR             1 Tag                                string     10 -                                    yes    Must be 'TRANCPR'
+                    2 ReasonCode                         int        10 pol_transaction.reason               yes    Value in Message Category SC (S6 Cancellation Reasons)
+                    3 RefundAmount                       double     15 pol_adjustment.amount                yes    A value of zero (0.0) signals that the system should automatically compute refund amount.  (allows values >= 0.0 only)
+                    4 ReplacementPolicy                  string     15 pol_replacement.replacement_policy   no     Policy that replaces cancelled policy, if any.
+                    5 TaxApplicationCode                 int        10 pol_adjustment.tax_application       no     Value in Message Category SE (S6 Tax Application Reasons)
+ 
+TRANEND             1 Tag                                string     25 -                                    yes    Must be 'TRANEND'
+                    2 SellerID                           string     10 pol_transaction.seller_id            no     
+                    3 EndorsementReason                  int        10 pol_transaction.reason               no     Value in Message Category SB (S6 Endorsement Reasons)
+                    4 SuspensionReason1                  int        10 -                                    no     Value in Message Category SS (S6 Policy Suspend Reasons)
+                    5 SuspensionReason2                  int        10 -                                    no     Value in Message Category SS (S6 Policy Suspend Reasons)
+                    6 SuspensionReason3                  int        10 -                                    no     Value in Message Category SS (S6 Policy Suspend Reasons)
+                    7 RouteMonth                         int        10 -                                    no     
+ 
+TRANIDN             1 Tag                                string     25 -                                    yes    Must be 'TRANIDN'
+                    2 PrimaryAccountID                   string      9 bas_acctid                           yes    May use macro representing account id.
+ 
+TRANNEW             1 Tag                                string     25 -                                    yes    Must be 'TRANNEW'
+                    2 SplitID                            string     12 pol_transaction.split_key            yes    
+                    3 SellerID                           string     10 pol_transaction.seller_id            yes    Free text to identify seller.
+                    4 SuspensionReason1                  int        10 -                                    no     Value in Message Category SS (S6 Policy Suspend Reasons)
+                    5 SuspensionReason2                  int        10 -                                    no     Value in Message Category SS (S6 Policy Suspend Reasons)
+                    6 SuspensionReason3                  int        10 -                                    no     Value in Message Category SS (S6 Policy Suspend Reasons)
+                    7 ReplacedPolicy                     string     15 pol_replacement.orig_policy          no     Prior policy that was replaced with this NEW policy.
+                    8 PolicyExpirationDate               datetime   10 pol_master.expiration_date           yes    
+ 
+TRANPND             1 Tag                                string     25 -                                    yes    Must be 'TRANPND'
+                    2 ReasonCode                         int        10 pol_suspension.reason                yes    Value in Message Category SS (S6 Policy Suspend Reasons)
+ 
+TRANPNR             1 Tag                                string     25 -                                    yes    Must be 'TRANPNR'
+                    2 AccountID                          string      9 bas_acctid                           yes    May use macro representing account id.
+                    3 ReasonCode                         int        10 pol_suspension.reason                yes    Must match a suspension already recorded for policy.
+                    4 NewEffectiveDate                   datetime   10 pol_transaction.effective_date       no     
+                    5 NewApplicationDate                 datetime   10 pol_transaction.app_date             no     
+ 
+TRANSACTION         1 Tag                                string     25 -                                    yes    Must be 'TRANSACTION'
+                    2 EffectiveDate                      datetime   10 pol_transaction.effective_date       yes    
+                    3 AccountID                          string      9 pol_transaction.acctid               yes    May use macro representing account id.
+                    4 CorrespondenceType                 int        10 -                                    no     From message category DLVRYCHN.
+                    5 FreeText                           string    400 pol_transaction.free_text            no     
+                    6 ApplicationDate                    datetime   10 pol_transaction.app_date             no     
+                    7 ApplicationNumber                  string     30 pol_transaction.app_number           no     
+ 
+TRANUCR             1 Tag                                string     25 -                                    yes    Must be 'TRANUCR'
+                    2 AccountID                          string      9 bas_acctid                           yes    May use macro representing account id.
+                    3 ReasonCode                         int        10 pol_transaction.reason               yes    Value in Message Category SC (S6 Cancellation Reasons)
+ 
+TRANUPC             1 Tag                                string     25 -                                    yes    Must be 'TRANUPC'
+                    2 SplitID                            string     12 pol_transaction.split_key            yes    
+                    3 ProductPackageID                   string      6                                      yes    This is the ID of the product/package being upgraded.
+                    4 SellerID                           string     10 pol_transaction.seller_id            yes    Free text to identify seller.
+                    5 SuspensionReason1                  int        10 -                                    no     Value in Message Category SS (S6 Policy Suspend Reasons)
+                    6 SuspensionReason2                  int        10 -                                    no     Value in Message Category SS (S6 Policy Suspend Reasons)
+                    7 SuspensionReason3                  int        10 -                                    no     Value in Message Category SS (S6 Policy Suspend Reasons)
+ 
+TRIP                1 Tag                                string     25 -                                    yes    Must be 'NEWACT'
+                    2 EventFromDate                      datetime   10 evt_fr_date                          yes    Must be within 1 week of the current date
+                    3 EventToDate                        datetime   10 evt_to_date                          yes    Must be later than the 'from' date above
+                    4 EventDestination1                  int        10 ->evt_destinat                       yes    msg key Value in Message Category 27 (Country) (must be at least 1 destination)
+                    5 EventDestination2                  int        10 ->evt_destinat                       no     msg key Value in Message Category 27 (Country)
+                    6 EventDestination3                  int        10 ->evt_destinat                       no     msg key Value in Message Category 27 (Country)
+                    7 EventDestination4                  int        10 ->evt_destinat                       no     msg key Value in Message Category 27 (Country)
+                    8 EventDestination5                  int        10 ->evt_destinat                       no     msg key Value in Message Category 27 (Country)
+                    9 EventDestination6                  int        10 ->evt_destinat                       no     msg key Value in Message Category 27 (Country)
+                   10 EventDestination7                  int        10 ->evt_destinat                       no     msg key Value in Message Category 27 (Country)
+                   11 EventDestination8                  int        10 ->evt_destinat                       no     msg key Value in Message Category 27 (Country)

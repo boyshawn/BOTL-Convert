@@ -1,0 +1,44 @@
+PRODUCT|AMPA09|[3]|[4]|[5]|[6]|[7]
+SegmentKey: PRODUCT-AMPA09
+Segment is required
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "AMPA09"
+  Data type is string[6]
+  Protection Growth Plan
+  -----
+  [3] - Coverage Code
+  Field is Required
+  Data type is int
+  Who is covered - Message category COVERAGE
+     1686 - Main Insured and Dependents
+     1682 - Main Insured and Family
+     1681 - Main Insured and Spouse
+     1680 - Main Insured Only
+     1684 - Spouse and Dependent
+     1683 - Spouse Only
+  -----
+  [4] - Number of Eligible Dependents
+  Data type is int
+  -----
+  [5] - Premium Override Amount
+  Data type is double
+  -----
+  [6] - Premium Override Expire
+  Data type is string[5]
+  If present, format MM/YY.
+  -----
+  [7] - Premium Override Reason
+  Data type is int
+  Value in Message Category SW (S6 Premium Override Reasons)
+     100838 - Goodhealth Premium
+     100612 - Incorrect Date Of Birth
+     100619 - Incorrect Prem (at Conversion)
+     100773 - Incorrect Prem (PM vs Mkt Mat)
+     100766 - Incorrect Rating Factor
+     100484 - Incorrect Sex Code Used
+     0 - None
+     100491 - Staff Premium
+
+--------------------

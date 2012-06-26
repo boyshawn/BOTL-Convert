@@ -1,0 +1,22 @@
+#
+# BOTLEXP generated file for policy SMKSG0001092684
+# Output generated 2012-05-22 at 09.56
+#
+
+# Source policy: SMKSG0001092684
+begin|ZZ20120522A61B|1|new|SG||
+basdemo|new|$_895908|Yap| |Wong Wei En||Yap Wong Wei En|01||||7582723G|12|1975-07-27|01||N
+address|new|$__1156202|Blk 359C|#05-28|Admiralty Drive||753359|Singapore||SG||97509386|| 
+address|new|$__1156203| |||| ||||62208411||| 
+addrtype|$_895908|$__1156202|01
+addrtype|$_895908|$__1156203|03
+persdemo|new|$_895908||||||01||020|||||
+master|01|01|$_895908|$_895908
+billdates|2012-05-07|2012-05-07
+transaction|2012-05-07|$_895908|noprint||||
+trannew|SG12000901  |ZZ|||
+policy|new|10|M |376211853251006|12/14|||11|  ||||Yap Wong Wei En|65|AMX||
+product|new|AMPA13|MO|5|0|91||||||||1.0000000|00|0.0000000||||||||||
+insured|new|AMPA13|$_895908|MI| |0.0000000||||||||||||||||
+beneficiary|new|AMPA13|$_895908||||||92|||||||||||||
+end

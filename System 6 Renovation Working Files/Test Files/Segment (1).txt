@@ -1,0 +1,10 @@
+BEGIN|[2]
+SegmentKey: BEGIN
+Segment is required
+--------------------
+  [2] - RunID
+  Field is Required
+  Data type is string[20]
+  Identifies the BOTL run
+
+--------------------

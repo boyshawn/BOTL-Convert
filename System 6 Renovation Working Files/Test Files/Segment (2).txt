@@ -1,0 +1,19 @@
+SUPPRESS|[2]|[3]
+SegmentKey: SUPPRESS
+--------------------
+  [2] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [3] - Reason
+  Field is Required
+  Data type is int
+  Value in Message Category 37 (Suppression Code)
+     100892 - Fulfillment via Email
+     100935 - No Call - Home
+     100725 - No Call - Home and Office
+     100517 - No Call - Office
+     100642 - No Promotional Mail
+
+--------------------
