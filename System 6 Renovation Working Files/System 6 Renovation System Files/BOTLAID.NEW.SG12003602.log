@@ -1,14 +1,14 @@
 
-Starting BOTLAID processing at 5:14:57 PM on 28/6/2012.
+Starting BOTLAID processing at 4:20:23 PM on 11/7/2012.
 Release: 4.0.70.0    Machine: SGSINS6R801    User: LWHANX
 Current Directory: D:\S6Batch
 S6 Configuration: IC2SGU - SG S6R UAT   Database: IC2SGU
 
 Run Options...
   Ini        : d:\s6work\BOTLAID.ini      Transaction : NEW
-  SplitKey   : SG12000901                 BaseSplitKey : 
+  SplitKey   : SG12003602                 BaseSplitKey : 
   ProdList   :                            Country    : SG
-  Log        : \\sgsinwks412\share\Francis Botl Convert\BOTLAID.NEW.SG12000901.log
+  Log        : C:\Users\LWHANX\Desktop\BOTL Convert working files\BOTLAID.NEW.SG12003602.log
   LanguageKey : 229                       API        : N
   Config     : IC2SGU                   
 
@@ -18,24 +18,37 @@ Input Values
 --------------------
 Country is SG
 Language is English(229)
-Split: SG12000901 - AMEX: Essen Acci Incom TeleP
+Split: SG12003602 - MB Ex:YoungStar Enh Q1M2 CM S5
 
 --------------------
 Product Summary
 --------------------
-Product: AMPA13 - Essential Accident Income Plan
-  - Group rated
-  - 5 Benefit Levels
-  - Main Insured/Holder is eligible to be insured
-  - Spouse is eligible to be insured
-  - Dependents is NOT eligible to be insured
+Product: MBPK13 - Youngstarz Enhanced Plan (PA) (Q2-2011)
+  - Individually rated
+  - 3 Benefit Levels
+  - Main Insured/Holder is NOT eligible to be insured
+  - Spouse is NOT eligible to be insured
+  - Dependent is eligible to be insured
   - Not unit rated
   - No free cover
   - Beneficiaries allowed
-  - Main Insured/Holder age range is 18 to 60
-  - Spouse age range is 18 to 60
-  - Dependent age range is 0 to 0
-  - Rated by... Payment Frequency
+  - Main Insured/Holder age range is 0 to 0
+  - Spouse age range is 0 to 0
+  - Dependent age range is 1 to 21
+  - Rated by... Premium Option
+Product: MBPK12 - Youngstarz Enhanced Plan (HI) (Q2-2011)
+  - Individually rated
+  - 3 Benefit Levels
+  - Main Insured/Holder is NOT eligible to be insured
+  - Spouse is NOT eligible to be insured
+  - Dependent is eligible to be insured
+  - Not unit rated
+  - No free cover
+  - Beneficiaries allowed
+  - Main Insured/Holder age range is 0 to 0
+  - Spouse age range is 0 to 0
+  - Dependent age range is 1 to 21
+  - Rated by... Premium Option
 
 --------------------
 BEGIN|[2]|[3]|NEW|SG|[6]|[7]
@@ -2309,13 +2322,13 @@ SegmentKey: BILL
      2050 - Do not bill immediately
 
 --------------------
-TRANNEW|SG12000901|[3]|[4]|[5]|[6]|[7]|[8]
+TRANNEW|SG12003602|[3]|[4]|[5]|[6]|[7]|[8]
 SegmentKey: TRANNEW
 Segment is required
 --------------------
   [2] - Split ID
   Field is Required
-  Must be "SG12000901"
+  Must be "SG12003602"
   Data type is string[12]
   -----
   [3] - Seller ID
@@ -2462,7 +2475,7 @@ Segment is required
      221 - Work
 
 --------------------
-PAYMENT|[2]|[3]|882|[5]|[6]|[7]|||11   ||[12]|[13]|[14]|[15]|[16]|[17]
+PAYMENT|[2]|[3]|[4]|[5]|[6]|[7]|[8]|[9]|[10]||[12]|CAC  |[14]|[15]|[16]|[17]
 SegmentKey: PAYMENT
 Segment is required
 --------------------
@@ -2486,10 +2499,11 @@ Segment is required
   -----
   [4] - Payment Method Code
   Field is Required
-  Must be "882"
   Data type is int
   Value in Message Category L6 (Payment Method).  Must match options for split in LJA_PAY_OPTIONS table.
      882 - Credit Card Billing
+     884 - Direct Billing
+     886 - GIRO
   -----
   [5] - Payment Frequency Code
   Field is Required
@@ -2507,16 +2521,783 @@ Segment is required
   If present, format MM/YY.
   -----
   [8] - Bank Code
-  Must be left empty
+  Data type is string[10]
+  For DDA, must match LJA_PAY_OPTIONS entry.
+     7010            - ABN-ARMO BANK NV
+     7454            - AMERICAN EXPRESS BANK LIMITED
+     7931            - Australia & New Zealand Banking Group Lt
+     0               - Bank code - 0
+     141-            - Bank code - 141-
+     142-            - Bank code - 142-
+     3762            - Bank code - 3762
+     7056            - BANK NEGARA INDONESIA 1946
+     9999            - Bank of ACE
+     7083            - BANK OF CHINA
+     7108            - BANK OF INDIA
+     7117            - BANK OF SINGAPORE LIMITED
+     7126            - BANK OF TOKYO LIMITED, THE
+     7153            - CHASE MANHATTAN BANK NA, THE
+     7162            - CHUNG KHIAW BANK LIMITED
+     7214            - CITIBANK NA
+     7269            - CLOSED -INDUSTRIAL & COMMERCIAL BANK LTD
+     7463            - DEUTSCHE BANK AG
+     7171            - DEVELOPMENT BANK OF SINGAPORE LIMITED
+     7199            - FAR EASTERN BANK LIMITED
+     7223            - FOUR SEAS BANK LIMITED
+     7232            - HONGKONG & SHANGHAI BANKING CORP LTD
+     7241            - INDIAN BANK
+     7250            - INDIAN OVERSEAS BANK
+     7676            - INTERNATIONAL BANK OF SINGAPORE LTD
+     7029            - KEPPEL TATLEE BANK OF SINGAPORE LIMITED
+     7278            - KWANGTUNG PROVINCIALBANK, THE
+     7296            - LEE WAH BANK LIMITED
+     7302            - MALAYAN BANKING BERHAD
+     7339            - OVERSEA-CHINESE BANKING CORP LTD
+     9812            - POST OFFICE SAVINGS BANK
+     7366            - RHB Bank Berhad
+     7968            - SECURITY PACIFIC NATIONAL BANK
+     7852            - SOCIETE GENERALE
+     7144            - STANDARD CHARTERED BANK
+     7588            - TAT LEE BANK LIMITED
+     7357            - UCO BANK
+     7375            - UNITED OVERSEAS BANK LIMITED
+     5032            - UNITED OVERSEAS FINANCE LIMITED
+     7348            - use UOB code - OUB merged with UOB
   -----
   [9] - Bank Branch Code
-  Must be left empty
+  Data type is string[10]
+     041        - (041) OCEAN BUILDING
+     042        - (042) ORCHARD ROAD
+     043        - (043) TANGLIN
+     044        - (044) QUEENSTOWN
+     046        - (046) JURONG
+     047        - (047) SANFORD BUILDING
+     049        - (049) BEACH ROAD
+     050        - (050) UPPER BUKIT TIMAH
+     051        - (051) MARINE PARADE
+     052        - (052) COLLYER QUAY
+     0001       - 600 North Bridge Rd
+     979        - ACCOUNTS DEPARTMENT
+     099        - ACU
+     908        - Admiralty Branch
+     043        - AIRPORT TERMINAL 2 (043)
+     010        - ALEXANDRA
+     524        - ALEXANDRA VILLAGE (524)
+     931        - ALJUNIED
+     032        - ALJUNIED (032)
+     525        - ALJUNIED (525)
+     008        - ANCHORPOINT (008)
+     014        - ANCHORPOINT (014)
+     017        - ANCHORPOINT (017)
+     023        - ANCHORPOINT (023)
+     507        - ANG MO KIO
+     008        - ANG MO KIO
+     927        - ANG MO KIO
+     507        - ANG MO KIO
+     519        - ANG MO KIO (519)
+     657        - ANG MO KIO (657)
+     684        - Ang Mo Kio (684)
+     008        - ANG MO KIO AVE 10
+     528        - ANG MO KIO CENTRAL (528)
+     010        - ANG MO KIO(010)
+     028        - ANG MO KIO(028)
+     574        - Auto Loan Centre (574)
+     513        - BALESTIER
+     028        - BALESTIER (028)
+     008        - BALESTIER PLAZA (008)
+     003        - BALESTIER ROAD
+     021        - BALESTIER ROAD
+     516        - BALESTIER ROAD (516)
+     006        - BALESTIER ROAD(006)
+     924        - BEACH ROAD
+     512        - BEDOK
+     009        - BEDOK
+     928        - BEDOK
+     512        - BEDOK
+     027        - BEDOK (027)
+     053        - BEDOK (053)
+     053        - BEDOK (053)
+     520        - BEDOK (520)
+     612        - BEDOK (612)
+     011        - BEDOK NORTH
+     662        - BEDOK NORTH (662)
+     991        - BILLS & REMITTANCES DEPT
+     012        - BISHAN
+     154        - BISHAN (154)
+     538        - BISHAN (538)
+     025        - Boon Lay
+     010        - BOON LAY
+     035        - BOON LAY (035)
+     0          - Branch - 0         
+     003        - Branch - 003       
+     010        - Branch - 010       
+     011        - Branch - 011       
+     012        - Branch - 012       
+     014        - Branch - 014       
+     025        - Branch - 025       
+     030        - Branch - 030       
+     030        - Branch - 030       
+     031        - Branch - 031       
+     033        - Branch - 033       
+     035        - Branch - 035       
+     040        - Branch - 040       
+     050        - Branch - 050       
+     050        - Branch - 050       
+     051        - Branch - 051       
+     060        - Branch - 060       
+     062        - Branch - 062       
+     065        - Branch - 065       
+     072        - Branch - 072       
+     080        - Branch - 080       
+     082        - Branch - 082       
+     092        - Branch - 092       
+     100        - Branch - 100       
+     101        - Branch - 101       
+     101        - Branch - 101       
+     102        - Branch - 102       
+     103        - Branch - 103       
+     107        - Branch - 107       
+     109        - Branch - 109       
+     112        - Branch - 112       
+     113        - Branch - 113       
+     115        - Branch - 115       
+     115        - Branch - 115       
+     116        - Branch - 116       
+     119        - Branch - 119       
+     120        - Branch - 120       
+     122        - Branch - 122       
+     122        - Branch - 122       
+     123        - Branch - 123       
+     125        - Branch - 125       
+     127        - Branch - 127       
+     128        - Branch - 128       
+     129        - Branch - 129       
+     132        - Branch - 132       
+     134        - Branch - 134       
+     135        - Branch - 135       
+     137        - Branch - 137       
+     138        - Branch - 138       
+     140        - Branch - 140       
+     142        - Branch - 142       
+     142        - Branch - 142       
+     145        - Branch - 145       
+     146        - Branch - 146       
+     160        - Branch - 160       
+     162        - Branch - 162       
+     172        - Branch - 172       
+     180        - Branch - 180       
+     180        - Branch - 180       
+     182        - Branch - 182       
+     192        - Branch - 192       
+     200        - Branch - 200       
+     202        - Branch - 202       
+     203        - Branch - 203       
+     206        - Branch - 206       
+     208        - Branch - 208       
+     208        - Branch - 208       
+     208        - Branch - 208       
+     210        - Branch - 210       
+     213        - Branch - 213       
+     215        - Branch - 215       
+     216        - Branch - 216       
+     216        - Branch - 216       
+     217        - Branch - 217       
+     217        - Branch - 217       
+     221        - Branch - 221       
+     230        - Branch - 230       
+     242        - Branch - 242       
+     243        - Branch - 243       
+     247        - Branch - 247       
+     252        - Branch - 252       
+     260        - Branch - 260       
+     304        - Branch - 304       
+     311        - Branch - 311       
+     400        - Branch - 400       
+     403        - Branch - 403       
+     405        - Branch - 405       
+     407        - Branch - 407       
+     410        - Branch - 410       
+     450        - Branch - 450       
+     455        - Branch - 455       
+     493        - Branch - 493       
+     547        - Branch - 547       
+     701        - Branch - 701       
+     702        - Branch - 702       
+     703        - Branch - 703       
+     704        - Branch - 704       
+     705        - Branch - 705       
+     714        - Branch - 714       
+     801        - Branch - 801       
+     808        - Branch - 808       
+     924        - Branch - 924       
+     570        - Branch (570)
+     124        - Bras Basah (124)
+     126        - Bras Basah (126)
+     147        - BRAS BASAH (147)
+     148        - BRAS BASAH (148)
+     151        - Bras Basah (151)
+     152        - Bras Basah (152)
+     154        - Bras Basah (154)
+     155        - Bras Basah (155)
+     156        - Bras Basah (156)
+     158        - Bras Basah (158)
+     159        - Bras Basah (159)
+     160        - Bras Basah (160)
+     161        - Bras Basah (161)
+     170        - Bras Basah (170)
+     182        - Bras Basah (182)
+     183        - Bras Basah (183)
+     184        - Bras Basah (184)
+     211        - Bras Basah (211)
+     021        - BUKIT BATOK
+     533        - BUKIT BATOK (533)
+     041        - BUKIT BATOK CENTRAL(041)
+     010        - BUKIT MERAH
+     518        - BUKIT MERAH
+     007        - BUKIT MERAH
+     925        - BUKIT MERAH
+     004        - BUKIT MERAH
+     518        - BUKIT MERAH BRANCH
+     012        - BUKIT PANJANG (012)
+     545        - BUKIT PANJANG (545)
+     008        - BUKIT TIMAH
+     926        - BUKIT TIMAH
+     002        - BUKIT TIMAH
+     516        - BUKIT TIMAH
+     006        - BUKIT TIMAH (006)
+     007        - BUKIT TIMAH (007)
+     518        - BUKIT TIMAH (518)
+     542        - BUKIT TIMAH (542)
+     554        - Bukit Timah (554)
+     027        - BUKIT TIMAH BRANCH
+     516        - BUKIT TIMAH BRANCH
+     026        - BUKIT TIMAH(026)
+     510        - BUONA VISTA
+     510        - BUONA VISTA
+     032        - BUONA VISTA (032)
+     660        - BUONA VISTA (660)
+     033        - CAMBRIDGE ROAD (033)
+     013        - CAPITAL TOWER/BEDOK (013)
+     082        - Cashline
+     557        - CAUSEWAY POINT (557)
+     501        - CECIL STREET
+     001        - CECIL STREET
+     610        - CECIL STREET (610)
+     651        - CECIL STREET (651)
+     015        - CENTRAL SUB-BRANCH (015)
+     025        - CHANGI (025)
+     040        - CHANGI AIRPORT(040)
+     016        - CHINATOWN SUB-BRANCH (016)
+     017        - Chinatown(017)
+     523        - CHOA CHU KANG
+     523        - Choa Chu Kang
+     016        - Choa Chu Kang (016)
+     054        - Choa Chu Kang (054)
+     673        - CHOA CHU KANG(673)
+     050        - CHURCH STREET
+     018        - CITIBANK CARD CENTRE (018)
+     002        - CITY HALL
+     014        - CITY PLAZA (014)
+     020        - City Plaza (020)
+     562        - CITYLINK MALL (562)
+     007        - CLEMENTI
+     014        - CLEMENTI
+     929        - CLEMENTI
+     508        - CLEMENTI
+     030        - CLEMENTI (030)
+     049        - CLEMENTI (049)
+     522        - CLEMENTI (522)
+     544        - CLEMENTI (544)
+     622        - CLEMENTI (622)
+     658        - CLEMENTI (658)
+     032        - CLEMENTI BRANCH
+     650        - COLEMAN (650)
+     060        - COLEMAN BRANCH
+     042        - Coleman Street (042)
+     046        - COLEMAN STREET (046)
+     001        - COLLYER QUAY
+     152        - COLLYER QUAY(152)
+     565        - COMPASS POINT (565)
+     567        - COMPASS POINT (567)
+     526        - Concourse
+     051        - Consumer Banking
+     039        - CORRESPONDENT BANKING
+     057        - Credit Card Account
+     018        - DBS ANG MO KIO (018)
+     024        - DBS BALESTIER (024)
+     022        - DBS BATTERY ROAD(022)
+     017        - DBS BEDOK (017)
+     070        - DBS Bishan (070)
+     014        - DBS BUKIT TIMAH (014)
+     118        - DBS CHINA SQUARE (118)
+     066        - DBS Choa Chu Kang (066)
+     020        - DBS CLEMENTI(020)
+     052        - DBS EUNOS STATION (052)
+     064        - DBS GLENEAGLES (064)
+     008        - DBS GREAT WORLD CITY (008)
+     012        - DBS HARBOURFRONT (012)
+     063        - DBS HOLLAND VILLAGE (063)
+     122        - DBS Hougang Central (122)
+     023        - DBS HOUGANG(023)
+     054        - DBS IMM (054)
+     002        - DBS JURONG (002)
+     065        - DBS LIAT TOWERS (065)
+     027        - DBS PARKWAY PARADE (027)
+     100        - DBS Plaza Singapura (100)
+     006        - DBS QUEENSWAY (006)
+     033        - DBS RAFFLES CITY (033)
+     048        - DBS RAFFLES PLACE (048)
+     011        - DBS ROCHOR (011)
+     047        - DBS SERANGOON GARDEN(047)
+     001        - DBS SHENTON WAY (001)
+     010        - DBS SOUTH BRIDGE (010)
+     074        - DBS SUNTEC CITY (074)
+     029        - DBS TAMPINES CENTRE(029)
+     015        - DBS THOMSON (015)
+     005        - DBS TOA PAYOH (005)
+     025        - DBS TOWNER ROAD(025)
+     019        - DBS WOODLANDS(019)
+     048        - DHOBY GHAUT (048)
+     004        - DHOBY GHAUT BRANCH
+     025        - Direct Banking (025)
+     7931       - DO NOT USE
+     507        - EAST COAST (507)
+     512        - EAST COAST (512)
+     549        - EAST COAST (549)
+     560        - EAST POINT MALL (560)
+     583        - FairPrice Plus (583)
+     587        - FairPrice Plus (587)
+     592        - FairPrice Plus (592)
+     005        - FEB ANG MO KIO (005)
+     001        - FEB MAIN (001)
+     002        - FEB NEIL ROAD (002)
+     003        - FEB SERANGOON ROAD (003)
+     004        - FEB UPPER SERANGOON (004)
+     036        - FINANCE & TAX
+     037        - Financial Institutions Group (037)
+     511        - GEYLANG
+     011        - GEYLANG
+     916        - GEYLANG
+     003        - GEYLANG
+     511        - GEYLANG
+     509        - GEYLANG (509)
+     014        - GEYLANG SERAI (014)
+     552        - Ginza Plaza (552)
+     001        - GLOBAL FINANCE - IBG (001)
+     920        - GRANGE ROAD
+     569        - HarbourFront (569)
+     909        - HAVELOCK
+     040        - HAVELOCK ROAD
+     010        - HEAD OFFICE
+     001        - HEAD OFFICE
+     001        - HEAD OFFICE
+     601        - HEAD OFFICE
+     000        - HEAD OFFICE
+     021        - HEAD OFFICE
+     501        - HEAD OFFICE
+     081        - HEADQUARTERS
+     028        - Hoe Chiang
+     020        - HOLLAND ROAD(020)
+     018        - HOLLAND VILLAGE (018)
+     024        - HOLLAND VILLAGE (024)
+     144        - Holland Village Branch (144)
+     015        - HOUGANG
+     013        - HOUGANG
+     933        - HOUGANG
+     019        - HOUGANG (019)
+     613        - Hougang (613)
+     543        - HOUGANG MALL (543)
+     556        - HOUGANG MALL (556)
+     561        - HOUGANG POINT (561)
+     120        - ibanking
+     050        - Institutional Ac
+     031        - INVESTMENT BANKING(031)
+     028        - ITEM PROCESSING (028)
+     030        - JALAN BESAR
+     004        - JALAN BESAR
+     005        - JALAN BESAR
+     506        - JALAN BESAR (506)
+     521        - JALAN BESAR (521)
+     655        - JALAN BESAR (655)
+     050        - JALAN SULTAN
+     515        - JALAN SULTAN (515)
+     676        - JALAN SULTAN (676)
+     661        - JOO CHIAT (661)
+     665        - JOO CHIAT (665)
+     515        - JOO CHIAT ROAD
+     912        - JOO CHIAT ROAD
+     515        - JOO CHIAT ROAD
+     640        - JULAN SULTAN (640)
+     002        - JURONG
+     003        - JURONG
+     018        - JURONG (018)
+     030        - JURONG (030)
+     146        - JURONG (146)
+     514        - JURONG (514)
+     013        - JURONG EAST
+     015        - JURONG EAST
+     936        - JURONG EAST
+     525        - Jurong East
+     041        - JURONG EAST (041)
+     527        - JURONG EAST (527)
+     051        - Jurong East MRT (051)
+     019        - JURONG EAST(019)
+     053        - JURONG POINT (053)
+     553        - Jurong Point (553)
+     917        - JURONG TOWN
+     018        - JURONG WEST
+     535        - JURONG WEST (535)
+     615        - JURONG WEST (615)
+     671        - Jurong West (671)
+     675        - JURONG WEST (675)
+     521        - JURONG WEST BRANCH
+     521        - JURONG WEST BRANCH
+     002        - JURONG WEST BRANCH
+     503        - KALLANG
+     919        - KALLANG
+     503        - KALLANG
+     620        - KALLANG (620)
+     653        - KALLANG (653)
+     663        - KALLANG (663)
+     016        - KALLANG INDUSTRIAL ESTATE
+     007        - KATONG
+     006        - KATONG
+     913        - KATONG
+     006        - KATONG
+     504        - KATONG
+     621        - KATONG (621)
+     654        - KATONG (654)
+     014        - KATONG SUB-BRANCH (014)
+     614        - KHATIB (614)
+     932        - KING GEORGE'S AVENUE
+     022        - Kovan(022)
+     007        - LAVENDER STREET (007)
+     098        - Liat Tower (098)
+     069        - LIAT TOWERS (069)
+     056        - LIAT TOWERS (56)/ORCHARD STATION
+     032        - LIDO BRANCH
+     081        - LOCAL CLEARING (081)
+     509        - LUCKY PLAZA
+     509        - LUCKY PLAZA
+     619        - LUCKY PLAZA (619)
+     659        - LUCKY PLAZA (659)
+     678        - LUCKY PLAZA (678)
+     906        - MACPHERSON
+     019        - MacPherson Road
+     004        - MACPHERSON ROAD(004)
+     001        - MAIN BRANCH
+     020        - MAIN BRANCH
+     001        - MAIN BRANCH
+     001        - MAIN BRANCH
+     001        - MAIN BRANCH
+     001        - MAIN BRANCH
+     001        - MAIN BRANCH
+     001        - MAIN BRANCH (001)
+     011        - MAIN BRANCH (011)
+     001        - MAIN OFFICE
+     001        - MAIN OFFICE
+     001        - MAIN OFFICE (001)
+     921        - MARINA BRANCH
+     037        - MARINA SQUARE(037)
+     012        - MARINE PARADE
+     031        - MARINE PARADE
+     009        - MARINE PARADE (009)
+     015        - MARINE PARADE (015)
+     040        - MARINE PARADE (040)
+     151        - MARINE PARADE (151)
+     005        - Maybank@HDB Hub (005)
+     004        - MIDDLE ROAD
+     003        - MIDDLE ROAD
+     005        - MIDDLE ROAD (005)
+     566        - MOUNT ELIZABETH (566)
+     029        - MOUNT ELIZABETH(029)
+     563        - MYBANK.OCBC.COM (563)
+     537        - NANYANG TECHNOLOGICAL U(537)
+     902        - NEW BRDIGE ROAD
+     002        - NEW BRIDGE ROAD
+     602        - NEW BRIDGE ROAD
+     019        - NEW BRIDGE ROAD(019)
+     591        - North (591)
+     629        - North (629)
+     004        - NORTH BRANCH
+     002        - NORTH BRANCH
+     503        - NORTH BRANCH (503)
+     581        - North Branch (581)
+     911        - NORTH BRIDGE ROAD
+     009        - NORTH BRIDGE ROAD(009)
+     013        - NORTH SUB-BRANCH (013)
+     550        - NORTHPOINT (550)
+     669        - NORTHPOINT (669)
+     674        - NORTHPOINT (674)
+     501        - OCBC CENTRE (501)
+     504        - OCBC CENTRE (504)
+     517        - OCBC CENTRE (517)
+     589        - OCBC Centre (589)
+     590        - OCBC Centre (590)
+     601        - OCBC CENTRE (601)
+     602        - OCBC Centre (602)
+     603        - OCBC CENTRE (603)
+     604        - OCBC CENTRE (604)
+     618        - OCBC CENTRE (618)
+     701        - OCBC CENTRE (701)
+     702        - OCBC CENTRE (702)
+     703        - OCBC CENTRE (703)
+     704        - OCBC CENTRE (704)
+     705        - OCBC CENTRE (705)
+     141        - OCEAN BUILDING (141)
+     060        - One Raffles Quay (060)
+     029        - Orchard
+     603        - ORCHARD
+     052        - Orchard (052)
+     508        - ORCHARD (508)
+     155        - Orchard Central (155)
+     540        - ORCHARD MRT (540)
+     002        - ORCHARD ROAD
+     017        - ORCHARD ROAD
+     012        - ORCHARD ROAD - CSG
+     002        - ORCHARD ROAD - IB
+     142        - ORCHARD ROAD (142)
+     582        - Orchard Road (582)
+     320        - OUB Grange(320)
+     351        - OUB Raffles Place (351)
+     346        - OUB Yishun (346)
+     918        - OUTRAM ROAD
+     0002       - Parkview Square 
+     004        - PARKWAY PARADE (004)
+     036        - PARKWAY PARADE(036)
+     530        - PASIR RIS BRANCH
+     530        - Pasir Ris Branch
+     044        - PASIR RIS(044)
+     680        - Pasir Ris(680)
+     631        - PCL (631)
+     633        - PCL (633)
+     502        - PEOPLE'S PARK
+     502        - PEOPLE'S PARK
+     630        - PEOPLE'S PARK (630)
+     652        - PEOPLE'S PARK (652)
+     668        - PEOPLE'S PARK (668)
+     051        - Personal Bk Ac/Loans
+     207        - POSB AMK North (207)
+     200        - POSB Bedok Central (200)
+     178        - POSB Bras Basah (178)
+     130        - POSB Bukit Panjang (130)
+     146        - POSB Macpherson (146)
+     141        - POSB Newton (141)
+     195        - POSB West Coast (195)
+     171        - POSB Woodlands West(171)
+     584        - Premier Banking Offshore (584)
+     031        - PRIVATE BANK
+     576        - Punggol Plaza (576)
+     910        - QUEENSTOWN
+     008        - QUEENSTOWN(008)
+     011        - QUEENSWAY(011)
+     901        - RAFFLES PLACE
+     541        - RAFFLES PLACE MRT (541)
+     934        - RIVER VALLEY ROAD
+     922        - ROBINSON ROAD
+     002        - ROBINSON ROAD (002)
+     002        - ROBINSON ROAD (002)
+     016        - ROBINSON ROAD (016)
+     564        - ROBINSON ROAD (564)
+     505        - ROCHOR
+     505        - ROCHOR
+     003        - ROCHOR ROAD
+     047        - ROCHOR ROAD(047)
+     147        - SANFORD BUILDING(147)
+     003        - SCOTTS MALL (003)
+     013        - SELEGIE (013)
+     015        - SELEGIE (015)
+     005        - SELEGIE HOUSE
+     003        - SELEGIE ROAD
+     904        - SELEGIE ROAD
+     023        - SELETAR HILLS(023)
+     520        - SERANGOON CENTRAL
+     520        - SERANGOON CENTRAL
+     012        - SERANGOON GARDEN (012)
+     145        - SERANGOON GARDEN (145)
+     547        - SERANGOON GARDEN (547)
+     551        - Serangoon Garden (551)
+     024        - SERANGOON GARDEN(024)
+     018        - SERANGOON ROAD
+     002        - SERANGOON ROAD
+     045        - SERANGOON -SAV (045)
+     992        - SETTLEMENT - DBU
+     995        - SETTLEMENT - G & S
+     996        - SETTLEMENT - SGS
+     016        - SHENTON WAY
+     001        - SHENTON WAY
+     003        - Shenton Way (003)
+     050        - SHENTON WAY (050)
+     067        - Shenton Way (067)
+     055        - Shenton Way (55)
+     060        - SHENTON WAY (60)/JURONG WEST BRANCH
+     009        - SHENTON WAY(009)
+     051        - SHENTON WAY(051)
+     011        - SHENTON WAY-CSG (011)
+     012        - SIGLAP(012)
+     031        - SIGLAP(031)
+     001        - SINGAPORE BRANCH
+     001        - SINGAPORE BRANCH
+     001        - SINGAPORE BRANCH
+     001        - SINGAPORE BRANCH
+     617        - SIX AVENUE (617)
+     666        - Sixth Avenue (666)
+     579        - SMU (579)
+     022        - SOUTH BRANCH
+     007        - SOUTH BRIDGE (007)
+     903        - SOUTH BRIDGE ROAD
+     011        - SOUTH BRIDGE ROAD (011)
+     022        - SOUTH SUB-BRANCH
+     012        - SOUTH SUB-BRANCH (012)
+     022        - SPRINGLEAF GARDEN (022)
+     021        - STAFF (021)
+     558        - SUN PLAZA (558)
+     149        - SUNTEC CITY (149)
+     052        - Suntec City Mall (052)
+     056        - SUNTEC PB CENTRE
+     013        - TAMAN JURONG - CSG
+     003        - TAMAN JURONG - IB
+     019        - TAMPINES
+     930        - TAMPINES
+     003        - TAMPINES (003)
+     038        - TAMPINES (038)
+     510        - TAMPINES (510)
+     534        - TAMPINES (534)
+     546        - TAMPINES (546)
+     548        - TAMPINES (548)
+     517        - TAMPINES BRANCH
+     533        - TAMPINES BRANCH
+     517        - TAMPINES BRANCH
+     022        - TAMPINES CENTRAL
+     522        - TAMPINES CENTRAL
+     004        - TAMPINES CENTRAL (004)
+     042        - TAMPINES CENTRAL (042)
+     522        - TAMPINES CENTRAL BR (COMM 19/9/1991)
+     667        - TAMPINES SOUTH (667)
+     683        - TAMPINES SOUTH (683)
+     42         - TAMPINES(dun use)
+     905        - TANGLIN
+     143        - TANGLIN (143)
+     003        - TANJONG PAGAR
+     009        - TANJONG PAGAR (009)
+     021        - Tanjong Pagar (021)
+     672        - Tanjong Pagar (672)
+     529        - TANJONG PAGAR(529)
+     023        - TECK WHYE
+     106        - Telepark (106)
+     009        - TELOK BLANGAH
+     021        - TEXTILE CENTRE(021)
+     506        - THOMSON
+     506        - THOMSON
+     531        - THOMSON (531)
+     656        - THOMSON (656)
+     007        - THOMSON ROAD (007)
+     006        - TIONG BAHRU
+     907        - TIONG BAHRU
+     011        - TIONG BAHRU (011)
+     050        - TIONG BAHRU PLAZA (050)
+     006        - TOA PAYOH
+     915        - TOA PAYOH
+     015        - TOA PAYOH (015)
+     526        - TOA PAYOH CENTRAL (526)
+     568        - Toa Payoh Central (568)
+     611        - TOA PAYOH CENTRAL (611)
+     677        - TOA PAYOH CENTRAL (677)
+     539        - TOA PAYOH MRT (539)
+     026        - TOWER ROAD (026)
+     588        - Ubi (588)
+     308        - UOB Admiralty(308)
+     327        - UOB Ang Mo Kio Ave 1 (327)
+     057        - UOB ANSON ROAD (057)
+     328        - UOB Bedok Central (328)
+     067        - UOB BENDEMEER ROAD (067)
+     066        - UOB BISHAN (066)
+     437        - UOB Bukit Merah(437)
+     003        - UOB City Plaza (003)
+     064        - UOB GEYLANG (064)
+     307        - UOB Great World City (307)
+     063        - UOB HOUGANG (063)
+     448        - UOB Hougang MRT(448)
+     447        - UOB Hougang North (447)
+     002        - UOB Jalan Sultan (002)
+     058        - UOB JALAN SULTAN (058)
+     432        - UOB Jalan Sultan (432)
+     336        - UOB Jurong East Central (336)
+     013        - UOB JURONG TOWN(013)
+     062        - UOB KATONG(062)
+     332        - UOB King George's (332)
+     001        - UOB Main (001)
+     080        - UOB Main (080)
+     311        - UOB North Bridge(311)
+     016        - UOB NOVENA (016)
+     068        - UOB ORCHARD (068)
+     494        - UOB Raffles City (494)
+     493        - UOB Rivervale Mall (493)
+     069        - UOB SENNETT ESTATE (069)
+     431        - UOB Shenton Way (431)
+     492        - UOB SMU Campus
+     343        - UOB South Bridge (343)
+     018        - UOB Tanglin (018)
+     059        - UOB UPPER BUKIT TIMAH (059)
+     060        - UOB Vivo City (060)
+     422        - UOB Vivo City (422)
+     441        - UOB West Coast (441)
+     446        - UOB Yishun Central (446)
+     150        - UPPER BUKIT TIMAH(150)
+     013        - UPPER PAYA LEBAR
+     604        - UPPER SERANGOON
+     914        - UPPER SERANGOON
+     007        - UPPER SERANGOON
+     514        - UPPER SERANGOON
+     511        - UPPER SERANGOON (511)
+     532        - UPPER SERANGOON (532)
+     536        - UPPER SERANGOON (536)
+     664        - UPPER SERANGOON (664)
+     670        - UPPER SERANGOON (670)
+     023        - UPPER SERANGOON ROAD
+     514        - UPPER SERANGOON ROAD
+     009        - UPPER SERANGOON ROAD
+     010        - UPPER SERANGOON ROAD (010)
+     923        - UPPER THOMSON
+     005        - UPPER THOMSON (005)
+     006        - UPPER THOMSON (006)
+     052        - UPPER THOMSON (052)
+     017        - VICTORIA CONCERT HALL (017)
+     004        - VISA CREDITCARD
+     495        - Vivo City (495)
+     057        - VIVOCITY (057)
+     011        - WEST COAST
+     034        - WEST COAST ROAD (034)
+     555        - White Sands (555)
+     026        - Woodlands
+     022        - WOODLANDS (022)
+     616        - WOODLANDS (616)
+     004        - WOODLANDS 888 PLAZA (004)
+     532        - WOODLANDS BRANCH
+     045        - Woodlands(045)
+     015        - WORLD TRADE CENTRE
+     937        - WORLD TRADE CENTRE
+     005        - YIO CHU KANG
+     014        - YISHUN
+     024        - Yishun
+     016        - YISHUN
+     020        - Yishun (020)
+     039        - YISHUN (039)
+     530        - YISHUN (530)
+     519        - YISHUN BRANCH
+     519        - YISHUN BRANCH
+     003        - YISHUN BRANCH
+     056        - ZHENGHUA (056)
+     012        - ZHU JIAO
   -----
   [10] - Credit Card Code
-  Must be "11   "
   Data type is string[5]
   If present, must match LJA_PAY_OPTIONS entries for base campaign/split.
-     11    - American Express
+     13    - Global MasterCard
+     12    - Global VISA
+     32    - MayBank Master Card
+     34    - Maybank Master Card Debit Card
+     31    - MayBank Visa
   -----
   [11] - Tax Jurisdiction Code
   Must be left empty
@@ -2525,8 +3306,10 @@ Segment is required
   Data type is string[50]
   -----
   [13] - Collector Code
+  Must be "CAC  "
   Data type is string[5]
   This value will be set automatically for credit card and dda payment methods.
+     CAC   - Cash/Check
   -----
   [14] - Employee Number
   Data type is string[20]
@@ -2565,23 +3348,23 @@ SegmentKey: BILLDATES
   Data type is datetime
 
 --------------------
-PRODUCT|AMPA13|[3]|[4]|[5]|[6]|[7]
-SegmentKey: PRODUCT-AMPA13
+PRODUCT|MBPK13|1685|[4]|[5]|[6]|[7]
+SegmentKey: PRODUCT-MBPK13
 Segment is required
+Required component of @MBPK2 package.
 --------------------
   [2] - Product ID
   Field is Required
-  Must be "AMPA13"
+  Must be "MBPK13"
   Data type is string[6]
-  Essential Accident Income Plan
+  Youngstarz Enhanced Plan (PA) (Q2-2011)
   -----
   [3] - Coverage Code
   Field is Required
+  Must be "1685"
   Data type is int
   Who is covered - Message category COVERAGE
-     1681 - Main Insured and Spouse
-     1680 - Main Insured Only
-     1683 - Spouse Only
+     1685 - Dependent Only
   -----
   [4] - Number of Eligible Dependents
   Data type is int
@@ -2606,28 +3389,79 @@ Segment is required
      100491 - Staff Premium
 
 --------------------
-RATING_GROUP|AMPA13|[3]|1||||||||||||||||||||
-SegmentKey: RATING_GROUP-AMPA13
+PRODUCT|MBPK12|1685|[4]|[5]|[6]|[7]
+SegmentKey: PRODUCT-MBPK12
+Segment is required
+Required component of @MBPK2 package.
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBPK12"
+  Data type is string[6]
+  Youngstarz Enhanced Plan (HI) (Q2-2011)
+  -----
+  [3] - Coverage Code
+  Field is Required
+  Must be "1685"
+  Data type is int
+  Who is covered - Message category COVERAGE
+     1685 - Dependent Only
+  -----
+  [4] - Number of Eligible Dependents
+  Data type is int
+  -----
+  [5] - Premium Override Amount
+  Data type is double
+  -----
+  [6] - Premium Override Expire
+  Data type is string[5]
+  If present, format MM/YY.
+  -----
+  [7] - Premium Override Reason
+  Data type is int
+  Value in Message Category SW (S6 Premium Override Reasons)
+     100838 - Goodhealth Premium
+     100612 - Incorrect Date Of Birth
+     100619 - Incorrect Prem (at Conversion)
+     100773 - Incorrect Prem (PM vs Mkt Mat)
+     100766 - Incorrect Rating Factor
+     100484 - Incorrect Sex Code Used
+     0 - None
+     100491 - Staff Premium
+
+--------------------
+RATING_INDIVIDUAL|MBPK13|DP|[4]|[5]|1||||||||||||||||||||
+SegmentKey: RATING_INDIVIDUAL-MBPK13
 Segment is required
 --------------------
   [2] - Product ID
   Field is Required
-  Must be "AMPA13"
+  Must be "MBPK13"
   Data type is string[6]
   -----
-  [3] - Benefit Level
+  [3] - Individual
+  Field is Required
+  Must be "DP"
+  Data type is string[2]
+  May be MI,SP or DP.
+     DP - Dependent
+  -----
+  [4] - Account ID
+  Field is Required
+  Data type is string[9]
+  Required only for individually rated product dependents that are rated separately for each dependent. May use macro representing account id.
+  -----
+  [5] - Benefit Level
   Field is Required
   Data type is int
   Minimum value is 1
-  Maximum value is 5
+  Maximum value is 3
   Must be level allowed by PM product definition.
-     1 - $100                          
-     2 - $200                          
-     3 - $300                          
-     4 - $400                          
-     5 - $500                          
+     1 - Plan A                        
+     2 - Plan B                        
+     3 - Plan C                        
   -----
-  [4] - Units
+  [6] - Units
   Field is Required
   Must be "1"
   Data type is double
@@ -2635,74 +3469,174 @@ Segment is required
   Maximum value is 1
   Must be in PM product units range.
   -----
-  [5] - Rating Factor 1
+  [7] - Rating Factor 1
   Must be left empty
   -----
-  [6] - Rating Factor 2
+  [8] - Rating Factor 2
   Must be left empty
   -----
-  [7] - Rating Factor 3
+  [9] - Rating Factor 3
   Must be left empty
   -----
-  [8] - Rating Factor 4
+  [10] - Rating Factor 4
   Must be left empty
   -----
-  [9] - Rating Factor 5
+  [11] - Rating Factor 5
   Must be left empty
   -----
-  [10] - Rating Factor 6
+  [12] - Rating Factor 6
   Must be left empty
   -----
-  [11] - Rating Factor 7
+  [13] - Rating Factor 7
   Must be left empty
   -----
-  [12] - Rating Factor 8
+  [14] - Rating Factor 8
   Must be left empty
   -----
-  [13] - Rating Factor 9
+  [15] - Rating Factor 9
   Must be left empty
   -----
-  [14] - Rating Factor 10
+  [16] - Rating Factor 10
   Must be left empty
   -----
-  [15] - Benefit Rating Factor 1
+  [17] - Benefit Rating Factor 1
   Must be left empty
   -----
-  [16] - Benefit Rating Factor 2
+  [18] - Benefit Rating Factor 2
   Must be left empty
   -----
-  [17] - Benefit Rating Factor 3
+  [19] - Benefit Rating Factor 3
   Must be left empty
   -----
-  [18] - Benefit Rating Factor 4
+  [20] - Benefit Rating Factor 4
   Must be left empty
   -----
-  [19] - Benefit Rating Factor 5
+  [21] - Benefit Rating Factor 5
   Must be left empty
   -----
-  [20] - Benefit Rating Factor 6
+  [22] - Benefit Rating Factor 6
   Must be left empty
   -----
-  [21] - Benefit Rating Factor 7
+  [23] - Benefit Rating Factor 7
   Must be left empty
   -----
-  [22] - Benefit Rating Factor 8
+  [24] - Benefit Rating Factor 8
   Must be left empty
   -----
-  [23] - Benefit Rating Factor 9
+  [25] - Benefit Rating Factor 9
   Must be left empty
   -----
-  [24] - Benefit Rating Factor 10
+  [26] - Benefit Rating Factor 10
   Must be left empty
 
 --------------------
-INSURED|AMPA13|[3]|[4]
-SegmentKey: INSURED-AMPA13
+RATING_INDIVIDUAL|MBPK12|DP|[4]|[5]|1||||||||||||||||||||
+SegmentKey: RATING_INDIVIDUAL-MBPK12
 Segment is required
 --------------------
   [2] - Product ID
   Field is Required
-  Must be "AMPA13"
+  Must be "MBPK12"
+  Data type is string[6]
+  -----
+  [3] - Individual
+  Field is Required
+  Must be "DP"
+  Data type is string[2]
+  May be MI,SP or DP.
+     DP - Dependent
+  -----
+  [4] - Account ID
+  Field is Required
+  Data type is string[9]
+  Required only for individually rated product dependents that are rated separately for each dependent. May use macro representing account id.
+  -----
+  [5] - Benefit Level
+  Field is Required
+  Data type is int
+  Minimum value is 1
+  Maximum value is 3
+  Must be level allowed by PM product definition.
+     1 - Plan A                        
+     2 - Plan B                        
+     3 - Plan C                        
+  -----
+  [6] - Units
+  Field is Required
+  Must be "1"
+  Data type is double
+  Minimum value is 1
+  Maximum value is 1
+  Must be in PM product units range.
+  -----
+  [7] - Rating Factor 1
+  Must be left empty
+  -----
+  [8] - Rating Factor 2
+  Must be left empty
+  -----
+  [9] - Rating Factor 3
+  Must be left empty
+  -----
+  [10] - Rating Factor 4
+  Must be left empty
+  -----
+  [11] - Rating Factor 5
+  Must be left empty
+  -----
+  [12] - Rating Factor 6
+  Must be left empty
+  -----
+  [13] - Rating Factor 7
+  Must be left empty
+  -----
+  [14] - Rating Factor 8
+  Must be left empty
+  -----
+  [15] - Rating Factor 9
+  Must be left empty
+  -----
+  [16] - Rating Factor 10
+  Must be left empty
+  -----
+  [17] - Benefit Rating Factor 1
+  Must be left empty
+  -----
+  [18] - Benefit Rating Factor 2
+  Must be left empty
+  -----
+  [19] - Benefit Rating Factor 3
+  Must be left empty
+  -----
+  [20] - Benefit Rating Factor 4
+  Must be left empty
+  -----
+  [21] - Benefit Rating Factor 5
+  Must be left empty
+  -----
+  [22] - Benefit Rating Factor 6
+  Must be left empty
+  -----
+  [23] - Benefit Rating Factor 7
+  Must be left empty
+  -----
+  [24] - Benefit Rating Factor 8
+  Must be left empty
+  -----
+  [25] - Benefit Rating Factor 9
+  Must be left empty
+  -----
+  [26] - Benefit Rating Factor 10
+  Must be left empty
+
+--------------------
+INSURED|MBPK13|[3]|1679
+SegmentKey: INSURED-MBPK13
+Segment is required
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBPK13"
   Data type is string[6]
   -----
   [3] - Account ID
@@ -2712,18 +3646,40 @@ Segment is required
   -----
   [4] - Relationship Code
   Field is Required
+  Must be "1679"
   Data type is int
   Must be value in INSURED message category.
-     1677 - Main Insured
-     1678 - Spouse
+     1679 - Dependent
 
 --------------------
-BENEFICIARY|AMPA13|[3]|[4]
-SegmentKey: BENEFICIARY-AMPA13
+INSURED|MBPK12|[3]|1679
+SegmentKey: INSURED-MBPK12
+Segment is required
 --------------------
   [2] - Product ID
   Field is Required
-  Must be "AMPA13"
+  Must be "MBPK12"
+  Data type is string[6]
+  -----
+  [3] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [4] - Relationship Code
+  Field is Required
+  Must be "1679"
+  Data type is int
+  Must be value in INSURED message category.
+     1679 - Dependent
+
+--------------------
+BENEFICIARY|MBPK13|[3]|[4]
+SegmentKey: BENEFICIARY-MBPK13
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBPK13"
   Data type is string[6]
   -----
   [3] - Account ID
@@ -2737,12 +3693,31 @@ SegmentKey: BENEFICIARY-AMPA13
   Text with beneficiary info.
 
 --------------------
-BENEF_DETAIL|AMPA13|[3]|[4]|[5]|[6]
-SegmentKey: BENEF_DETAIL-AMPA13
+BENEFICIARY|MBPK12|[3]|[4]
+SegmentKey: BENEFICIARY-MBPK12
 --------------------
   [2] - Product ID
   Field is Required
-  Must be "AMPA13"
+  Must be "MBPK12"
+  Data type is string[6]
+  -----
+  [3] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [4] - Text
+  Field is Required
+  Data type is string[400]
+  Text with beneficiary info.
+
+--------------------
+BENEF_DETAIL|MBPK13|[3]|[4]|[5]|[6]
+SegmentKey: BENEF_DETAIL-MBPK13
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBPK13"
   Data type is string[6]
   -----
   [3] - Account ID
@@ -2766,12 +3741,60 @@ SegmentKey: BENEF_DETAIL-AMPA13
   Percentage of benefit that goes to beneficiary (all details for product/acctid must sum to 100.0)
 
 --------------------
-EXCLUSION|AMPA13|[3]|[4]
-SegmentKey: EXCLUSION-AMPA13
+BENEF_DETAIL|MBPK12|[3]|[4]|[5]|[6]
+SegmentKey: BENEF_DETAIL-MBPK12
 --------------------
   [2] - Product ID
   Field is Required
-  Must be "AMPA13"
+  Must be "MBPK12"
+  Data type is string[6]
+  -----
+  [3] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [4] - Name
+  Field is Required
+  Data type is string[40]
+  Name of beneficiary
+  -----
+  [5] - Relationship
+  Field is Required
+  Data type is string[25]
+  Relationship of beneficiary (free text)
+  -----
+  [6] - Percentage
+  Field is Required
+  Data type is double
+  Percentage of benefit that goes to beneficiary (all details for product/acctid must sum to 100.0)
+
+--------------------
+EXCLUSION|MBPK13|[3]|[4]
+SegmentKey: EXCLUSION-MBPK13
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBPK13"
+  Data type is string[6]
+  -----
+  [3] - Account ID
+  Field is Required
+  Data type is string[9]
+  May use macro representing account id.
+  -----
+  [4] - Exclusion Code
+  Field is Required
+  Data type is int
+  Value is Message Category CONV5
+
+--------------------
+EXCLUSION|MBPK12|[3]|[4]
+SegmentKey: EXCLUSION-MBPK12
+--------------------
+  [2] - Product ID
+  Field is Required
+  Must be "MBPK12"
   Data type is string[6]
   -----
   [3] - Account ID
@@ -2861,24 +3884,30 @@ COMPLAINT|?_Reason|?_Action|?_OperatorAssigned|?_ReceivedChannel|?_Initiator|?_S
 CALLBACK|?_Reason|?_ContactPhone|?_OperatorAssigned|?_ContactPerson|?_Priority|?_CallWhen
 TRANSACTION|?_EffectiveDate|?_AccountID|?_CorrespondenceType|?_FreeText|?_ApplicationDate|?_ApplicationNumber
 BILL|?_ImmediateBillCode
-TRANNEW|SG12000901|?_SellerID|?_SuspensionReason1|?_SuspensionReason2|?_SuspensionReason3|?_ReplacedPolicy|?_PolicyExpirationDate
+TRANNEW|SG12003602|?_SellerID|?_SuspensionReason1|?_SuspensionReason2|?_SuspensionReason3|?_ReplacedPolicy|?_PolicyExpirationDate
 TRIP|?_EventFromDate|?_EventToDate|?_EventDestination1|?_EventDestination2|?_EventDestination3|?_EventDestination4|?_EventDestination5|?_EventDestination6|?_EventDestination7|?_EventDestination8
 MASTER|?_PolicyHolderAccountID|?_PolicyHolderAddressType
-PAYMENT|?_PolicyPayerAccountID|?_PolicyPayerAddressType|882|?_PaymentFrequencyCode|?_BillAccountNumber|?_CreditCardExpiration|||11   ||?_NameOnBilling|?_CollectorCode|?_EmployeeNumber|?_DebitDayOfMonth|?_TaxApplicationCode|?_Last5BillAcctNum
+PAYMENT|?_PolicyPayerAccountID|?_PolicyPayerAddressType|?_PaymentMethodCode|?_PaymentFrequencyCode|?_BillAccountNumber|?_CreditCardExpiration|?_BankCode|?_BankBranchCode|?_CreditCardCode||?_NameOnBilling|CAC  |?_EmployeeNumber|?_DebitDayOfMonth|?_TaxApplicationCode|?_Last5BillAcctNum
 BILLDATES|?_BilledToDate|?_PaidToDate
-PRODUCT|AMPA13|?_CoverageCode|?_NumberOfEligibleDependents|?_PremiumOverrideAmount|?_PremiumOverrideExpire|?_PremiumOverrideReason
-RATING_GROUP|AMPA13|?_BenefitLevel|1||||||||||||||||||||
-INSURED|AMPA13|?_AccountID|?_RelationshipCode
-BENEFICIARY|AMPA13|?_AccountID|?_Text
-BENEF_DETAIL|AMPA13|?_AccountID|?_Name|?_Relationship|?_Percentage
-EXCLUSION|AMPA13|?_AccountID|?_ExclusionCode
+PRODUCT|MBPK13|1685|?_NumberOfEligibleDependents|?_PremiumOverrideAmount|?_PremiumOverrideExpire|?_PremiumOverrideReason
+PRODUCT|MBPK12|1685|?_NumberOfEligibleDependents|?_PremiumOverrideAmount|?_PremiumOverrideExpire|?_PremiumOverrideReason
+RATING_INDIVIDUAL|MBPK13|DP|?_AccountID|?_BenefitLevel|1||||||||||||||||||||
+RATING_INDIVIDUAL|MBPK12|DP|?_AccountID|?_BenefitLevel|1||||||||||||||||||||
+INSURED|MBPK13|?_AccountID|1679
+INSURED|MBPK12|?_AccountID|1679
+BENEFICIARY|MBPK13|?_AccountID|?_Text
+BENEFICIARY|MBPK12|?_AccountID|?_Text
+BENEF_DETAIL|MBPK13|?_AccountID|?_Name|?_Relationship|?_Percentage
+BENEF_DETAIL|MBPK12|?_AccountID|?_Name|?_Relationship|?_Percentage
+EXCLUSION|MBPK13|?_AccountID|?_ExclusionCode
+EXCLUSION|MBPK12|?_AccountID|?_ExclusionCode
 HEALTH_HIST|?_AccountID|?_History
 POLREF|?_ReferenceKey|?_ReferenceText
 PREMCHECK|?_PremiumAmount|?_PremCheckAction
 END
 ------------------------------------
 
-BOTLAidDataSet written to \\sgsinwks412\share\Francis Botl Convert\BOTLAID.NEW.SG12000901.xml
+BOTLAidDataSet written to C:\Users\LWHANX\Desktop\BOTL Convert working files\BOTLAID.NEW.SG12003602.xml
 
-Finished processing at 5:15:02 PM on 28/6/2012.
-Total duration from start of program was 0 hours, 0 minutes, 4.648 seconds.
+Finished processing at 4:20:26 PM on 11/7/2012.
+Total duration from start of program was 0 hours, 0 minutes, 2.761 seconds.
